@@ -12,4 +12,8 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
   }
 
+  profilePhoto: string = '../../../../assets/images/default-profile.jpg';
+  bio: string = 'Hello! just made an account on SoftPet';
+  nombre: string = 'User';
+
 }

@@ -13,10 +13,13 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { ProfileComponent } from './components/profile/profile.component';
+import { ProfileComponent } from './components/profile/profile/profile.component';
+import { ProfileSidebarComponent } from './components/profile/profile-sidebar/profile-sidebar.component';
+import { ProfileInfoComponent } from './components/profile/profile-info/profile-info.component';
+import { EditProfileComponent } from './components/profile/edit-profile/edit-profile.component'
 
 //Services
-import { AuthService } from './service/auth.service'
+import { AuthService } from './service/auth.service';
 
 //Other
 
@@ -32,7 +35,10 @@ import { AuthService } from './service/auth.service'
     VerifyEmailComponent,
     FooterComponent,
     NavbarComponent,
-    ProfileComponent
+    ProfileComponent,
+    ProfileSidebarComponent,
+    ProfileInfoComponent,
+    EditProfileComponent
   ],
   imports: [
     BrowserModule,
