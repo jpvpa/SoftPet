@@ -5,7 +5,11 @@ import { LogInComponent } from './components/log-in/log-in.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
-import { ProfileComponent } from './components/profile/profile.component';
+import { ProfileComponent } from './components/profile/profile/profile.component';
+import { ProfileSidebarComponent } from './components/profile/profile-sidebar/profile-sidebar.component';
+import { ProfileInfoComponent } from './components/profile/profile-info/profile-info.component';
+import { EditProfileComponent } from './components/profile/edit-profile/edit-profile.component'
+
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -14,7 +18,8 @@ const routes: Routes = [
   { path: 'sign-up', component: SignUpComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'verify-email', component: VerifyEmailComponent },
-  { path: 'profile', component: ProfileComponent },
+  { path: 'profile-info', component: ProfileInfoComponent },
+  { path: 'edit-profile', component: EditProfileComponent },
 ];
 
 @NgModule({
