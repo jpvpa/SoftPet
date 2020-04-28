@@ -1,0 +1,28 @@
+    <section class="container">
+        <div class="row profile">
+                <header class="col-12 pt-2 pb-1 mb-3 border-bottom">
+                    <h2 class="p-1">Hola {{user.nombre}}!</h2>
+                </header>
+                <section class="container-fluid p-0">
+                <article class="row p-1">
+                    <div class="col-sm-12 col-md-2 align-self-center">
+                        <img class="p-5 p-md-0 align-self-md-start align-self-center mr-2 img-thumbnail border-0 img" [src]="profilePhoto">
+                    </div>
+                    <div class="p-2 col-sm-12 col-md-5 media-body">
+                        <h6>Nombre: {{user.nombre}}</h6>
+                        <h6>Apellido Paterno: {{user.apellidoPaterno}}</h6>
+                        <h6>Apellido Materno: {{user.apellidoMaterno}}</h6>
+                    </div>
+                    <div class="p-2 col-sm-12 col-md-5 h-25">
+                        <p class="m-1">Email: <span class="text-success">{{user.correo}}</span></p>
+                        <div class="card bg-light border-white overflow-auto p-2">
+                            <p>
+                                Bio: {{bio}} 
+                            </p>
+                            
+                        </div>
+                    </div>
+                </article>
+            </section>
+        </div>
+    </section>

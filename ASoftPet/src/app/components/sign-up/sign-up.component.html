@@ -1,0 +1,163 @@
+<body>
+    <main class = 'container-fluid h-100 bg-light shadow-sm pad0 d-flex align-items-center'>
+        <div class="table">
+            <div class="tcell bg-white">
+                <div class="row">
+                    <div class="col-12 bottomMargin">
+                        <span class="d-flex justify-content-center">
+                            Registro de Usuario
+                        </span>
+                    </div>
+                </div>
+                <ng-flash-message></ng-flash-message>
+                <form (submit)="onRegisterSubmit()">
+                    <div class="row ">
+                        <div class="col-sm-6 col-lg-6 bottomMargin">
+                            <input type="email" 
+                                    name="correo" 
+                                    id="correo"
+                                    [(ngModel)]="correo"
+                                    class="form-control" 
+                                    placeholder="Correo">
+                        </div>
+                        <div class="col-sm-6 col-lg-6 bottomMargin">
+                            <input type="password" 
+                                    class="form-control" 
+                                    [(ngModel)]="contrasena" 
+                                    name= "contrasena" 
+                                    id="contrasena"
+                                    placeholder="Contraseña">
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-sm-12 col-lg-12 bottomMargin">
+                            <input type="Nombre" 
+                                    class="form-control" 
+                                    [(ngModel)]="nombre" 
+                                    name="nombre"
+                                    id="nombre"
+                                    placeholder="Nombre">
+                        </div>
+                        <div class="col-sm-12 col-lg-6 bottomMargin">
+                            <input type="text" 
+                                    class="form-control" 
+                                    [(ngModel)]="apellidoPaterno" 
+                                    name="apellidoPaterno"
+                                    id="aPaterno"
+                                    placeholder="Apellido Paterno">
+                        </div>
+                        <div class="col-sm-12 col-lg-6 bottomMargin">
+                            <input type="text" 
+                                [(ngModel)]="apellidoMaterno" 
+                                name="apellidoMaterno"
+                                id="aMaterno" 
+                                class="form-control" 
+                                placeholder="Apellido Materno">
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-sm-12 col-lg-6 bottomMargin">
+                            <input type="text" 
+                                class="form-control" 
+                                [(ngModel)]="direccion" 
+                                name="direccion"
+                                id="direccion" 
+                                placeholder="Direccion">
+                        </div>
+                        <div class="col-sm-12 col-lg-6 bottomMargin">
+                            <input type="text" 
+                                    class="form-control"
+                                    [(ngModel)]="colonia" 
+                                    name="colonia" 
+                                    id="colonia" 
+                                    placeholder="Colonia">
+                        </div>
+                        <div class="col-sm-4 col-lg-5 bottomMargin">
+                            <input type="text" 
+                                    class="form-control" 
+                                    [(ngModel)]="ciudad" 
+                                    name="ciudad" 
+                                    id="ciudad"
+                                    placeholder="Ciudad">
+                        </div>
+                        <div class="col-sm-4 col-lg-4 bottomMargin">
+                            <select id="estado"
+                                    [(ngModel)]="estado"
+                                    name="estado"
+                                    class="form-control"
+                                    placeholder="Estado">
+                                <option selected>Choose...</option>
+                                <option value="Aguascalientes">Aguascalientes</option>
+                                <option value="Baja California">Baja California</option>
+                                <option value="Baja California Sur">Baja California Sur</option>
+                                <option value="Campeche">Campeche</option>
+                                <option value="Chiapas">Chiapas</option>
+                                <option value="Chihuahua">Chihuahua</option>
+                                <option value="CDMX">Ciudad de México</option>
+                                <option value="Coahuila">Coahuila</option>
+                                <option value="Colima">Colima</option>
+                                <option value="Durango">Durango</option>
+                                <option value="Estado de México">Estado de México</option>
+                                <option value="Guanajuato">Guanajuato</option>
+                                <option value="Guerrero">Guerrero</option>
+                                <option value="Hidalgo">Hidalgo</option>
+                                <option value="Jalisco">Jalisco</option>
+                                <option value="Michoacán">Michoacán</option>
+                                <option value="Morelos">Morelos</option>
+                                <option value="Nayarit">Nayarit</option>
+                                <option value="Nuevo León">Nuevo León</option>
+                                <option value="Oaxaca">Oaxaca</option>
+                                <option value="Puebla">Puebla</option>
+                                <option value="Querétaro">Querétaro</option>
+                                <option value="Quintana Roo">Quintana Roo</option>
+                                <option value="San Luis Potosí">San Luis Potosí</option>
+                                <option value="Sinaloa">Sinaloa</option>
+                                <option value="Sonora">Sonora</option>
+                                <option value="Tabasco">Tabasco</option>
+                                <option value="Tamaulipas">Tamaulipas</option>
+                                <option value="Tlaxcala">Tlaxcala</option>
+                                <option value="Veracruz">Veracruz</option>
+                                <option value="Yucatán">Yucatán</option>
+                                <option value="Zacatecas">Zacatecas</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-4 col-lg-3 bottomMargin">
+                            <input type="text" 
+                                    [(ngModel)]="pais"
+                                    name="pais" 
+                                    id="pais" 
+                                    class="form-control" 
+                                    placeholder="Pais">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3 col-md-4 bottomMargin">
+                            <input type="text" 
+                                    class="form-control" 
+                                    [(ngModel)]="cp"
+                                    name="cp"
+                                    id="cp"
+                                    placeholder="CP">
+                        </div>
+                        <div class="col-sm-3 col-md-8 bottomMargin">
+                            <input type="text" 
+                                    class="form-control" 
+                                    [(ngModel)]="telefono"
+                                    name="telefono"
+                                    id="telefono"
+                                    placeholder="Teléfono">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 d-flex flex-row-reverse">
+                            <button type="submit" class="btn btn-lg">Registrarse</button>
+                        </div>
+                    </div>
+                </form>
+                <div class="col">
+                    <a [routerLink]="['/log-in']" routerLinkActive="router-link-active" class="p-2">Iniciar Sesión</a>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>

@@ -1,0 +1,22 @@
+.card{
+    border-radius: 1rem;
+}
+button{
+    background-color: #f5d36f;
+    color: white;
+}
+.tcell{
+    padding: 2%;
+    border-radius: 1rem;
+}
+.bottomMargin{
+    margin-bottom: 2%;
+}
+.pad0{
+    padding: 0;
+    margin: 0;
+}
+a{
+    color: #f6ab4b;
+    text-decoration: none;
+}
