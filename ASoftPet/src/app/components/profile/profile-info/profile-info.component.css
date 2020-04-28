@@ -1,0 +1,8 @@
+.card{
+    border-radius: 1rem;
+}
+.iag{
+    background-image: url('../../../../assets/images/bg_profile.png');
+    background-repeat: no-repeat;
+    background-size: 15rem 100%;
+}

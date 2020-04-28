@@ -1,0 +1,29 @@
+.softpet{
+    width: 10rem;
+    height: 4rem;
+}
+.bgs2{
+    background-color: #f5d36f;
+}
+.bgs1{
+    background-color: #ffe082;
+}
+.searchbtn{
+    background-color: #744128;
+}
+.dp:hover{
+    background-color: #f2c540;
+    color:white;
+}
+@media (max-width: 768px){
+    .dpc .dropdown-menu{
+        background-color: #ffecb3 !important ;
+    }
+    .dp .dropdown-menu{
+        background-color: #f8e2a0;
+    }
+    .dp:hover{
+        background-color: #f2c540;
+        color:white;
+    }
+}

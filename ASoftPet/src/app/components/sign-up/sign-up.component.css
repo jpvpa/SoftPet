@@ -1,0 +1,61 @@
+html, body{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: 'Montserrat', sans-serif;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+button{
+    background-color: #f5d36f;
+    color: white;
+}
+
+.navbarspecs{
+    height: 54px;
+    background-color: #AAEBF5 !important;
+}
+
+.navbar2specs{
+    height: 40px;
+    width: 100%;
+    background-color: #85CDD8;
+}
+
+.footer{
+    height: 170px;
+    background-color: teal;
+}
+
+.table{
+    display: inline-block;
+    width: 100%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    padding-left: 10%;
+    padding-right: 10%;
+    margin-bottom: 0;
+}
+
+.tcell{
+    display: table-cell;
+    padding: 2%;
+    border-radius: 1rem;
+}
+
+.bottomMargin{
+    margin-bottom: 2%;
+}
+
+.pad0{
+    padding: 0;
+    margin: 0;
+}
+a{
+    color: #f6ab4b;
+    text-decoration: none;
+}
