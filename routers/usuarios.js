@@ -19,7 +19,8 @@ router.post('/register', (req,res,next) => {
         estado: req.body.estado,
         pais: req.body.pais,
         cp: req.body.cp,
-        telefono: req.body.telefono
+        telefono: req.body.telefono,
+        bio: req.body.bio
     });
     User.addUser(newUser, (err,user)=>{
         if(err){
@@ -29,7 +30,7 @@ router.post('/register', (req,res,next) => {
             transporter.sendMail({
                 to: newUser.correo, // list of receivers
                 subject: "Verifica tu cuenta", // Subject line
-                html: "<main><div style = ' background-color: #ffe082; width: 100%; height: 5rem; padding: 0; margin: 0; text-align: center;'><img src='https://raw.githubusercontent.com/jpvpa/SoftPet/master/ASoftPet/src/assets/images/logito.png' alt='Softpet-logo' style=' width: 12rem; height: 5rem;'></div><div style = 'display: table; text-align: center; width: 100%;'><div style='display:table-cell; text-align: center; font-size: large;'><h3><b><i>Hola," + newUser.nombre + " </h3></i></b><p>Muchas gracias por integrarte a la familia SoftPet!</p><p>Por favor, verifica tu cuenta para continuar:</p><a href='http://localhost:4200/home' style = 'box-shadow:inset 0px 39px 0px -24px #e67a73;background:linear-gradient(to bottom, #e4685d 5%, #FF3300 100%);background-color:#e4685d;border-radius:10px;display:inline-block;cursor:pointer;color:#ffffff;font-family:Arial;font-size:15px;font-weight:bold;padding:10px 20px;text-decoration:none;text-shadow:0px 1px 0px #b23e35;'>Verificar mi cuenta</a></div></div></main>" // html body
+                html: "<main><div style = ' background-color: #ffe082; width: 100%; height: 5rem; padding: 0; margin: 0; text-align: center;'><img src='https://raw.githubusercontent.com/jpvpa/SoftPet/master/ASoftPet/src/assets/images/logito.png' alt='Softpet-logo' style=' width: 12rem; height: 5rem;'></div><div style = 'display: table; text-align: center; width: 100%;'><div style='display:table-cell; text-align: center; font-size: large;'><h3><b><i>Hola, " + newUser.nombre + " </h3></i></b><p>Muchas gracias por integrarte a la familia SoftPet!</p><p>Por favor, verifica tu cuenta para continuar:</p><a href='http://localhost:4200/home' style = 'box-shadow:inset 0px 39px 0px -24px #e67a73;background:linear-gradient(to bottom, #e4685d 5%, #FF3300 100%);background-color:#e4685d;border-radius:10px;display:inline-block;cursor:pointer;color:#ffffff;font-family:Arial;font-size:15px;font-weight:bold;padding:10px 20px;text-decoration:none;text-shadow:0px 1px 0px #b23e35;'>Verificar mi cuenta</a></div></div></main>" // html body
                 });
         }
     });
@@ -68,7 +69,8 @@ router.post('/auth', (req,res,next) =>{
                         estado: user.estado,
                         pais: user.pais,
                         cp: user.cp,
-                        telefono: user.telefono
+                        telefono: user.telefono,
+                        bio: user.bio
                     }
                 });
             } else{ //if it doesnt match send this response
@@ -81,5 +83,20 @@ router.post('/auth', (req,res,next) =>{
 router.get('/profile', passport.authenticate('jwt', {session: false}),(req,res,next)=>{
     res.json({user: req.user})
 })
+
+
+router.put('/updateProfile', passport.authenticate('jwt', {session: false}),(req,res,next)=>{
+    User.updateProfile(req.user._id, req.body)
+})
+
+/* router.post('/forgot-password', (req,res,next)=>{
+
+    transporter.sendMail({
+        to: correo, // list of receivers
+        subject: "Recupera tu cuenta", // Subject line
+        html: "<main><div style = ' background-color: #ffe082; width: 100%; height: 5rem; padding: 0; margin: 0; text-align: center;'><img src='https://raw.githubusercontent.com/jpvpa/SoftPet/master/ASoftPet/src/assets/images/logito.png' alt='Softpet-logo' style=' width: 12rem; height: 5rem;'></div><div style = 'display: table; text-align: center; width: 100%;'><div style='display:table-cell; text-align: center; font-size: large;'><h3><b><i>Hola, " + correo + " </h3></i></b><p>Para recuperar tu cuenta</p><p>por favor, persiona el boton recuperar mi cuenta para continuar:</p><a href='http://localhost:4200/recover-pass' style = 'box-shadow:inset 0px 39px 0px -24px #e67a73;background:linear-gradient(to bottom, #e4685d 5%, #FF3300 100%);background-color:#e4685d;border-radius:10px;display:inline-block;cursor:pointer;color:#ffffff;font-family:Arial;font-size:15px;font-weight:bold;padding:10px 20px;text-decoration:none;text-shadow:0px 1px 0px #b23e35;'>Recuperar mi cuenta</a></div></div></main>" // html body
+        });
+}) */
+
 
 module.exports = router

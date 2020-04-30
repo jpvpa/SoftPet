@@ -19,6 +19,7 @@ import { ProfileComponent } from './components/profile/profile/profile.component
 import { ProfileSidebarComponent } from './components/profile/profile-sidebar/profile-sidebar.component';
 import { ProfileInfoComponent } from './components/profile/profile-info/profile-info.component';
 import { EditProfileComponent } from './components/profile/edit-profile/edit-profile.component'
+import { RecoverPassComponent } from './components/recover-pass/recover-pass.component';
 
 //Services
 import { AuthService } from './shared/service/auth.service';
@@ -41,7 +42,8 @@ import { ValidateService } from './shared/service/validate.service';
     ProfileComponent,
     ProfileSidebarComponent,
     ProfileInfoComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    RecoverPassComponent
   ],
   imports: [
     BrowserModule,

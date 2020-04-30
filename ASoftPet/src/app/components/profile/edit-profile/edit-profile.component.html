@@ -1,7 +1,7 @@
 <body class="bg-light">
     <section class="container">
         <div class="row">
-            <section class="col-md-12 card border-white shadow-sm rounded p-3 mt-5">
+            <section class="col-md-12 card border-white shadow-sm rounded p-3 mt-5 iag">
                 <app-profile></app-profile>
             </section>
         </div>
@@ -15,7 +15,7 @@
                 <header class=" pt-2 pb-1 border-bottom">
                     <h2 class="p-1">Editar Información</h2>
                 </header>
-                <form class="p-2">
+                <form class="p-2" (submit)="onEditSubmit()">
                   <div class="row ">
                     <div class="col-sm-12 bottomMargin">
                         <input type="email" 
@@ -24,14 +24,6 @@
                                 [(ngModel)]="correo"
                                 class="form-control" 
                                 placeholder="Correo">
-                    </div>
-                    <div class="col-sm-12 bottomMargin">
-                        <input type="password" 
-                                class="form-control" 
-                                [(ngModel)]="contrasena" 
-                                name= "contrasena" 
-                                id="contrasena"
-                                placeholder="Contraseña">
                     </div>
                 </div>
                 <div class="row ">
@@ -151,6 +143,24 @@
                                 name="telefono"
                                 id="telefono"
                                 placeholder="Teléfono">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3 col-md-4 bottomMargin">
+                        <input type="text" 
+                                class="form-control" 
+                                [(ngModel)]="bio"
+                                name="bio"
+                                id="bio"
+                                placeholder="Bio">
+                    </div>
+                    <div class="col-sm-3 col-md-8 bottomMargin">
+                        <!-- <input type="text" 
+                                class="form-control" 
+                                [(ngModel)]="telefono"
+                                name="telefono"
+                                id="telefono"
+                                placeholder="Teléfono"> -->
                     </div>
                 </div>
                 <div class="row">
