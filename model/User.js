@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 const bcrypt = require ('bcryptjs');
+const ObjectID = require('mongodb').ObjectID;
 
 const User =
 module.exports = 
@@ -41,9 +42,22 @@ module.exports.addUser = function(newUser,callback){
     });
 }
 
+
 module.exports.comparePassword = function(candidatePassword, hash,callback){
     bcrypt.compare(candidatePassword, hash, (err, isMatch) => {
         if (err) throw err;
         callback(null, isMatch);
     });
 };
+module.exports.updateProfile = function(id,callback){
+    User.findOneAndUpdate({_id: id},{$set:callback},{new:true}) 
+    .then((docs)=>{
+        if(docs) {
+           resolve({success:true,msg:docs});
+        } else {
+           reject({success:false,msg:"Existe ese usuario"});
+        }
+    }).catch((err)=>{
+       reject(err);
+    })
+}

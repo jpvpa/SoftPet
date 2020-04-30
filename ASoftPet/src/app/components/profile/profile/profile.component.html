@@ -17,7 +17,7 @@
                         <p class="m-1">Email: <span class="text-success">{{user.correo}}</span></p>
                         <div class="card bg-light border-white overflow-auto p-2">
                             <p>
-                                Bio: {{bio}} 
+                                Bio: {{(user.bio) ? user.bio : 'Hola! acabo de hacerme una cuenta en Softpet'}} 
                             </p>
                             
                         </div>

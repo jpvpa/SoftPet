@@ -10,6 +10,7 @@ import { ProfileComponent } from './components/profile/profile/profile.component
 import { ProfileSidebarComponent } from './components/profile/profile-sidebar/profile-sidebar.component';
 import { ProfileInfoComponent } from './components/profile/profile-info/profile-info.component';
 import { EditProfileComponent } from './components/profile/edit-profile/edit-profile.component'
+import { RecoverPassComponent } from './components/recover-pass/recover-pass.component';
 
 
 const routes: Routes = [
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'verify-email', component: VerifyEmailComponent },
   { path: 'profile-info', component: ProfileInfoComponent, canActivate:[AuthGuard] },
   { path: 'edit-profile', component: EditProfileComponent, canActivate:[AuthGuard] },
+  { path: 'recover-pass', component: RecoverPassComponent },
 ];
 
 @NgModule({

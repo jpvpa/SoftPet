@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService} from '../../shared/service/auth.service'
 
 @Component({
   selector: 'app-forgot-password',
@@ -6,10 +7,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./forgot-password.component.css']
 })
 export class ForgotPasswordComponent implements OnInit {
-
-  constructor() { }
+  correo: String;
+  constructor(
+    private auth: AuthService
+  ) { }
 
   ngOnInit() {
   }
 
+  /* onRecoverPassword(){
+    const user = {
+      correo: this.correo
+    }
+    this.auth.recoverUser(user).subscribe((data:any) => {
+      console.log(data);
+    })
+  } */
 }

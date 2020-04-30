@@ -7,7 +7,10 @@ var transporter = nodemailer.createTransport({
     auth: {
       user: 'softpet.store@gmail.com', // generated ethereal user
       pass: 'softpet123' // generated ethereal password
-    }
+    },
+    tls: {
+      rejectUnauthorized: false
+  }
 })
 
 module.exports = transporter;
