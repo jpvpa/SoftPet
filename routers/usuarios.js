@@ -88,15 +88,32 @@ router.get('/profile', passport.authenticate('jwt', {session: false}),(req,res,n
 router.put('/updateProfile', passport.authenticate('jwt', {session: false}),(req,res,next)=>{
     User.updateProfile(req.user._id, req.body)
 })
+router.put('/recover-password',(req,res) => {
+    User.recoverPassword(req.user._id, req.body.contrasena)
+})
 
-/* router.post('/forgot-password', (req,res,next)=>{
-
-    transporter.sendMail({
-        to: correo, // list of receivers
-        subject: "Recupera tu cuenta", // Subject line
-        html: "<main><div style = ' background-color: #ffe082; width: 100%; height: 5rem; padding: 0; margin: 0; text-align: center;'><img src='https://raw.githubusercontent.com/jpvpa/SoftPet/master/ASoftPet/src/assets/images/logito.png' alt='Softpet-logo' style=' width: 12rem; height: 5rem;'></div><div style = 'display: table; text-align: center; width: 100%;'><div style='display:table-cell; text-align: center; font-size: large;'><h3><b><i>Hola, " + correo + " </h3></i></b><p>Para recuperar tu cuenta</p><p>por favor, persiona el boton recuperar mi cuenta para continuar:</p><a href='http://localhost:4200/recover-pass' style = 'box-shadow:inset 0px 39px 0px -24px #e67a73;background:linear-gradient(to bottom, #e4685d 5%, #FF3300 100%);background-color:#e4685d;border-radius:10px;display:inline-block;cursor:pointer;color:#ffffff;font-family:Arial;font-size:15px;font-weight:bold;padding:10px 20px;text-decoration:none;text-shadow:0px 1px 0px #b23e35;'>Recuperar mi cuenta</a></div></div></main>" // html body
-        });
-}) */
+router.post('/forgot-password/:_id', (req,res,next) => {
+    
+    const correo = req.body.correo;
+    const contrasena = req.body.contrasena;
+    console.log(correo);
+    
+    User.getUserByEmail(correo, (err,user) =>{ 
+        if (err) throw err;
+        console.log(correo)
+        if(!user){
+            return res.json({success:false,msg: 'Correo no encontrado'});
+        }else{
+        res.json({success:true, msg: 'Se envio un correo'});
+        transporter.sendMail({
+            to: correo, // list of receivers
+            subject: "Recupera tu cuenta", // Subject line
+            html: "<main><div style = ' background-color: #ffe082; width: 100%; height: 5rem; padding: 0; margin: 0; text-align: center;'><img src='https://raw.githubusercontent.com/jpvpa/SoftPet/master/ASoftPet/src/assets/images/logito.png' alt='Softpet-logo' style=' width: 12rem; height: 5rem;'></div><div style = 'display: table; text-align: center; width: 100%;'><div style='display:table-cell; text-align: center; font-size: large;'><h3><b><i>Hola, " + correo + " </h3></i></b><p>Para recuperar tu cuenta</p><p>por favor, persiona el boton recuperar mi cuenta para continuar:</p><a href='http://localhost:4200/recover-pass?_id=correo style = 'box-shadow:inset 0px 39px 0px -24px #e67a73;background:linear-gradient(to bottom, #e4685d 5%, #FF3300 100%);background-color:#e4685d;border-radius:10px;display:inline-block;cursor:pointer;color:#ffffff;font-family:Arial;font-size:15px;font-weight:bold;padding:10px 20px;text-decoration:none;text-shadow:0px 1px 0px #b23e35;'>Recuperar mi cuenta</a></div></div></main>" // html body
+            });
+        }
+    })
+    
+})
 
 
 module.exports = router

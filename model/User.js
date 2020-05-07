@@ -61,3 +61,6 @@ module.exports.updateProfile = function(id,callback){
        reject(err);
     })
 }
+module.exports.recoverUser = function(req,callback){
+    User.findOne({correo,callback})
+}

@@ -11,6 +11,8 @@ import { ProfileSidebarComponent } from './components/profile/profile-sidebar/pr
 import { ProfileInfoComponent } from './components/profile/profile-info/profile-info.component';
 import { EditProfileComponent } from './components/profile/edit-profile/edit-profile.component'
 import { RecoverPassComponent } from './components/recover-pass/recover-pass.component';
+import { AddProductComponent } from './components/admin/add-product/add-product.component';
+import { ProductListComponent } from './components/admin/product-list/product-list.component';
 
 
 const routes: Routes = [
@@ -23,6 +25,8 @@ const routes: Routes = [
   { path: 'profile-info', component: ProfileInfoComponent, canActivate:[AuthGuard] },
   { path: 'edit-profile', component: EditProfileComponent, canActivate:[AuthGuard] },
   { path: 'recover-pass', component: RecoverPassComponent },
+  { path: 'add-product', component: AddProductComponent },
+  { path: 'product-list', component: ProductListComponent },
 ];
 
 @NgModule({
