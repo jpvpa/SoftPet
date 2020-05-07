@@ -40,11 +40,13 @@ export class AuthService {
     console.log(user);
     return this.http.put('http://localhost:2020/updateProfile', JSON.stringify(user), {headers: headers})
   }
-  /* recoverUser(user){
+   recoverUser(user){
     var headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
+    console.log(user);
+    console.log(headers);
     return this.http.post('http://localhost:2020/forgot-password', user, {headers: headers})
-  } */
+  }
   storeUserData(token, user){
     localStorage.setItem('id_token', token); 
     localStorage.setItem('correo', JSON.stringify(user));

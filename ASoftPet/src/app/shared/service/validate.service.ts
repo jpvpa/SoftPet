@@ -19,5 +19,12 @@ export class ValidateService {
     return regE.test(correo);
   }
 
+  allProductsFields(producto){
+    if( !producto.nombre || !producto.precio || !producto.descripcion || !producto.departamento || !producto.categoria || !producto.cantidad || !producto.marca){
+      return false;
+    }else{
+      return true;
+    }
+  }
 
 }
