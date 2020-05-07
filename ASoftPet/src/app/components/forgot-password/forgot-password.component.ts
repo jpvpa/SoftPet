@@ -15,12 +15,13 @@ export class ForgotPasswordComponent implements OnInit {
   ngOnInit() {
   }
 
-  /* onRecoverPassword(){
+  onRecoverPassword(){
     const user = {
       correo: this.correo
     }
+    console.log(user);
     this.auth.recoverUser(user).subscribe((data:any) => {
       console.log(data);
     })
-  } */
+  }
 }

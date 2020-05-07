@@ -20,11 +20,15 @@ import { ProfileSidebarComponent } from './components/profile/profile-sidebar/pr
 import { ProfileInfoComponent } from './components/profile/profile-info/profile-info.component';
 import { EditProfileComponent } from './components/profile/edit-profile/edit-profile.component'
 import { RecoverPassComponent } from './components/recover-pass/recover-pass.component';
+import { AddProductComponent } from './components/admin/add-product/add-product.component';
+import { ProductListComponent } from './components/admin/product-list/product-list.component';
 
 //Services
 import { AuthService } from './shared/service/auth.service';
 import { AuthGuard } from './shared/guard/auth.guard'
 import { ValidateService } from './shared/service/validate.service';
+import { ProductService } from './shared/service/product.service';
+
 //Other
 
 
@@ -43,7 +47,9 @@ import { ValidateService } from './shared/service/validate.service';
     ProfileSidebarComponent,
     ProfileInfoComponent,
     EditProfileComponent,
-    RecoverPassComponent
+    RecoverPassComponent,
+    AddProductComponent,
+    ProductListComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +58,7 @@ import { ValidateService } from './shared/service/validate.service';
     NgFlashMessagesModule.forRoot(),
     FormsModule,
   ],
-  providers: [AuthService, AuthGuard, ValidateService],
+  providers: [AuthService, AuthGuard, ValidateService, ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,117 @@
+<body>
+    <main class = 'h-100 bg-light pad0 p-md-5 d-flex justify-content-center'>
+        <div class="container">
+            <div class="row d-flex justify-content-center text-center">
+                <div class="tcell bg-white shadow-sm r m-3 p-3 p-md-4 m-md-5">
+                    <div class="row">
+                        <div class="col-12 bottomMargin">
+                            <span class="d-flex justify-content-center">
+                                Añadir Producto
+                            </span>
+                        </div>
+                    </div>
+                    <ng-flash-message></ng-flash-message>
+                    <form (submit)="onAddProduct()">
+                        <div class="row ">
+                            <div class="col-sm-3 col-lg-3 bottomMargin">
+                                <input type="number" 
+                                        name="id" 
+                                        id="id"
+                                        [(ngModel)]="id"
+                                        class="form-control" 
+                                        placeholder="ID">
+                            </div>
+                            <div class="col-sm-9 col-lg-9 bottomMargin">
+                                <input type="text" 
+                                        class="form-control" 
+                                        [(ngModel)]="nombre" 
+                                        name= "nombre" 
+                                        id="nombre"
+                                        placeholder="Nombre">
+                            </div>
+                        </div>
+                        <div class="row ">
+                            
+                            <div class="col-sm-3 col-lg-3 bottomMargin">
+                                <input type="text" 
+                                        class="form-control" 
+                                        [(ngModel)]="precio" 
+                                        name="precio"
+                                        id="precio"
+                                        placeholder="Precio">
+                            </div>
+                            <div class="col-sm-12 col-lg-5 bottomMargin">
+                                <select type="text" 
+                                    [(ngModel)]="departamento" 
+                                    name="departamento"
+                                    id="departamento" 
+                                    class="form-control" 
+                                    placeholder="Departamento">
+                                    <option value="Perros">Perros</option>
+                                    <option value="Gatos">Gatos</option>
+                                    <option value="Reptiles">Reptiles</option>
+                                    <option value="Roedores">Roedores</option>
+                                    <option value="Peces">Peces</option>
+                                    <option value="Aves">Aves</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-12 col-lg-4 bottomMargin">
+                                <select type="text" 
+                                    class="form-control" 
+                                    [(ngModel)]="categoria" 
+                                    name="categoria"
+                                    id="categoria" 
+                                    placeholder="Categoria">
+                                    <option value="Alimento">Alimento</option>
+                                    <option value="Higiene">Higiene</option>
+                                    <option value="Accesorios">Accesorios</option>
+                                    <option value="Juguetes">Juguetes</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row ">
+                            <div class="col-sm-12 col-lg-12 bottomMargin">
+                                <input type="text" 
+                                        class="form-control" 
+                                        [(ngModel)]="descripcion" 
+                                        name="descripcion"
+                                        id="descripcion"
+                                        placeholder="Descripcion">
+                            </div>
+                            <div class="col-sm-12 col-lg-5 bottomMargin">
+                                <input type="number" 
+                                        class="form-control"
+                                        [(ngModel)]="cantidad" 
+                                        name="cantidad" 
+                                        id="cantidad" 
+                                        placeholder="Cantidad">
+                            </div>
+                            <div class="col-sm-4 col-lg-4 bottomMargin">
+                                <input type="text" 
+                                        class="form-control" 
+                                        [(ngModel)]="marca" 
+                                        name="marca" 
+                                        id="marca"
+                                        placeholder="Marca">
+                            </div>
+                            
+                            <!-- <div class="col-sm-4 col-lg-3 bottomMargin">
+                                <input type="file" 
+                                        [(ngModel)]="imagen"
+                                        name="imagen" 
+                                        id="imagen" 
+                                        class="form-control" 
+                                        placeholder="Imagen">
+                            </div> -->
+                        </div>
+                        <div class="row">
+                            <div class="col-12 d-flex flex-row-reverse">
+                                <button type="submit" class="btn btn-lg">Añadir</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
