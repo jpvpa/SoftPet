@@ -39,6 +39,8 @@ require('./config/passport')(passport);
 
 //Endopoint
 var endpointUser = require('./routers/usuarios')
+var endpointProduct = require('./routers/productos')
 app.use( endpointUser)
+app.use('/product', endpointProduct)
 
 app.listen(2020);
