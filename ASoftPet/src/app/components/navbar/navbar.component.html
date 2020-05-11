@@ -77,25 +77,25 @@
                 <div class="collapse navbar-collapse text-center" id="navbarNav1">
                   <ul class="navbar-nav mr-auto mx-lg-auto text-left m-0">
                     <li class="nav-item dropdown px-1 dp px-lg-2 mx-lg-2">
-                      <a class="nav-link  w-100 p-2" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <a  class="nav-link  w-100 p-2" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         PERROS
                       </a>
                       <div class="dropdown-menu border-0" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">ACCESORIOS</a>
-                        <a class="dropdown-item" href="#">HIGIENE</a>
-                        <a class="dropdown-item" href="#">ALIMENTO</a>
-                        <a class="dropdown-item" href="#">JUGUETES</a>
+                        <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Perros', 'categoria': 'Accesorios' }">ACCESORIOS</a>
+                        <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Perros', 'categoria': 'Higiene' }">HIGIENE</a>
+                        <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Perros', 'categoria': 'Alimento' }">ALIMENTO</a>
+                        <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Perros', 'categoria': 'Juguetes' }">JUGUETES</a>
                       </div>
                     </li>
-                    <li class="nav-item dropdown px-1 dp px-lg-2 mx-lg-2">
+                    <li  class="nav-item dropdown px-1 dp px-lg-2 mx-lg-2">
                       <a class="nav-link p-2" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         GATOS
                       </a>
                       <div class="dropdown-menu border-0" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">ACCESORIOS</a>
-                        <a class="dropdown-item" href="#">HIGIENE</a>
-                        <a class="dropdown-item" href="#">ALIMENTO</a>
-                        <a class="dropdown-item" href="#">JUGUETES</a>
+                        <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Gatos', 'categoria': 'Accesorios' }">ACCESORIOS</a>
+                        <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Gatos', 'categoria': 'Higiene' }">HIGIENE</a>
+                        <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Gatos', 'categoria': 'Alimento' }">ALIMENTO</a>
+                        <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Gatos', 'categoria': 'Juguetes' }">JUGUETES</a>
                       </div>
                     </li>
                     <li class="nav-item dropdown px-1 dp px-lg-2 mx-lg-2">
@@ -103,10 +103,10 @@
                         REPTILES
                       </a>
                       <div class="dropdown-menu border-0" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">ACCESORIOS</a>
-                        <a class="dropdown-item" href="#">HIGIENE</a>
-                        <a class="dropdown-item" href="#">ALIMENTO</a>
-                        <a class="dropdown-item" href="#">JUGUETES</a>
+                        <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Reptiles', 'categoria': 'Accesorios' }">ACCESORIOS</a>
+                        <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Reptiles', 'categoria': 'Higiene' }">HIGIENE</a>
+                        <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Reptiles', 'categoria': 'Alimento' }">ALIMENTO</a>
+                        <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Reptiles', 'categoria': 'Juguetes' }">JUGUETES</a>
                       </div>
                     </li>
                     <li class="nav-item dropdown px-1 dp px-lg-2 mx-lg-2">
@@ -114,10 +114,10 @@
                         ROEDORES
                       </a>
                       <div class="dropdown-menu border-0" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">ACCESORIOS</a>
-                        <a class="dropdown-item" href="#">HIGIENE</a>
-                        <a class="dropdown-item" href="#">ALIMENTO</a>
-                        <a class="dropdown-item" href="#">JUGUETES</a>
+                        <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Roedores', 'categoria': 'Accesorios' }">ACCESORIOS</a>
+                        <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Roedores', 'categoria': 'Higiene' }">HIGIENE</a>
+                        <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Roedores', 'categoria': 'Alimento' }">ALIMENTO</a>
+                        <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Roedores', 'categoria': 'Juguetes' }">JUGUETES</a>
                       </div>
                     </li>
                     <li class="nav-item dropdown px-1 dp px-lg-2 mx-lg-2">
@@ -125,10 +125,10 @@
                         PECES
                       </a>
                       <div class="dropdown-menu border-0" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">ACCESORIOS</a>
-                        <a class="dropdown-item" href="#">HIGIENE</a>
-                        <a class="dropdown-item" href="#">ALIMENTO</a>
-                        <a class="dropdown-item" href="#">JUGUETES</a>
+                        <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Peces', 'categoria': 'Accesorios' }">ACCESORIOS</a>
+                        <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Peces', 'categoria': 'Higiene' }">HIGIENE</a>
+                        <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Peces', 'categoria': 'Alimento' }">ALIMENTO</a>
+                        <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Peces', 'categoria': 'Juguetes' }">JUGUETES</a>
                       </div>
                     </li>
                     <li class="nav-item dropdown px-1 dp px-lg-2 mx-lg-2">
@@ -136,10 +136,10 @@
                         AVES
                       </a>
                       <div class="dropdown-menu border-0" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">ACCESORIOS</a>
-                        <a class="dropdown-item" href="#">HIGIENE</a>
-                        <a class="dropdown-item" href="#">ALIMENTO</a>
-                        <a class="dropdown-item" href="#">JUGUETES</a>
+                        <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Aves', 'categoria': 'Accesorios' }">ACCESORIOS</a>
+                        <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Aves', 'categoria': 'Higiene' }">HIGIENE</a>
+                        <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Aves', 'categoria': 'Alimento' }">ALIMENTO</a>
+                        <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Aves', 'categoria': 'Juguetes' }">JUGUETES</a>
                       </div>
                     </li>
                   </ul>
