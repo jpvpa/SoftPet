@@ -17,10 +17,12 @@
                         <th scope="col">Categoria</th>
                         <th scope="col">Cantidad</th>
                       </tr>
+                      
                     </thead>
                     <tbody *ngFor="let product of products">
+
                       <tr>
-                        <th scope="row">{{product.id}}</th>
+                        <th>{{product.id}}</th>
                         <td>{{product.nombre}}</td>
                         <td>{{product.precio | currency}}</td>
                         <td>{{product.descripcion}}</td>
@@ -32,7 +34,7 @@
                     </tbody>
                 </table>
             </div>
-
         </div>
     </section>
 </body>
+

@@ -1,0 +1,117 @@
+<body>
+    <section class="container p-5">
+        <div class="row">
+            <div class="col-5">
+                <img src="../../../assets/images/producto1.jpg" alt="" srcset="">
+            </div>
+            <div class="col-7">
+                <div class="pb-right-colum col-lg-7 col-md-7 col-sm-12 col-xs-12">
+                      <h4 class="product_name" itemprop="name">
+                        Alimento para Perros
+                      </h4>
+                      <div class="content_prices clearfix">
+                        <div class="price">
+                          <p class="our_price_display" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                            <span id="our_price_display" itemprop="price">$ 96.50</span>
+                            <meta itemprop="priceCurrency" content="MXN" />
+                          </p>
+                          <p id="old_price" class="hidden">
+                            <span id="old_price_display"></span>
+                          </p>
+                        </div>
+                        <div class="clear"></div>
+                      </div>
+                      <div class="product-code">
+                        <i class="fa fa-check-square" aria-hidden="true"></i>
+                        <label class="stock">EN STOCK</label><br>
+                        <label>Código producto: </label>
+                        <span>{{products.id}}</span>
+                      </div>
+                      <p id="availability_date" style="display: none;">
+                        <span id="availability_date_label"
+                          >Availability date:</span
+                        >
+                        <span id="availability_date_value"></span>
+                      </p>
+                      <div id="ooHook"></div>
+                      <div id="short_description_block">
+                        <div>
+                          <h5 class="description_style">
+                            Descripción del Producto
+                          </h5>
+                          <ul>
+                            <li type="disc">Alimento para perro adulto.</li>
+                            <li type="disc">Alimento para perro adulto.</li>
+                            <li type="disc">Alimento para perro adulto.</li>
+                            <li type="disc">Alimento para perro adulto.</li>
+                            <li type="disc">Alimento para perro adulto.</li>
+                          </ul>
+                        </div>
+                      </div>
+                      <form id="buy_block" action="carrito" method="post">
+                        <p class="hidden">
+                          <input
+                            type="hidden"
+                            name="token"
+                            value="982246206bf12692979bbcb0689536b8"
+                          />
+                          <input
+                            type="hidden"
+                            name="id_product"
+                            value="2197"
+                            id="product_page_product_id"
+                          />
+                          <input type="hidden" name="add" value="1" />
+                          <input
+                            type="hidden"
+                            name="id_product_attribute"
+                            id="idCombination"
+                            value
+                          />
+                        </p>
+                        <div class="box-info-product">
+                          <div class="product_attributes clearfix">
+                            <div id="quantity_wanted_p">
+                              <div class="qty">
+                                <a
+                                  href="#"
+                                  data-field-qty="qty"
+                                  class="button-minus product_quantity_down"
+                                >
+                                  <span><i class="fas fa-minus"></i></span>
+                                </a>
+                                <div class="qty_buttons">
+                                  <input
+                                    type="text"
+                                    name="qty"
+                                    id="quantity_wanted"
+                                    class="text"
+                                    value="1"
+                                    style="border: 1px solid rgb(189, 194, 201);"/>
+                                </div>
+                                <a href="#" data-field-qty="qty" class="button-plus product_quantity_up">
+                                  <span><i class="fa fa-plus"></i></span>
+                                </a>
+                              </div>
+                            </div>
+                            <div class="box-cart-bottom">
+                              <div>
+                                <div class="col-12 d-flex flex-row-reverse">
+                                    <button type="submit" class="btn btn-lg">Registrarse</button>
+                                </div>
+                              </div>
+                              <div id="minimal_quantity_wanted_p"style="display: none; color: rgb (55, 72, 83);">
+                                "This product is not sold individually. You must
+                                select at least "
+                                <b id="minimal_quantity_label">1</b>
+                                "quantity for this product."
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+            </div>
+        </div>
+    </section>
+  </body>

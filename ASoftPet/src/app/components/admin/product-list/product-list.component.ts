@@ -1,27 +1,33 @@
-import { Component, OnInit } from '@angular/core';
-import { ProductService} from '../../../shared/service/product.service'
-
+import { Component, OnInit, AfterViewInit} from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+declare var $ : any;
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
-export class ProductListComponent implements OnInit {
-  products: Object;
-  constructor(
-    private prod:ProductService
-  ) { }
+export class ProductListComponent implements AfterViewInit, OnInit {
+  products = [];
+  constructor() {}
+  ngOnInit() {}
 
-  ngOnInit() {
-    this.prod.getProduct().subscribe((producto: any)=>{
-      this.products = producto;
-      console.log(this.products);
-    },err =>{
-      console.log(err);
-      return false;
-    });
+  ngAfterViewInit() : void {
+    this.showProducts();
+  }
+
+  showProducts = function (){
+    var self = this
+    $.ajax({
+      method: 'get',
+      url: 'http://localhost:2020/product/list',
+      success: function (result){
+       self.products=result;
+       console.log(result);
+      },
+      error: function(){
+      self.products = [];
+      } 
+    })
   }
   
-  
-
 }

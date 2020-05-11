@@ -13,6 +13,10 @@ import { EditProfileComponent } from './components/profile/edit-profile/edit-pro
 import { RecoverPassComponent } from './components/recover-pass/recover-pass.component';
 import { AddProductComponent } from './components/admin/add-product/add-product.component';
 import { ProductListComponent } from './components/admin/product-list/product-list.component';
+import { CatalogComponent } from './components/catalog/catalog.component';
+import { DetailProductComponent } from './components/detail-product/detail-product.component';
+
+
 
 
 const routes: Routes = [
@@ -27,6 +31,8 @@ const routes: Routes = [
   { path: 'recover-pass', component: RecoverPassComponent },
   { path: 'add-product', component: AddProductComponent },
   { path: 'product-list', component: ProductListComponent },
+  { path: 'catalog', component: CatalogComponent},
+  { path: 'detail-product', component: DetailProductComponent},
 ];
 
 @NgModule({
@@ -34,3 +40,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+export const routingComponents = [CatalogComponent]

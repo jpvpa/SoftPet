@@ -22,12 +22,16 @@ import { EditProfileComponent } from './components/profile/edit-profile/edit-pro
 import { RecoverPassComponent } from './components/recover-pass/recover-pass.component';
 import { AddProductComponent } from './components/admin/add-product/add-product.component';
 import { ProductListComponent } from './components/admin/product-list/product-list.component';
+import { CatalogComponent } from './components/catalog/catalog.component';
+import { DetailProductComponent } from './components/detail-product/detail-product.component';
 
 //Services
 import { AuthService } from './shared/service/auth.service';
 import { AuthGuard } from './shared/guard/auth.guard'
 import { ValidateService } from './shared/service/validate.service';
 import { ProductService } from './shared/service/product.service';
+
+
 
 //Other
 
@@ -49,7 +53,9 @@ import { ProductService } from './shared/service/product.service';
     EditProfileComponent,
     RecoverPassComponent,
     AddProductComponent,
-    ProductListComponent
+    ProductListComponent,
+    CatalogComponent,
+    DetailProductComponent
   ],
   imports: [
     BrowserModule,
