@@ -26,7 +26,7 @@ export class AddProductComponent implements OnInit {
     private router: Router,
     private validService : ValidateService
   ) { }
-
+  uploadedFiles: Array < File > ;
   ngOnInit() {
   }
 
@@ -51,8 +51,10 @@ export class AddProductComponent implements OnInit {
       });
       return false;
     }
+
     console.log(product);
     this.products.addProduct(product).subscribe((data:any) => {
+      
       console.log(data);
       if(data.success){
         this.ngFlashMessageService.showFlashMessage({

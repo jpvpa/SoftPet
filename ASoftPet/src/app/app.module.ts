@@ -24,12 +24,14 @@ import { AddProductComponent } from './components/admin/add-product/add-product.
 import { ProductListComponent } from './components/admin/product-list/product-list.component';
 import { CatalogComponent } from './components/catalog/catalog.component';
 import { DetailProductComponent } from './components/detail-product/detail-product.component';
-
+import { FaqsComponent } from './components/footer-info/faqs/faqs.component';
+import { DevolucionComponent } from './components/footer-info/devolucion/devolucion.component';
 //Services
 import { AuthService } from './shared/service/auth.service';
 import { AuthGuard } from './shared/guard/auth.guard'
 import { ValidateService } from './shared/service/validate.service';
 import { ProductService } from './shared/service/product.service';
+
 
 
 
@@ -55,7 +57,9 @@ import { ProductService } from './shared/service/product.service';
     AddProductComponent,
     ProductListComponent,
     CatalogComponent,
-    DetailProductComponent
+    DetailProductComponent,
+    FaqsComponent,
+    DevolucionComponent
   ],
   imports: [
     BrowserModule,

@@ -1,16 +1,30 @@
 import { Component, OnInit } from '@angular/core';
-
+declare var $ : any;
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
+  products=[]
   constructor() { }
 
   ngOnInit() {
+    var self = this
+    $.ajax({
+      method: 'get',
+      url: 'http://localhost:2020/product/list',
+      success: function (result){
+       self.products=result;
+       console.log(result);
+      },
+      error: function(){
+      self.products = [];
+      } 
+    })
   }
+  
+  
 
   productos = [
     {

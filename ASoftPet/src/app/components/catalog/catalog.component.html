@@ -1,105 +1,156 @@
 <section class="bg-light py-4">
   <div class="container">
     <div class="row">
-  
-      
-      <div class=" p-2 col-12">
+
+        <div class="p-2 col-12" *ngIf="nombre === undefined;else searchBar">
+          <div class="p-1 col-12">
+            <h1 class="p-0 m-0"><img class="imgh1 align-self-center" src="../../../assets/images/{{departamento}}.png"
+                alt="{{departamento}}"> {{departamento}}</h1>
+          </div>
         
-        <h1 class="p-0 m-0"><img class="imgh1 align-self-center" src="../../../assets/images/{{departamento}}.png" alt="{{departamento}}"> {{departamento}}</h1>
+          <div class=" px-4 col-12">
+            <h6>{{departamento}} > {{categoria}}</h6>
+          </div>
       </div>
-      <div class=" px-4 col-12">
-        <h6>{{departamento}} > {{categoria}}</h6>
-      </div>
+        <ng-template  #searchBar>
+          <div class=" p-2 col-12">
+            <h5>Resultados de busqueda para: '{{nombre}}'</h5>
+          </div>
+        </ng-template>
       <div class="card shadow-sm border-0 p-3 col-md-3">
-        <h6>Categorias</h6>
-        <div class=" border-0">
-          <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ categoria: 'Accesorios' }" queryParamsHandling="merge">Accesorios</a>
-          <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ categoria: 'Higiene' }" queryParamsHandling="merge">Higiene </a>
-          <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ categoria: 'Alimento' }" queryParamsHandling="merge">Alimento </a>
-          <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ categoria: 'Juguetes' }" queryParamsHandling="merge">Juguetes </a>
+        <div class=" border-0" *ngIf="nombre === undefined;else deptBar">
+          <h6>Categorias</h6>
+          <a class="dropdown-item" (click)="categoria='Accesorios'; BuscarRango()">Accesorios</a>
+          <a class="dropdown-item" (click)="categoria='Higiene'; BuscarRango()">Higiene </a>
+          <a class="dropdown-item" (click)="categoria='Alimento'; BuscarRango()">Alimento </a>
+          <a class="dropdown-item" (click)="categoria='Juguetes'; BuscarRango()">Juguetes </a>
         </div>
+        <ng-template #deptBar>
+          <h6>Departamento</h6>
+          <a class="dropdown-item" (click)="departamento=undefined; BuscarRango()">General</a>
+          <a class="dropdown-item" (click)="departamento='Perros'; BuscarRango()">Perros</a>
+          <a class="dropdown-item" (click)="departamento='Gatos'; BuscarRango()">Gatos</a>
+          <a class="dropdown-item" (click)="departamento='Reptiles'; BuscarRango()">Reptiles </a>
+          <a class="dropdown-item" (click)="departamento='Roedores'; BuscarRango()">Roedores </a>
+          <a class="dropdown-item" (click)="departamento='Peces'; BuscarRango()">Peces </a>
+          <a class="dropdown-item" (click)="departamento='Aves'; BuscarRango()">Aves </a>
+        </ng-template>
         <hr>
         <h6>Marca</h6>
         <div class="custom-control custom-checkbox my-1 mr-sm-2">
-          <input type="checkbox" class="custom-control-input" id="RoyalCanin">
-          <label class="custom-control-label" for="RoyalCanin">Royal Canin</label>
+          <input type="checkbox" class="custom-control-input" id="RoyalCanin" (click)="BuscarRango()">
+          <label class="custom-control-label" checked="true" for="RoyalCanin">Royal Canin</label>
         </div>
         <div class="custom-control custom-checkbox my-1 mr-sm-2">
-          <input type="checkbox" class="custom-control-input" id="Pedigree">
+          <input type="checkbox" class="custom-control-input" id="Pedigree" (click)="BuscarRango()">
           <label class="custom-control-label" for="Pedigree">Pedigree</label>
         </div>
         <div class="custom-control custom-checkbox my-1 mr-sm-2">
-          <input type="checkbox" class="custom-control-input" id="Profine">
+          <input type="checkbox" class="custom-control-input" id="Profine" (click)="BuscarRango()">
           <label class="custom-control-label" for="Profine">Profine</label>
         </div>
         <div class="custom-control custom-checkbox my-1 mr-sm-2">
-          <input type="checkbox" class="custom-control-input" id="Whiskas">
+          <input type="checkbox" class="custom-control-input" id="Whiskas" (click)="BuscarRango()">
           <label class="custom-control-label" for="Whiskas">Whiskas</label>
         </div>
         <div class="custom-control custom-checkbox my-1 mr-sm-2">
-          <input type="checkbox" class="custom-control-input" id="Sera">
+          <input type="checkbox" class="custom-control-input" id="Sera" (click)="BuscarRango()">
           <label class="custom-control-label" for="Sera">Sera</label>
         </div>
         <div class="custom-control custom-checkbox my-1 mr-sm-2">
-          <input type="checkbox" class="custom-control-input" id="Ferplast">
+          <input type="checkbox" class="custom-control-input" id="Ferplast" (click)="BuscarRango()">
           <label class="custom-control-label" for="Ferplast">Ferplast</label>
         </div>
-        <hr>
-        <h6>Precio</h6>
-        <div class="custom-control custom-radio">
-          <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input">
-          <label class="custom-control-label" for="customRadio1">10 - 100</label>
-        </div>
-        <div class="custom-control custom-radio">
-          <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input">
-          <label class="custom-control-label" for="customRadio2">100 - 500</label>
-        </div>
-        <div class="custom-control custom-radio">
-          <input type="radio" id="customRadio3" name="customRadio" class="custom-control-input">
-          <label class="custom-control-label" for="customRadio3">500 - 1,000</label>
-        </div>
-        <div class="custom-control custom-radio">
-          <input type="radio" id="customRadio4" name="customRadio" class="custom-control-input">
-          <label class="custom-control-label" for="customRadio4">1,000 - 2,000</label>
-        </div>
-        
-      </div>
-      <div class="col-md-9">
-          <div class="col-12 card border-0 shadow-sm mb-3  ">
-
-            <a class="text-dark  w-25 btn-sm btn-light dropdown-toggle bg-white text-right align-self-end text-decoration-none" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Ordenar
-            </a>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <a class="dropdown-item" href="#">A-Z</a>
-              <a class="dropdown-item" href="#">Z-A</a>
-            </div>
+          <div class="custom-control custom-checkbox my-1 mr-sm-2">
+            <input type="checkbox" class="custom-control-input" id="SaniCat" (click)="BuscarRango()">
+            <label class="custom-control-label" for="SaniCat">SaniCat</label>
+          </div>
+          <div class="custom-control custom-checkbox my-1 mr-sm-2">
+            <input type="checkbox" class="custom-control-input" id="Mars" (click)="BuscarRango()">
+            <label class="custom-control-label" for="Mars">Mars</label>
+          </div>
+          <div class="custom-control custom-checkbox my-1 mr-sm-2">
+            <input type="checkbox" class="custom-control-input" id="Greenies" (click)="BuscarRango()">
+            <label class="custom-control-label" for="Greenies">Greenies</label>
+          </div>
+          <div class="custom-control custom-checkbox my-1 mr-sm-2">
+            <input type="checkbox" class="custom-control-input" id="Frolic" (click)="BuscarRango()">
+            <label class="custom-control-label" for="Frolic">Frolic</label>
+          </div>
+          <div class="custom-control custom-checkbox my-1 mr-sm-2">
+            <input type="checkbox" class="custom-control-input" id="Beco" (click)="BuscarRango()">
+            <label class="custom-control-label" for="Beco">Beco</label>
           </div>
 
+        <hr>
+        <h6>Precio</h6>
+
+        <div class="custom-control custom-radio">
+          <input type="radio" id="customRadio5" name="customRadio" value="5"
+            (click)="rangoPrecio = $event.target.value; BuscarRango()" class="custom-control-input">
+          <label class="custom-control-label" for="customRadio5">Todos los precios</label>
+        </div>
+
+        <div class="custom-control custom-radio">
+          <input type="radio" id="customRadio1" name="customRadio" value="1"
+            (click)="rangoPrecio = $event.target.value; BuscarRango()" class="custom-control-input">
+          <label class="custom-control-label" for="customRadio1">$1.00 - $100.00</label>
+        </div>
+        <div class="custom-control custom-radio">
+          <input type="radio" id="customRadio2" name="customRadio" value="2"
+            (click)="rangoPrecio = $event.target.value; BuscarRango()" class="custom-control-input">
+          <label class="custom-control-label" for="customRadio2">$100.00 - $500.00</label>
+        </div>
+        <div class="custom-control custom-radio">
+          <input type="radio" id="customRadio3" name="customRadio" value="3"
+            (click)="rangoPrecio = $event.target.value; BuscarRango()" class="custom-control-input">
+          <label class="custom-control-label" for="customRadio3">$500.00 - $1,000.00</label>
+        </div>
+        <div class="custom-control custom-radio">
+          <input type="radio" id="customRadio4" name="customRadio" value="4"
+            (click)="rangoPrecio = $event.target.value; BuscarRango()" class="custom-control-input">
+          <label class="custom-control-label" for="customRadio4">$1,000.00 - $2,000.00</label>
+        </div>
+        
+
+      </div>
+      <div class="col-md-9">
+        <div class="col-12 card border-0 shadow-sm mb-3  ">
+
+          <a class="text-dark  w-25 btn-sm btn-light dropdown-toggle bg-white text-right align-self-end text-decoration-none"
+            href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+            Ordenar
+          </a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a (click)="orden = 'asc';  BuscarRango()" class="dropdown-item">A-Z</a>
+            <a (click)="orden = 'des';  BuscarRango()" class="dropdown-item">Z-A</a>
+          </div>
+        </div>
+
         <div class="row">
-          <div *ngFor="let product of products;" class="col-sm-12 col-md-4 col-lg-3 product">
-              <div class="card shadow-sm border-0 text-center wrapper position-relative p-1">
-                <img src="../../../assets/images/producto1.jpg" class="card-img-top img" alt="...">
-                <div class="card-body p-1">
-                  <p class="font-weight-bold card-title m-1 p-0">{{product.nombre}}</p>
-                  <p class="card-text m-1 p-0">{{product.precio | currency}}</p>
-                  <p class="card-text p-0">{{product.descripcion}}</p>
-                </div>
-                <div class="row">
-                  <a style="font-size: .8rem;" href="#" class="w-25 col-6 btn text-white bg-mango button position-absolute">
-                    <img class="imgi" src="../../../assets/images/cart.png">
-                  </a>
-                  <a style="font-size: .8rem;" href="#" class="w-25 col-6 btn text-white bg-red button2 position-absolute "><img class="imgi" src="../../../assets/images/eye.png"></a>
-                </div>
+          <div *ngFor="let product of products;" class="col-sm-12 col-md-4 col-lg-3 product p-2">
+            <div class="card shadow-sm border-0 h-100 text-center wrapper position-relative p-1">
+              <img src="{{product.imagen}}" class="card-img-top img-thumbnail img-fluid img" alt="...">
+              <div class="card-body p-1">
+                <p class="font-weight-bold card-title m-1 p-0">{{product.nombre}}</p>
+                <p class="card-text m-1 p-0">{{product.precio | currency}}</p>
+                <p class="card-text p-0">{{product.descripcion}}</p>
+              </div>
+              <div class="row">
+                <a style="font-size: .8rem;" href="#"
+                  class="w-25 col-6 btn text-white bg-mango button position-absolute">
+                  <img class="imgi" src="../../../assets/images/cart.png">
+                </a>
+                <a style="font-size: .8rem;" [routerLink]="['/detail-product']" [queryParams]="{ id: product.id}" routerLinkActive="router-link-active" 
+                  class="w-25 col-6 btn text-white bg-red button2 position-absolute "><img class="imgi"
+                    src="../../../assets/images/eye.png"></a>
               </div>
             </div>
+          </div>
         </div>
       </div>
-  
+
     </div>
   </div>
 </section>
-
-
-
-

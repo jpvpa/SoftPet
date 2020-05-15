@@ -1,0 +1,29 @@
+<div *ngFor = "let s of secciones" class="container">
+    <div class="row mt-4">
+        <div class="col-12">
+           <h4> {{s.seccion}} </h4>
+        </div>
+    </div>
+  <div class="row my-4">
+    <div *ngFor = "let p of preguntas"  class="col-12">
+      <div class="accordion" *ngIf="s.id == p.seccion" id="accordionExample">
+        <div class="card">
+          <div class="card-header bg-brown" [id]="'heading' + p.id">
+            <h2 class="mb-0">
+              <button class="btn btn-block text-left text-white" type="button" data-toggle="collapse"
+                [attr.data-target]="'#' + p.id" aria-expanded="false" [attr.aria-controls]=p.id>
+                {{p.pregunta}}
+              </button>
+            </h2>
+          </div>
+
+          <div [id]=p.id class="collapse show" [attr.aria-labelledby]="'heading' + p.id" data-parent="#accordionExample">
+            <div class="card-body">
+              {{p.respuesta}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
