@@ -3,11 +3,13 @@ const BodyParser = require ('body-parser');
 const mongoose = require('mongoose');
 const path = require('path');
 const passport = require('passport');
+const multer  = require('multer')
 
 const app = express(); //initilize variable with express
 const cors = require('cors');
 app.use(BodyParser.urlencoded({extended:true}));
 app.use(BodyParser.json());
+
 app.use(cors({
     origin:'*'
 }))
@@ -36,8 +38,11 @@ app.use(express.static(path.join(_dirname,'client')));
 app.use(passport.initialize());
 app.use(passport.session()); 
 require('./config/passport')(passport);
+//Multer Middleware
+app.use(express.static(path.join(__dirname,'/public')));//Directorio para archivos staticos
+app.use('/uploads',express.static(path.join(__dirname,'/uploads')));//Directorio de imagenes
 
-//Endopoint
+//Endpoint
 var endpointUser = require('./routers/usuarios')
 var endpointProduct = require('./routers/productos')
 app.use( endpointUser)

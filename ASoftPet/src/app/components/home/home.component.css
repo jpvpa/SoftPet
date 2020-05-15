@@ -1,31 +1,46 @@
 .bg-mango{
-    background-color: rgb(255, 224, 130);
+  background-color: rgb(255, 224, 130);
 }
 
 .bg-red{
-    background-color: rgb(239, 83, 80);
+  background-color: rgb(239, 83, 80);
 }
-
+.imgi{
+width: 95%;
+}
 .button {
-  display: none;
-  transition: .5s ease;
+display: none;
+transition: .5s ease;
 }
 .img,.card-body{
-    transition: .5s ease;
+  transition: .5s ease;
 }
 .wrapper:hover .img{
-    opacity: 0.3;
-    transition: .5s ease;
-  /* Change the filter in here */
+  opacity: 0.3;
+  transition: .5s ease;
 }
 .wrapper:hover .card-body{
-    opacity: 0.3;
-    transition: .5s ease;
+  opacity: 0.3;
+  transition: .5s ease;
 }
 .wrapper:hover .button {
-  display: inline-block;
-  transition: .5s ease;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+display: inline-block;
+transition: .5s ease;
+top: 50%;
+left: 35%;
+transform: translate(-50%, -50%);
+}
+.wrapper:hover .button2 {
+display: inline-block;
+transition: .5s ease;
+top: 50%;
+left: 65%;
+transform: translate(-50%, -50%);
+}
+
+.button2{
+display: none;
+}
+.imgh1{
+width: 4%;
 }

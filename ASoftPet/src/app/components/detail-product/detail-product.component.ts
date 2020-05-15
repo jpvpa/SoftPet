@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { filter } from 'rxjs/operators';
+import {Location} from '@angular/common';
 declare var $ : any;
 @Component({
   selector: 'app-detail-product',
@@ -7,13 +10,23 @@ declare var $ : any;
 })
 export class DetailProductComponent implements OnInit {
   products = [];
-  constructor() { }
+  id: Number;
+  constructor(private route: ActivatedRoute, 
+    private router: Router,
+    private _location: Location) { }
 
   ngOnInit() {
-    var self = this
+    this.route.queryParams.pipe(
+      filter(params => params.id))
+      .subscribe(params => {
+        console.log(params); // {order: "popular"}
+
+        this.id = params.id;
+        console.log(this.id); 
+        var self = this
     $.ajax({
       method: 'get',
-      url: 'http://localhost:2020/product/:id',
+      url: 'http://localhost:2020/product/'+this.id,
       success: function (result){
        self.products=result;
        console.log(result);
@@ -22,6 +35,11 @@ export class DetailProductComponent implements OnInit {
       self.products = [];
       } 
     })
+      });
+    
+  }
+  backClicked() {
+    this._location.back();
   }
 
 }

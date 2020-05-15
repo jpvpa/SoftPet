@@ -11,7 +11,7 @@
                         </div>
                     </div>
                     <ng-flash-message></ng-flash-message>
-                    <form (submit)="onAddProduct()">
+                    <form (submit)="onAddProduct()"  >
                         <div class="row ">
                             <div class="col-sm-3 col-lg-3 bottomMargin">
                                 <input type="number" 
@@ -87,22 +87,39 @@
                                         placeholder="Cantidad">
                             </div>
                             <div class="col-sm-4 col-lg-4 bottomMargin">
-                                <input type="text" 
+                                <select type="text" 
                                         class="form-control" 
                                         [(ngModel)]="marca" 
                                         name="marca" 
                                         id="marca"
                                         placeholder="Marca">
+                                    <option>Royal Canin</option>
+                                    <option>Pedigree</option>
+                                    <option>Profine</option>
+                                    <option>Whiskas</option>
+                                    <option>Sera</option>
+                                    <option>Ferplast</option>
+                                    <option>SaniCat</option>
+                                    <option>Mars</option>
+                                    <option>Greenies</option>
+                                    <option>Frolic</option>
+                                    <option>BeCo</option>
+
+                                </select>
                             </div>
+                              <div class="input-group mb-3 col-sm-12 col-lg-3 bottomMargin">
+                                
+                                <!-- <div class="custom-file">
+                                    <input type="file" 
+                                    class="custom-file-input" 
+                                    [(ngModel)]="imagen"
+                                    name="imagen" 
+                                    id="imagen"
+                                    (change)="onFileChange($event)">
+                                  <label class="text-left custom-file-label" for="inputGroupFile01">Choose file</label>
+                                </div> -->
+                              </div>
                             
-                            <!-- <div class="col-sm-4 col-lg-3 bottomMargin">
-                                <input type="file" 
-                                        [(ngModel)]="imagen"
-                                        name="imagen" 
-                                        id="imagen" 
-                                        class="form-control" 
-                                        placeholder="Imagen">
-                            </div> -->
                         </div>
                         <div class="row">
                             <div class="col-12 d-flex flex-row-reverse">

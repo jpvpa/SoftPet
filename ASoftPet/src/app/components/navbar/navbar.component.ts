@@ -16,7 +16,9 @@ export class NavbarComponent implements OnInit {
     private ngFlashMessageService: NgFlashMessageService,
     private router :Router
   ) { }
-
+  search = {
+    nombre: ''
+  };
   ngOnInit() {
   }
   onLogoutClick(){
