@@ -34,7 +34,11 @@ export class LogInComponent implements OnInit {
           timeout: 3000,
           type: 'success'
         });
-        this.router.navigate(['/profile-info'])
+        if(this.correo === 'softpet.store@gmail.com'){
+          this.router.navigate(['/product-list'])
+        }else{
+          this.router.navigate(['/profile-info'])
+        }
       }else{
         this.ngFlashMessageService.showFlashMessage({
           messages: [data.msg],

@@ -15,6 +15,9 @@
     background-color: #f2c540;
     color:white;
 }
+.dropdown:hover .dropdown-menu{
+    display: block;
+}
 @media (max-width: 768px){
     .dpc .dropdown-menu{
         background-color: #ffecb3 !important ;

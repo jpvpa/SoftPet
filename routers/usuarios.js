@@ -58,7 +58,6 @@ router.post('/auth', (req,res,next) =>{
                     user:{
                         id:user._id,
                         nombre: user.nombre,
-                        nombre: user.nombre,
                         apellidoPaterno: user.apellidoPaterno,
                         apellidoMaterno: user.apellidoMaterno,
                         correo: user.correo,
@@ -70,7 +69,8 @@ router.post('/auth', (req,res,next) =>{
                         pais: user.pais,
                         cp: user.cp,
                         telefono: user.telefono,
-                        bio: user.bio
+                        bio: user.bio,
+                        role:user.role
                     }
                 });
             } else{ //if it doesnt match send this response
