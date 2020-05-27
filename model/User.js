@@ -19,7 +19,8 @@ mongoose.model( 'User', new mongoose.Schema({
     cp: Number,
     telefono: Number,
     photoURL: String,
-    bio: String
+    bio: String,
+    role: String 
 }), 'Users' );
 
 

@@ -1,152 +1,159 @@
 <body>
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light bgs1 py-1">
-            <div class="container">
-              <div class="row m-0 w-100">
-                <div class="col-8 col-md-3 col-lg-3 text-md-center">
-                  <a class="navbar-brand mx-md-auto mx-lg-3" [routerLink]="['/home']" routerLinkActive="router-link-active" ><img class="softpet" src="../../../assets/images/logito.png"></a>
+  <header>
+      <nav class="navbar navbar-expand-lg navbar-light bgs1 py-1">
+          <div class="container">
+            <div class="row m-0 w-100">
+              <div class="col-8 col-md-3 col-lg-3 text-md-center">
+                <a class="navbar-brand mx-md-auto mx-lg-3" [routerLink]="['/home']" routerLinkActive="router-link-active" ><img class="softpet" src="../../../assets/images/logito.png"></a>
+              </div>
+              <!-- Search -->
+              <div class="col-12 order-last col-md-7 order-md-3 col-lg-6 order-lg-3 w-100 d-inline-block align-self-center">
+                <form class="form-inline my-2 my-lg-0 h-100 align-self-center">
+                  <input class="form-control mr-sm-2 w-75 border-0 searchbar" type="search" placeholder="Search" aria-label="Search"
+                  (input)="search.nombre = $event.target.value">
+                  <button class="btn my-2 my-sm-0 m-1 border-0 searchbtn" type="submit" [routerLink]="['/catalog']" [queryParams]="search"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                    width="24" height="24"
+                    viewBox="0 0 172 172"
+                    style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffffff"><path d="M95.04232,106.54818l17.77669,17.77669c-2.7155,5.17904 -2.99544,10.33008 -0.13998,13.18555l32.44597,32.44597c4.08724,4.08724 12.98958,1.84765 19.82031,-5.01107c6.85872,-6.85872 9.09831,-15.73307 5.01107,-19.82031l-32.41797,-32.44597c-2.88346,-2.85547 -8.0345,-2.57552 -13.21354,0.11198l-17.77669,-17.74869zM60.91667,0c-33.64974,0 -60.91667,27.26693 -60.91667,60.91667c0,33.64974 27.26693,60.91667 60.91667,60.91667c33.64974,0 60.91667,-27.26692 60.91667,-60.91667c0,-33.64974 -27.26692,-60.91667 -60.91667,-60.91667zM60.91667,107.5c-25.72722,0 -46.58333,-20.85612 -46.58333,-46.58333c0,-25.72722 20.85612,-46.58333 46.58333,-46.58333c25.72722,0 46.58333,20.85612 46.58333,46.58333c0,25.72722 -20.85612,46.58333 -46.58333,46.58333z"></path></g></g></svg></button>
+                  </form>
                 </div>
-                <!-- Search -->
-                <div class="col-12 order-last col-md-7 order-md-3 col-lg-6 order-lg-3 w-100 d-inline-block align-self-center">
-                  <form class="form-inline my-2 my-lg-0 h-100 align-self-center">
-                    <input class="form-control mr-sm-2 w-75 border-0 searchbar" type="search" placeholder="Search" aria-label="Search"
-                    (input)="search.nombre = $event.target.value">
-                    <button class="btn my-2 my-sm-0 m-1 border-0 searchbtn" type="submit" [routerLink]="['/catalog']" [queryParams]="search"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
-                      width="24" height="24"
-                      viewBox="0 0 172 172"
-                      style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#ffffff"><path d="M95.04232,106.54818l17.77669,17.77669c-2.7155,5.17904 -2.99544,10.33008 -0.13998,13.18555l32.44597,32.44597c4.08724,4.08724 12.98958,1.84765 19.82031,-5.01107c6.85872,-6.85872 9.09831,-15.73307 5.01107,-19.82031l-32.41797,-32.44597c-2.88346,-2.85547 -8.0345,-2.57552 -13.21354,0.11198l-17.77669,-17.74869zM60.91667,0c-33.64974,0 -60.91667,27.26693 -60.91667,60.91667c0,33.64974 27.26693,60.91667 60.91667,60.91667c33.64974,0 60.91667,-27.26692 60.91667,-60.91667c0,-33.64974 -27.26692,-60.91667 -60.91667,-60.91667zM60.91667,107.5c-25.72722,0 -46.58333,-20.85612 -46.58333,-46.58333c0,-25.72722 20.85612,-46.58333 46.58333,-46.58333c25.72722,0 46.58333,20.85612 46.58333,46.58333c0,25.72722 -20.85612,46.58333 -46.58333,46.58333z"></path></g></g></svg></button>
-                    </form>
-                  </div>
-          
-                <div class="col-2 order-10 col-md-1 order-md-11 p-0 order-lg-9 col-lg-2 d-lg-none p-lg-0  d-inline-block text-center align-self-center">
-                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                  </button>
-                  </div>
-          
-                <div class="col-12 order-10 col-md-12 order-md-11 p-0 order-lg-9 col-lg-2 w-100 p-lg-0 d-lg-inline-block align-self-center">
-                  <span class="navbar-text col-sm-12 p-0 m-0 offset-4 collapse navbar-collapse" id="navbarSupportedContent">
-                    <div class="form-inline text-left text-lg-right">
-                      <ul class="w-100 navbar-nav mr-auto">
-                        <li class="nav-item active">
-                          <a class="nav-link" href="#">INICIO </a>
-                        </li>
-                        <li class="nav-item dropdown dpc" *ngIf='!auth.loggedIn();  else logged'>
+        
+              <div class="col-2 order-10 col-md-1 order-md-11 p-0 order-lg-9 col-lg-2 d-lg-none p-lg-0  d-inline-block text-center align-self-center">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                </div>
+        
+              <div class="col-12 order-10 col-md-12 order-md-11 p-0 order-lg-9 col-lg-2 w-100 p-lg-0 d-lg-inline-block align-self-center">
+                <span class="navbar-text col-sm-12 p-0 m-0 offset-4 collapse navbar-collapse" id="navbarSupportedContent">
+                  <div class="form-inline text-left text-lg-right">
+                    <ul class="w-100 navbar-nav mr-auto">
+                      <li class="nav-item active">
+                        <a class="nav-link" href="#">INICIO </a>
+                      </li>
+                      <li class="nav-item dropdown dpc" *ngIf='!auth.loggedIn();  else logged'>
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          MI CUENTA
+                        </a>
+                        <div class=" dropdown-menu border-0 " aria-labelledby="navbarDropdown">
+                          <a [routerLink]="['/log-in']" class="dropdown-item" href="#">INICIAR SESIÓN</a>
+                          <a [routerLink]="['/sign-up']" class="dropdown-item" href="#">REGISTRARSE</a>
+                        </div>
+                      </li>
+                      <ng-template  #logged>
+                        <li class="nav-item dropdown dpc">
                           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             MI CUENTA
                           </a>
-                          <div class=" dropdown-menu border-0 " aria-labelledby="navbarDropdown">
-                            <a [routerLink]="['/log-in']" class="dropdown-item" href="#">INICIAR SESIÓN</a>
-                            <a [routerLink]="['/sign-up']" class="dropdown-item" href="#">REGISTRARSE</a>
+                          <div *ngIf="user.role !== 'Administrador'; else admin" class=" dropdown-menu border-0 " aria-labelledby="navbarDropdown">
+                            <a [routerLink]="['/profile-info']" class="dropdown-item" href="#">PERFIL</a>
+                            <a class="dropdown-item" href="#">HISTORIAL DE PEDIDOS</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" (click)="onLogoutClick()" >CERRAR SESION</a>
                           </div>
-                        </li>
-                        <ng-template #logged>
-                          <li class="nav-item dropdown dpc">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              MI CUENTA
-                            </a>
+                          <ng-template #admin>
                             <div class=" dropdown-menu border-0 " aria-labelledby="navbarDropdown">
-                              <a [routerLink]="['/profile-info']" class="dropdown-item" href="#">PERFIL</a>
-                              <a class="dropdown-item" href="#">HISTORIAL DE PEDIDOS</a>
+                              <a [routerLink]="['/product-list']" class="dropdown-item" href="#">DASHBOARD</a>
                               <div class="dropdown-divider"></div>
                               <a class="dropdown-item" (click)="onLogoutClick()" >CERRAR SESION</a>
                             </div>
-                          </li>
-                        </ng-template>
-                      </ul>
+                          </ng-template>
+                        </li>
+                      </ng-template>
+                    </ul>
 
-                    </div>
-                  </span>
-                </div>
-                <div class="col-2 order-9 col-md-1 order-md-10  order-lg-12 col-lg-1 p-lg-0 w-100 d-lg-inline-block text-center  p-0 align-self-center">
-                  <div class="nav-item active">
-                    <a class="nav-link py-2 px-0" href="#"> 
-                      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABmJLR0QA/wD/AP+gvaeTAAABk0lEQVRIie3VPUscURTG8f8Z0U8gWCgIQVDR2kokaxALv8dWgohTWNhbuGIgjVYBsRBMGRFdlNVdVKxsfG1UFLRRIUFWEnceCw15cbK7w9zdIvGpZs4c+N1z7zAD/1sMwE+0Z0Hdz7UzZKOpzMF8JWEvpNaMaW74bUdLJeEX8ROts36iTSO9rWOVdF5MHMAnAE82UFVY93dpIC/oGnrX2VA1eGrrIg+sA15dUOivFGxhRb+3bRDxwbkmZVOZox4If6vhQYvOUQCzNz8uQ+HUxtEJsO/alZEuCj/FnE9tKgM2nG+3TDVrJeHT+sMccOOMNXYnMntXJeGFBQpC6b89jx6t/HpX5IwB85xtd6Ca34YoCge13iJQcODmdf9ls2x4annvBrHjAF5//iKWBwPI+BxXFbbyZ60kXHiwj8DXGO5tnafZyPD77MElHv0G28D3COA3sJygb3z18DrKSv/NhP4Ww+In2gdAM4BkQXJy7XgpTl/JM/4ZTQONQJPJZuL2RYDdpmxYFiSBC9C5iWTcvtdULY81vpNJmfqLlwAAAABJRU5ErkJggg==">
-                    </a>
                   </div>
+                </span>
+              </div>
+              <div class="col-2 order-9 col-md-1 order-md-10  order-lg-12 col-lg-1 p-lg-0 w-100 d-lg-inline-block text-center  p-0 align-self-center">
+                <div class="nav-item active">
+                  <a class="nav-link py-2 px-0" href="#"> 
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABmJLR0QA/wD/AP+gvaeTAAABk0lEQVRIie3VPUscURTG8f8Z0U8gWCgIQVDR2kokaxALv8dWgohTWNhbuGIgjVYBsRBMGRFdlNVdVKxsfG1UFLRRIUFWEnceCw15cbK7w9zdIvGpZs4c+N1z7zAD/1sMwE+0Z0Hdz7UzZKOpzMF8JWEvpNaMaW74bUdLJeEX8ROts36iTSO9rWOVdF5MHMAnAE82UFVY93dpIC/oGnrX2VA1eGrrIg+sA15dUOivFGxhRb+3bRDxwbkmZVOZox4If6vhQYvOUQCzNz8uQ+HUxtEJsO/alZEuCj/FnE9tKgM2nG+3TDVrJeHT+sMccOOMNXYnMntXJeGFBQpC6b89jx6t/HpX5IwB85xtd6Ca34YoCge13iJQcODmdf9ls2x4annvBrHjAF5//iKWBwPI+BxXFbbyZ60kXHiwj8DXGO5tnafZyPD77MElHv0G28D3COA3sJygb3z18DrKSv/NhP4Ww+In2gdAM4BkQXJy7XgpTl/JM/4ZTQONQJPJZuL2RYDdpmxYFiSBC9C5iWTcvtdULY81vpNJmfqLlwAAAABJRU5ErkJggg==">
+                  </a>
                 </div>
               </div>
             </div>
-          </nav>
-          
-          <nav class="navbar navbar-expand-lg navbar-light bgs2 px-1 py-0 border-0">
-            <div class="container">
-              <span class="navbar-text p-0 w-100 mx-auto mx-lg-3 d-inline-block align-self-center text-center">
-                  <button class="navbar-toggler border-0 pt-0" type="button" data-toggle="collapse" data-target="#navbarNav1" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <img src="https://img.icons8.com/android/24/000000/sort-down.png"/>
-                  </button>
-                <div class="collapse navbar-collapse text-center" id="navbarNav1">
-                  <ul class="navbar-nav mr-auto mx-lg-auto text-left m-0">
-                    <li class="nav-item dropdown px-1 dp px-lg-2 mx-lg-2">
-                      <a  class="nav-link  w-100 p-2" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        PERROS
-                      </a>
-                      <div class="dropdown-menu border-0" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Perros', 'categoria': 'Accesorios' }">ACCESORIOS</a>
-                        <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Perros', 'categoria': 'Higiene' }">HIGIENE</a>
-                        <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Perros', 'categoria': 'Alimento' }">ALIMENTO</a>
-                        <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Perros', 'categoria': 'Juguetes' }">JUGUETES</a>
-                      </div>
-                    </li>
-                    <li  class="nav-item dropdown px-1 dp px-lg-2 mx-lg-2">
-                      <a class="nav-link p-2" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        GATOS
-                      </a>
-                      <div class="dropdown-menu border-0" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Gatos', 'categoria': 'Accesorios' }">ACCESORIOS</a>
-                        <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Gatos', 'categoria': 'Higiene' }">HIGIENE</a>
-                        <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Gatos', 'categoria': 'Alimento' }">ALIMENTO</a>
-                        <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Gatos', 'categoria': 'Juguetes' }">JUGUETES</a>
-                      </div>
-                    </li>
-                    <li class="nav-item dropdown px-1 dp px-lg-2 mx-lg-2">
-                      <a class="nav-link p-2" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        REPTILES
-                      </a>
-                      <div class="dropdown-menu border-0" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Reptiles', 'categoria': 'Accesorios' }">ACCESORIOS</a>
-                        <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Reptiles', 'categoria': 'Higiene' }">HIGIENE</a>
-                        <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Reptiles', 'categoria': 'Alimento' }">ALIMENTO</a>
-                        <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Reptiles', 'categoria': 'Juguetes' }">JUGUETES</a>
-                      </div>
-                    </li>
-                    <li class="nav-item dropdown px-1 dp px-lg-2 mx-lg-2">
-                      <a class="nav-link p-2" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        ROEDORES
-                      </a>
-                      <div class="dropdown-menu border-0" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Roedores', 'categoria': 'Accesorios' }">ACCESORIOS</a>
-                        <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Roedores', 'categoria': 'Higiene' }">HIGIENE</a>
-                        <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Roedores', 'categoria': 'Alimento' }">ALIMENTO</a>
-                        <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Roedores', 'categoria': 'Juguetes' }">JUGUETES</a>
-                      </div>
-                    </li>
-                    <li class="nav-item dropdown px-1 dp px-lg-2 mx-lg-2">
-                      <a class="nav-link p-2" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        PECES
-                      </a>
-                      <div class="dropdown-menu border-0" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Peces', 'categoria': 'Accesorios' }">ACCESORIOS</a>
-                        <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Peces', 'categoria': 'Higiene' }">HIGIENE</a>
-                        <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Peces', 'categoria': 'Alimento' }">ALIMENTO</a>
-                        <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Peces', 'categoria': 'Juguetes' }">JUGUETES</a>
-                      </div>
-                    </li>
-                    <li class="nav-item dropdown px-1 dp px-lg-2 mx-lg-2">
-                      <a class="nav-link p-2" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        AVES
-                      </a>
-                      <div class="dropdown-menu border-0" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Aves', 'categoria': 'Accesorios' }">ACCESORIOS</a>
-                        <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Aves', 'categoria': 'Higiene' }">HIGIENE</a>
-                        <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Aves', 'categoria': 'Alimento' }">ALIMENTO</a>
-                        <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Aves', 'categoria': 'Juguetes' }">JUGUETES</a>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </span>
-            </div>
-          </nav>
-    </header>
-  </body>
+          </div>
+        </nav>
+        
+        <nav class="navbar navbar-expand-lg navbar-light bgs2 px-1 py-0 border-0">
+          <div class="container">
+            <span class="navbar-text p-0 w-100 mx-auto mx-lg-3 d-inline-block align-self-center text-center">
+                <button class="navbar-toggler border-0 pt-0" type="button" data-toggle="collapse" data-target="#navbarNav1" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <img src="https://img.icons8.com/android/24/000000/sort-down.png"/>
+                </button>
+              <div class="collapse navbar-collapse text-center" id="navbarNav1">
+                <ul class="navbar-nav mr-auto mx-lg-auto text-left m-0">
+                  <li class="nav-item dropdown px-1 dp px-lg-2 mx-lg-2">
+                    <a  class="nav-link  w-100 p-2" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Perros' }">
+                      PERROS
+                    </a>
+                    <div class="dropdown-menu border-0" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Perros', 'categoria': 'Accesorios' }">ACCESORIOS</a>
+                      <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Perros', 'categoria': 'Higiene' }">HIGIENE</a>
+                      <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Perros', 'categoria': 'Alimento' }">ALIMENTO</a>
+                      <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Perros', 'categoria': 'Juguetes' }">JUGUETES</a>
+                    </div>
+                  </li>
+                  <li  class="nav-item dropdown px-1 dp px-lg-2 mx-lg-2">
+                    <a class="nav-link p-2" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Gatos' }">
+                      GATOS
+                    </a>
+                    <div class="dropdown-menu border-0" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Gatos', 'categoria': 'Accesorios' }">ACCESORIOS</a>
+                      <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Gatos', 'categoria': 'Higiene' }">HIGIENE</a>
+                      <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Gatos', 'categoria': 'Alimento' }">ALIMENTO</a>
+                      <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Gatos', 'categoria': 'Juguetes' }">JUGUETES</a>
+                    </div>
+                  </li>
+                  <li class="nav-item dropdown px-1 dp px-lg-2 mx-lg-2">
+                    <a class="nav-link p-2" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Reptiles' }">
+                      REPTILES
+                    </a>
+                    <div class="dropdown-menu border-0" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Reptiles', 'categoria': 'Accesorios' }">ACCESORIOS</a>
+                      <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Reptiles', 'categoria': 'Higiene' }">HIGIENE</a>
+                      <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Reptiles', 'categoria': 'Alimento' }">ALIMENTO</a>
+                      <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Reptiles', 'categoria': 'Juguetes' }">JUGUETES</a>
+                    </div>
+                  </li>
+                  <li class="nav-item dropdown px-1 dp px-lg-2 mx-lg-2">
+                    <a class="nav-link p-2" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Roedores' }">
+                      ROEDORES
+                    </a>
+                    <div class="dropdown-menu border-0" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Roedores', 'categoria': 'Accesorios' }">ACCESORIOS</a>
+                      <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Roedores', 'categoria': 'Higiene' }">HIGIENE</a>
+                      <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Roedores', 'categoria': 'Alimento' }">ALIMENTO</a>
+                      <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Roedores', 'categoria': 'Juguetes' }">JUGUETES</a>
+                    </div>
+                  </li>
+                  <li class="nav-item dropdown px-1 dp px-lg-2 mx-lg-2">
+                    <a class="nav-link p-2" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Peces' }">
+                      PECES
+                    </a>
+                    <div class="dropdown-menu border-0" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Peces', 'categoria': 'Accesorios' }">ACCESORIOS</a>
+                      <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Peces', 'categoria': 'Higiene' }">HIGIENE</a>
+                      <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Peces', 'categoria': 'Alimento' }">ALIMENTO</a>
+                      <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Peces', 'categoria': 'Juguetes' }">JUGUETES</a>
+                    </div>
+                  </li>
+                  <li class="nav-item dropdown px-1 dp px-lg-2 mx-lg-2">
+                    <a class="nav-link p-2" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Aves' }">
+                      AVES
+                    </a>
+                    <div class="dropdown-menu border-0" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Aves', 'categoria': 'Accesorios' }">ACCESORIOS</a>
+                      <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Aves', 'categoria': 'Higiene' }">HIGIENE</a>
+                      <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Aves', 'categoria': 'Alimento' }">ALIMENTO</a>
+                      <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Aves', 'categoria': 'Juguetes' }">JUGUETES</a>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </span>
+          </div>
+        </nav>
+  </header>
+</body>

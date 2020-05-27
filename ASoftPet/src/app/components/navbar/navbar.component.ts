@@ -10,6 +10,7 @@ import { ProductService} from '../../shared/service/product.service';
 })
 export class NavbarComponent implements OnInit {
   products: Object;
+  user: Object;
   constructor(
     private auth: AuthService,
     private prod:ProductService,
@@ -20,6 +21,12 @@ export class NavbarComponent implements OnInit {
     nombre: ''
   };
   ngOnInit() {
+    this.auth.getProfile().subscribe((profile:any) =>{
+      this.user = profile.user;
+    },err =>{
+      console.log(err);
+      return false;
+    });
   }
   onLogoutClick(){
     this.auth.logout();
