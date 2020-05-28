@@ -1,0 +1,231 @@
+<section class="bg-light py-4">
+  <div class="container">
+    <div class="row">
+        <div class="p-2 col-12" *ngIf="nombre === undefined;else searchBar">
+          <div class="p-1 col-12">
+            <h1 class="p-0 m-0"><img class="imgh1 align-self-center" src="../../../assets/images/{{departamento}}.png"
+                alt="{{departamento}}"> {{departamento}}</h1>
+          </div>
+        
+          <div class=" px-4 col-12" >
+            <h6>{{departamento}} {{(categoria) ? '>' : ''}} {{categoria}}</h6>
+          </div>
+      </div>
+        <ng-template  #searchBar>
+          <div class=" p-2 col-12">
+            <h5>Resultados de busqueda para: '{{nombre}}'</h5>
+          </div>
+        </ng-template>
+        
+      <div class="card shadow-sm border-0 m-3 m-lg-0 p-3 col-md-3">
+        <div class=" border-0" *ngIf="nombre === undefined;else deptBar">
+          <h6>Categorias</h6>
+          <a class="dropdown-item" (click)="categoria=undefined; goProducts()">General</a>
+          <a class="dropdown-item" (click)="categoria='Accesorios'; goProducts()">Accesorios</a>
+          <a class="dropdown-item" (click)="categoria='Higiene'; goProducts()">Higiene </a>
+          <a class="dropdown-item" (click)="categoria='Alimento'; goProducts()">Alimento </a>
+          <a class="dropdown-item" (click)="categoria='Juguetes'; goProducts()">Juguetes </a>
+        </div>
+        <ng-template #deptBar>
+          <h6>Departamento</h6>
+          <a class="dropdown-item" (click)="departamento=undefined; goProducts()">General</a>
+          <a class="dropdown-item" (click)="departamento='Perros'; goProducts()">Perros</a>
+          <a class="dropdown-item" (click)="departamento='Gatos'; goProducts()">Gatos</a>
+          <a class="dropdown-item" (click)="departamento='Reptiles'; goProducts()">Reptiles </a>
+          <a class="dropdown-item" (click)="departamento='Roedores'; goProducts()">Roedores </a>
+          <a class="dropdown-item" (click)="departamento='Peces'; goProducts()">Peces </a>
+          <a class="dropdown-item" (click)="departamento='Aves'; goProducts()">Aves </a>
+        </ng-template>
+        <hr>
+        <h6>Marca</h6>
+        <div *ngIf="departamento != undefined;else fullBrandList">
+          <div *ngIf="departamento == 'Perros'">
+            <div class="custom-control custom-checkbox my-1 mr-sm-2">
+              <input value="RoyalCanin" name="marca" type="checkbox" class="custom-control-input" id="RoyalCanin" (click)="marca='Royal Canin'; goProducts()">
+              <label class="custom-control-label" for="RoyalCanin">Royal Canin</label>
+            </div>
+            <div class="custom-control custom-checkbox my-1 mr-sm-2">
+              <input value="Pedigree" name="marca" type="checkbox" class="custom-control-input" id="Pedigree" (click)="marca='Pedigree'; goProducts()">
+              <label class="custom-control-label" for="Pedigree">Pedigree</label>
+            </div>
+          </div>
+
+          <div *ngIf="departamento == 'Gatos'">
+            <div class="custom-control custom-checkbox my-1 mr-sm-2">
+              <input value="SaniCat" type="checkbox" class="custom-control-input" id="SaniCat" name="marca" (click)="marca='SaniCat';goProducts()">
+              <label class="custom-control-label"  for="SaniCat">SaniCat</label>
+            </div>
+            <div class="custom-control custom-checkbox my-1 mr-sm-2">
+              <input value="Whiskas" type="checkbox" class="custom-control-input" id="Whiskas" name="marca" (click)="marca='Whiskas';goProducts()">
+              <label class="custom-control-label"  for="Whiskas">Whiskas</label>
+            </div>
+          </div>
+
+          <div *ngIf="departamento =='Reptiles'">
+            <div class="custom-control custom-checkbox my-1 mr-sm-2">
+              <input value="Sera" type="checkbox" class="custom-control-input" id="Sera" name="marca" (click)="marca='Sera';goProducts()">
+              <label class="custom-control-label" for="Sera">Sera</label>
+            </div>
+            <div class="custom-control custom-checkbox my-1 mr-sm-2">
+              <input value="Ferplast" type="checkbox" class="custom-control-input" id="Ferplast" name="marca" (click)="marca='Ferplast';goProducts()">
+              <label class="custom-control-label" for="Ferplast">Ferplast</label>
+            </div>
+          </div>
+
+          <div *ngIf="departamento =='Peces'">
+            <div class="custom-control custom-checkbox my-1 mr-sm-2">
+              <input value="Profine" name="marca" type="checkbox" class="custom-control-input" id="Profine" (click)="marca='Profine';goProducts()">
+              <label class="custom-control-label" for="Profine">Profine</label>
+            </div>
+              <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                <input value="Mars" type="checkbox" class="custom-control-input" id="Mars" name="marca" (click)="marca='Mars';goProducts()">
+                <label class="custom-control-label" name="Marca" for="Mars">Mars</label>
+              </div>
+          </div>
+
+          <div *ngIf="departamento =='Aves'">
+            <div class="custom-control custom-checkbox my-1 mr-sm-2">
+              <input value="Greenies" type="checkbox" class="custom-control-input" id="Greenies" name="marca" (click)="marca='Greenies';goProducts()">
+              <label class="custom-control-label" name="Marca" for="Greenies">Greenies</label>
+            </div>
+            <div class="custom-control custom-checkbox my-1 mr-sm-2">
+              <input value="Frolic" type="checkbox" class="custom-control-input" id="Frolic" name="marca" (click)="marca='Frolic';goProducts()">
+              <label class="custom-control-label" name="Marca" for="Frolic">Frolic</label>
+            </div>
+          </div>
+
+          <div *ngIf="departamento =='Roedores'">
+            <div class="custom-control custom-checkbox my-1 mr-sm-2">
+              <input value="Beco" type="checkbox" class="custom-control-input" id="Beco" name="marca" (click)="marca='Beco';goProducts()">
+              <label class="custom-control-label" name="Marca" for="Beco">Beco</label>
+            </div>
+            <div class="custom-control custom-checkbox my-1 mr-sm-2">
+              <input value="RoyalCanin" name="marca" type="checkbox" class="custom-control-input" id="RoyalCanin" (click)="marca='Royal Canin'; goProducts()">
+              <label class="custom-control-label" for="RoyalCanin">Royal Canin</label>
+            </div>
+          </div>
+
+        </div>
+        
+        <hr>
+        <h6>Precio</h6>
+        <div class="custom-control custom-radio">
+          <input type="radio" id="customRadio5" name="customRadio" value="5"
+            (click)="rangoPrecio = undefined; goProducts()" class="custom-control-input">
+          <label class="custom-control-label" for="customRadio5">Todos los precios</label>
+        </div>
+
+        <div class="custom-control custom-radio">
+          <input type="radio" id="customRadio1" name="customRadio" value="1"
+            (click)="rangoPrecio = $event.target.value; goProducts()" class="custom-control-input">
+          <label class="custom-control-label" for="customRadio1">$1.00 - $100.00</label>
+        </div>
+        <div class="custom-control custom-radio">
+          <input type="radio" id="customRadio2" name="customRadio" value="2"
+          (click)="rangoPrecio = $event.target.value; goProducts()" class="custom-control-input">
+          <label class="custom-control-label" for="customRadio2">$100.00 - $500.00</label>
+        </div>
+        <div class="custom-control custom-radio">
+          <input type="radio" id="customRadio3" name="customRadio" value="3"
+          (click)="rangoPrecio = $event.target.value; goProducts()" class="custom-control-input">
+          <label class="custom-control-label" for="customRadio3">$500.00 - $1,000.00</label>
+        </div>
+        <div class="custom-control custom-radio">
+          <input type="radio" id="customRadio4" name="customRadio" value="4"
+          (click)="rangoPrecio = $event.target.value; goProducts()" class="custom-control-input">
+          <label class="custom-control-label" for="customRadio4">$1,000.00 - $2,000.00</label>
+        </div>
+      </div>
+      <div class="col-md-9 container-sm">
+        <div class="col-12 card border-0 shadow-sm mb-3  ">
+
+          <a class="text-dark  w-25 btn-sm btn-light dropdown-toggle bg-white text-right align-self-end text-decoration-none"
+            href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+            Ordenar
+          </a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a (click)="orden = 'asc'; goProducts()" class="dropdown-item">A-Z</a>
+            <a (click)="orden = 'des'; goProducts()" class="dropdown-item">Z-A</a>
+          </div>
+        </div>
+        <!-- *ngIf="this.products != '[]';else notFound" -->
+        <div class="row" >
+          <div *ngFor="let product of products;" class="col-sm-12 col-md-4 col-lg-3 product p-2">
+            <div class="card shadow-sm border-0 h-100 text-center wrapper position-relative p-1">
+              <img src="{{product.imagen}}" class="card-img-top img-thumbnail img-fluid img" alt="...">
+              <div class="card-body p-1">
+                <p class="font-weight-bold card-title m-1 p-0">{{product.nombre}}</p>
+                <p class="card-text m-1 p-0">{{product.precio | currency}}</p>
+                <p class="card-text p-0">{{product.descripcion}}</p>
+              </div>
+              <div class="row">
+                <a style="font-size: .8rem;" href="#"
+                  class="w-25 col-6 btn text-white bg-mango button position-absolute">
+                  <img class="imgi" src="../../../assets/images/cart.png">
+                </a>
+                <a style="font-size: .8rem;" [routerLink]="['/detail-product']" [queryParams]="{ id: product.id}" routerLinkActive="router-link-active" 
+                  class="w-25 col-6 btn text-white bg-red button2 position-absolute "><img class="imgi"
+                    src="../../../assets/images/eye.png"></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<ng-template #notFound>
+  <div class="row">
+    <div class="my-auto text-center col-sm-12 product p-2">
+      <h3>Producto no encontrado</h3>
+      <img class="imgi" style="width: 35%;" src="../../../assets/images/cim.png">
+    </div>
+  </div>
+</ng-template>
+<ng-template #fullBrandList>
+  <div class="custom-control custom-checkbox my-1 mr-sm-2">
+    <input value="RoyalCanin" name="marca" type="checkbox" class="custom-control-input" id="RoyalCanin" (click)="marca='Royal Canin'; goProducts()">
+    <label class="custom-control-label" for="RoyalCanin">Royal Canin</label>
+  </div>
+  <div class="custom-control custom-checkbox my-1 mr-sm-2">
+    <input value="Pedigree" name="marca" type="checkbox" class="custom-control-input" id="Pedigree" (click)="marca='Pedigree'; goProducts()">
+    <label class="custom-control-label" for="Pedigree">Pedigree</label>
+  </div>
+  <div class="custom-control custom-checkbox my-1 mr-sm-2">
+    <input value="Profine" name="marca" type="checkbox" class="custom-control-input" id="Profine" (click)="marca='Profine';goProducts()">
+    <label class="custom-control-label" for="Profine">Profine</label>
+  </div>
+  <div class="custom-control custom-checkbox my-1 mr-sm-2">
+    <input value="Whiskas" type="checkbox" class="custom-control-input" id="Whiskas" name="marca" (click)="marca='Whiskas';goProducts()">
+    <label class="custom-control-label"  for="Whiskas">Whiskas</label>
+  </div>
+  <div class="custom-control custom-checkbox my-1 mr-sm-2">
+    <input value="Sera" type="checkbox" class="custom-control-input" id="Sera" name="marca" (click)="marca='Sera';goProducts()">
+    <label class="custom-control-label" for="Sera">Sera</label>
+  </div>
+  <div class="custom-control custom-checkbox my-1 mr-sm-2">
+    <input value="Ferplast" type="checkbox" class="custom-control-input" id="Ferplast" name="marca" (click)="marca='Ferplast';goProducts()">
+    <label class="custom-control-label" for="Ferplast">Ferplast</label>
+  </div>
+    <div class="custom-control custom-checkbox my-1 mr-sm-2">
+      <input value="SaniCat" type="checkbox" class="custom-control-input" id="SaniCat" name="marca" (click)="marca='SaniCat';goProducts()">
+      <label class="custom-control-label"  for="SaniCat">SaniCat</label>
+    </div>
+    <div class="custom-control custom-checkbox my-1 mr-sm-2">
+      <input value="Mars" type="checkbox" class="custom-control-input" id="Mars" name="marca" (click)="marca='Mars';goProducts()">
+      <label class="custom-control-label" name="Marca" for="Mars">Mars</label>
+    </div>
+    <div class="custom-control custom-checkbox my-1 mr-sm-2">
+      <input value="Greenies" type="checkbox" class="custom-control-input" id="Greenies" name="marca" (click)="marca='Greenies';goProducts()">
+      <label class="custom-control-label" name="Marca" for="Greenies">Greenies</label>
+    </div>
+    <div class="custom-control custom-checkbox my-1 mr-sm-2">
+      <input value="Frolic" type="checkbox" class="custom-control-input" id="Frolic" name="marca" (click)="marca='Frolic';goProducts()">
+      <label class="custom-control-label" name="Marca" for="Frolic">Frolic</label>
+    </div>
+    <div class="custom-control custom-checkbox my-1 mr-sm-2">
+      <input value="Beco" type="checkbox" class="custom-control-input" id="Beco" name="marca" (click)="marca='Beco';goProducts()">
+      <label class="custom-control-label" name="Marca" for="Beco">Beco</label>
+    </div>
+</ng-template>

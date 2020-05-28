@@ -17,6 +17,7 @@ import { CatalogComponent } from './components/catalog/catalog.component';
 import { DetailProductComponent } from './components/detail-product/detail-product.component';
 import { FaqsComponent } from './components/footer-info/faqs/faqs.component';
 import { DevolucionComponent } from './components/footer-info/devolucion/devolucion.component';
+import { AdminCatalogComponent } from './components/admin/product-catalog/product-catalog-component';
 
 
 
@@ -36,6 +37,7 @@ const routes: Routes = [
   { path: 'detail-product', component: DetailProductComponent},
   { path: 'faqs', component: FaqsComponent},
   { path: 'devolucion', component: DevolucionComponent},
+  { path: 'admin/catalog', component: AdminCatalogComponent},
 ];
 
 @NgModule({
@@ -43,4 +45,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const routingComponents = [CatalogComponent]
+export const routingComponents = [CatalogComponent, AdminCatalogComponent]

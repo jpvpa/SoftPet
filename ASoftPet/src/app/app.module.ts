@@ -26,6 +26,7 @@ import { CatalogComponent } from './components/catalog/catalog.component';
 import { DetailProductComponent } from './components/detail-product/detail-product.component';
 import { FaqsComponent } from './components/footer-info/faqs/faqs.component';
 import { DevolucionComponent } from './components/footer-info/devolucion/devolucion.component';
+import { AdminCatalogComponent} from './components/admin/product-catalog/product-catalog-component'
 //Services
 import { AuthService } from './shared/service/auth.service';
 import { AuthGuard } from './shared/guard/auth.guard'
@@ -59,7 +60,8 @@ import { ProductService } from './shared/service/product.service';
     CatalogComponent,
     DetailProductComponent,
     FaqsComponent,
-    DevolucionComponent
+    DevolucionComponent,
+    AdminCatalogComponent,
   ],
   imports: [
     BrowserModule,
