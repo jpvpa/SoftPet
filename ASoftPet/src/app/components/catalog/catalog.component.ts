@@ -1,7 +1,5 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
-/* import { ProductService} from '../../shared/service/product.service'; */
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { filter } from 'rxjs/operators';
 declare var $ : any;
 @Component({
   selector: 'app-catalog',
@@ -73,11 +71,6 @@ export class CatalogComponent implements OnInit {
     var numParams= 0;
     var self = this;
     this.precioRango();
-    /* if(this.products !== undefined){
-      console.log('show products');
-    }else{
-      console.log('show not found');
-    } */
     if(this.nombre != null){
       params += (numParams != 0 ? '&' : '') + 'nombre=' +this.nombre;
       numParams++
@@ -129,7 +122,7 @@ export class CatalogComponent implements OnInit {
     })
   }
 
-  searchProduct(){
+ searchProduct(){
     var self = this
     $.ajax({
       method: 'get',

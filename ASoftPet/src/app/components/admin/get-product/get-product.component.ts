@@ -4,26 +4,31 @@ import { filter } from 'rxjs/operators';
 import {Location} from '@angular/common';
 declare var $ : any;
 @Component({
-  selector: 'app-detail-product',
-  templateUrl: './detail-product.component.html',
-  styleUrls: ['./detail-product.component.css']
+  selector: 'app-get-product',
+  templateUrl: './get-product.component.html',
+  styleUrls: ['./get-product.component.css']
 })
-export class DetailProductComponent implements OnInit {
+export class GetProductComponent implements OnInit {
   products = [];
   id: Number;
-  constructor(private route: ActivatedRoute, 
+
+  constructor(
+    private route: ActivatedRoute, 
     private router: Router,
-    private _location: Location) { }
+    private _location: Location
+  ) { }
 
   ngOnInit() {
     this.route.queryParams.pipe(
       filter(params => params.id))
       .subscribe(params => {
         console.log(params);
-
         this.id = params.id;
-        console.log(this.id); 
-        var self = this
+        this.detailproduct()
+      });
+  }
+  detailproduct(){
+    var self = this
     $.ajax({
       method: 'get',
       url: 'http://localhost:2020/product/'+this.id,
@@ -35,9 +40,8 @@ export class DetailProductComponent implements OnInit {
       self.products = [];
       } 
     })
-      });
-    
   }
+
   backClicked() {
     this._location.back();
   }
