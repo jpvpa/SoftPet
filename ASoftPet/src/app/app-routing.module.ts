@@ -17,7 +17,8 @@ import { CatalogComponent } from './components/catalog/catalog.component';
 import { DetailProductComponent } from './components/detail-product/detail-product.component';
 import { FaqsComponent } from './components/footer-info/faqs/faqs.component';
 import { DevolucionComponent } from './components/footer-info/devolucion/devolucion.component';
-
+import { GetProductComponent } from './components/admin/get-product/get-product.component';
+import { EditProductComponent } from './components/admin/edit-product/edit-product.component';
 
 
 const routes: Routes = [
@@ -36,6 +37,8 @@ const routes: Routes = [
   { path: 'detail-product', component: DetailProductComponent},
   { path: 'faqs', component: FaqsComponent},
   { path: 'devolucion', component: DevolucionComponent},
+  { path: 'edit-product', component: EditProductComponent},
+  { path: 'get-product', component: GetProductComponent},
 ];
 
 @NgModule({

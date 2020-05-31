@@ -138,6 +138,30 @@ router.post('/add', async(req,res)=>{
         else { console.log('Error en guardar el producto: ' + JSON.stringify(err, undefined, 2)); }
     });
 })
+router.post('/:id', async (req, res) =>{
+    var required = req.params;
+    var filter = {};
+    filter.id = parseInt(required.id);
+    //var found = await Product.findOne(filter);
+    /* if(found){
+        res.send({error : 'Este estudiante ya existe con el id: '+required.id+ '\nEstá dado de alta a nombre: '+found.nombre});
+        return;
+    } */
+    var producto = req.body;
+    producto.id = filter.id;
+
+    if( !producto.nombre || !producto.precio || !producto.descripcion || !producto.departamento || !producto.categoria || !producto.cantidad || !producto.marca){
+        res.send({mensaje: 'Debe cumplir con las características minimas del producto'});
+        return;
+    }
+
+    var insertado = await  Product.create(producto);
+    if(insertado){
+        res.send({mensaje : 'Se inserto Correctamente'});
+    }else{
+        res.send({mensaje : 'No se inserto Correctamente'});
+    }
+})
 router.put('/:id', async (req, res) =>{
     var required = req.params;
     var filter = {};

@@ -1,40 +1,124 @@
-<body class="container">
-    <section>
-        <h1>Lista de Productos</h1>
-        <div>
-            <a [routerLink]="['/add-product']" routerLinkActive="router-link-active" class="p-2">Añadir Producto</a>
-            <div class="table-responsive-sm">
-                <table class="table">
-                    <thead>
-                        <ng-flash-message></ng-flash-message>
-                      <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Precio</th>
-                        <th scope="col">Descripcion</th>
-                        <th scope="col">Departamento</th>
-                        <th scope="col">Marca</th>
-                        <th scope="col">Categoria</th>
-                        <th scope="col">Cantidad</th>
-                      </tr>
-                      
-                    </thead>
-                    <tbody *ngFor="let product of products">
-
-                      <tr>
-                        <th>{{product.id}}</th>
-                        <td>{{product.nombre}}</td>
-                        <td>{{product.precio | currency}}</td>
-                        <td>{{product.descripcion}}</td>
-                        <td>{{product.departamento}}</td>
-                        <td>{{product.marca}}</td>
-                        <td>{{product.categoria}}</td>
-                        <td>{{product.cantidad}}</td>
-                      </tr>
-                    </tbody>
-                </table>
-            </div>
+<section class="bg-light py-4">
+  <div class="container">
+    <div class="row">
+        <div class="p-2 col-12" *ngIf="nombre === undefined ;else searchBar">
+          <div class=" px-4 col-12" >
+            <h6>{{departamento}} {{(categoria) ? '>' : ''}} {{categoria}}</h6>
+          </div>
         </div>
-    </section>
-</body>
+        <ng-template  #searchBar>
+          <div class=" p-2 col-12">
+            <h5>Resultados de busqueda para: '{{nombre}}'</h5>
+          </div>
+        </ng-template>
+        
+      <div class="card shadow-sm border-0 m-3 m-lg-0 p-3 col-md-3">
+        <div class=" border-0">
+          <div>
+            <h6>Departamento</h6>
+            <a class="dropdown-item" (click)="departamento=undefined; goProductsA()">General</a>
+            <a class="dropdown-item" (click)="departamento='Perros'; goProductsA()">Perros</a>
+            <a class="dropdown-item" (click)="departamento='Gatos'; goProductsA()">Gatos</a>
+            <a class="dropdown-item" (click)="departamento='Reptiles'; goProductsA()">Reptiles </a>
+            <a class="dropdown-item" (click)="departamento='Roedores'; goProductsA()">Roedores </a>
+            <a class="dropdown-item" (click)="departamento='Peces'; goProductsA()">Peces </a>
+            <a class="dropdown-item" (click)="departamento='Aves'; goProductsA()">Aves </a> 
+          </div>
+          <hr>
+          <h6>Categorias</h6>
+          <a class="dropdown-item" (click)="categoria=undefined; goProductsA()">General</a>
+          <a class="dropdown-item" (click)="categoria='Accesorios'; goProductsA()">Accesorios</a>
+          <a class="dropdown-item" (click)="categoria='Higiene'; goProductsA()">Higiene </a>
+          <a class="dropdown-item" (click)="categoria='Alimento'; goProductsA()">Alimento </a>
+          <a class="dropdown-item" (click)="categoria='Juguetes'; goProductsA()">Juguetes </a>
+        </div>
+        <hr>
+      </div>
+      <div class="col-md-9 container-sm">
+        <div class="col-12 card border-0 shadow-sm mb-3  ">
 
+          <nav class="navbar navbar-light bg-white">
+            <form class="form-inline">
+              <input (input)="search.nombre = $event.target.value" class="form-control mr-sm-2 border-0 bg-light" type="search" placeholder="Buscar" aria-label="Search">
+              <button class="btn btn-sm border-warning my-2 my-sm-0" type="submit" [routerLink]="['/product-list']" [queryParams]="search">Buscar</button>
+            </form>
+            <a class="text-decoration-none showall" (click)="nombre=undefined; goProductsA()">Mostrar Todos</a>
+            <div >
+              <a class="text-dark  w-25 btn-sm btn-light dropdown-toggle bg-white text-right align-self-end text-decoration-none"
+              href="#" role="button" id="dropdownOrder" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+              Ordenar
+            </a>
+            <div class="dropdown-menu float-right" aria-labelledby="dropdownOrder">
+              <a (click)="orden = 'asc'; goProductsA()" class="dropdown-item">A-Z</a>
+              <a (click)="orden = 'des'; goProductsA()" class="dropdown-item">Z-A</a>
+            </div>
+
+            </div>
+          </nav>
+
+          
+
+          
+        </div>
+            <div class="row m-2 shadow-sm rounded bg-white" *ngFor="let product of products; let index = index">
+              <div class="col-2 my-2 my-auto">
+                <img src="{{product.imagen}}" class="w-100 card-img-top img-thumbnail img-fluid img my-auto" alt="...">
+              </div>
+              <div class="col-7 my-2">
+                <h6>{{product.id}}</h6>
+                <h6>{{product.nombre}}</h6>
+                <h6>{{product.precio | currency}}</h6>
+                <h6>{{product.descripcion}}</h6>
+              </div>
+              <!-- <div class="col-1 text-center my-auto">
+                <a [routerLink]="['/get-product']" [queryParams]="{ id: product.id}" routerLinkActive="router-link-active">
+                 <img src="../../../../assets/images/ver.png" alt="ver" style="width: 24px;">
+                </a>
+              </div> -->
+              <div class="col-1 text-center my-auto">
+                <a (click)="showSubItem(index)">
+                  <div *ngIf="visibleIndex === index;else more">
+                    <img src="../../../../assets/images/hide.png" alt="ver" style="width: 24px;">
+                  </div>
+                  <ng-template #more>
+                    <img src="../../../../assets/images/ver.png" alt="ver" style="width: 24px;">
+                  </ng-template>
+                </a>
+              </div>
+              <div class="col-1 text-center my-auto">
+                <a [routerLink]="['/edit-product']" [queryParams]="{ id: product.id}" routerLinkActive="router-link-active">
+                  <img src="../../../../assets/images/editar.png" alt="editar" style="width: 24px;">
+                </a>
+              </div>
+              <div class="col-1 text-center my-auto">
+                <a (click)="id = product.id; onDelete()">
+                  <img src="../../../../assets/images/borrar.png" alt="eliminar" style="width: 24px;">
+                </a>
+              </div>
+              <ng-container *ngIf="visibleIndex === index">
+                <div class="col-12">
+                  <div class="col-4">
+                   <b>Departamento: </b>  {{product.departamento}}
+                  </div>
+                  <div class="col-4">
+                     <b>Categoria: </b>  {{product.categoria}}
+                  </div>
+                  <div class="col-4">
+                    <b>Marca: </b>  {{product.marca}}
+                  </div>
+                  <div class="col-4">
+                   <b>Cantidad: </b>  {{product.cantidad}}
+                  </div>
+                </div>
+              </ng-container>
+            </div>
+      </div>
+      <div class="fabi" id="masterfab" [routerLink]="['/add-product']" routerLinkActive="router-link-active">
+        <span>
+          +
+        </span>
+      </div>
+    </div>
+  </div>
+</section>

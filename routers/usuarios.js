@@ -88,6 +88,14 @@ router.get('/profile', passport.authenticate('jwt', {session: false}),(req,res,n
 router.put('/updateProfile', passport.authenticate('jwt', {session: false}),(req,res,next)=>{
     User.updateProfile(req.user._id, req.body)
 })
+/* router.put('/edit',(req,res,next)=>{
+    
+    var id = req.product._id;
+    var callback = req.body
+    Product.findOneAndUpdate({_id: id},{$set:callback},{new:true})
+    
+}) */
+
 router.put('/recover-password',(req,res) => {
     User.recoverPassword(req.user._id, req.body.contrasena)
 })

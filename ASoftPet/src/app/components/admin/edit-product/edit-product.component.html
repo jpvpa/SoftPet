@@ -9,12 +9,12 @@
                           </div>
                         <div class="col-12 bottomMargin">
                             <span class="d-flex justify-content-center">
-                                Añadir Producto
+                                Editar Producto
                             </span>
                         </div>
                     </div>
                     <ng-flash-message></ng-flash-message>
-                    <form   >
+                    <form>
                         <div class="row ">
                             <div class="col-sm-3 col-lg-3 bottomMargin">
                                 <input type="number" 
@@ -22,8 +22,7 @@
                                         id="id"
                                         [(ngModel)]="id"
                                         class="form-control" 
-                                        placeholder="ID"
-                                        (input)="add.id = $event.target.value">
+                                        placeholder="{{products.id}}">
                             </div>
                             <div class="col-sm-9 col-lg-9 bottomMargin">
                                 <input type="text" 
@@ -50,7 +49,7 @@
                                     name="departamento"
                                     id="departamento" 
                                     class="form-control" 
-                                    placeholder="Departamento">
+                                    >
                                     <option value="Perros">Perros</option>
                                     <option value="Gatos">Gatos</option>
                                     <option value="Reptiles">Reptiles</option>
@@ -64,8 +63,7 @@
                                     class="form-control" 
                                     [(ngModel)]="categoria" 
                                     name="categoria"
-                                    id="categoria" 
-                                    placeholder="Categoria">
+                                    id="categoria" >
                                     <option value="Alimento">Alimento</option>
                                     <option value="Higiene">Higiene</option>
                                     <option value="Accesorios">Accesorios</option>
@@ -80,7 +78,7 @@
                                         [(ngModel)]="descripcion" 
                                         name="descripcion"
                                         id="descripcion"
-                                        placeholder="Descripcion">
+                                        placeholder="Descripcóon">
                             </div>
                             <div class="col-sm-12 col-lg-5 bottomMargin">
                                 <input type="number" 
@@ -95,19 +93,18 @@
                                         class="form-control" 
                                         [(ngModel)]="marca" 
                                         name="marca" 
-                                        id="marca"
-                                        placeholder="Marca">
-                                    <option>Royal Canin</option>
-                                    <option>Pedigree</option>
-                                    <option>Profine</option>
-                                    <option>Whiskas</option>
-                                    <option>Sera</option>
-                                    <option>Ferplast</option>
-                                    <option>SaniCat</option>
-                                    <option>Mars</option>
-                                    <option>Greenies</option>
-                                    <option>Frolic</option>
-                                    <option>BeCo</option>
+                                        id="marca">
+                                    <option value="RoyalCanin">Royal Canin</option>
+                                    <option value="Pedigree">Pedigree</option>
+                                    <option value="Profine">Profine</option>
+                                    <option value="Whiskas">Whiskas</option>
+                                    <option value="Sera">Sera</option>
+                                    <option value="Ferplast">Ferplast</option>
+                                    <option value="SaniCat">SaniCat</option>
+                                    <option value="Mars">Mars</option>
+                                    <option value="Greenies">Greenies</option>
+                                    <option value="Frolic">Frolic</option>
+                                    <option value="Beco">BeCo</option>
 
                                 </select>
                             </div>
@@ -127,7 +124,7 @@
                         </div>
                         <div class="row">
                             <div class="col-12 d-flex flex-row-reverse">
-                                <button type="submit" class="btn btn-lg"  (click)="goid();">Añadir</button>
+                                <button type="submit" class="btn btn-lg" (click)="editProduct()">Editar</button>
                             </div>
                         </div>
                     </form>
@@ -136,3 +133,4 @@
         </div>
     </main>
 </body>
+

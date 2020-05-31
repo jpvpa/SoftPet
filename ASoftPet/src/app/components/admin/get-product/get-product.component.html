@@ -1,0 +1,79 @@
+<body class="bg-light">
+    <section class="container p-5">
+        <div class="card shadow-sm border-0 p-3 m-3">
+          <div class="row">
+            <div class="col-12">
+              <button (click)="backClicked()" class="btn btn-warning">Atrás</button><hr>
+            </div>
+              
+            <div class="col-4">
+              <img src="{{products.imagen}}" class="img-thumbnail" alt="" srcset="">
+          </div>
+          <div class="col-7">
+              <div class=" m-1 pb-right-colum col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                    <h4  itemprop="name">
+                      {{products.nombre}}
+                    </h4>
+                    <div class="content_prices clearfix">
+                      <div class="price">
+                        <p class="our_price_display" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                          <span id="our_price_display" itemprop="price">{{products.precio | currency}}</span>
+                          <meta itemprop="priceCurrency" content="MXN" />
+                        </p>
+                        <p id="old_price" class="hidden">
+                          <span id="old_price_display"></span>
+                        </p>
+                      </div>
+                      <div class="clear"></div>
+                    </div>
+                    <div class="product-code">
+                      <i class="fa fa-check-square" aria-hidden="true"></i>
+                      <label>Código producto: </label>
+                      <span>{{products.id}}</span>
+                    </div>
+                    <p id="availability_date" style="display: none;">
+                      <span id="availability_date_label"
+                        >Availability date:</span
+                      >
+                      <span id="availability_date_value">{{products.cantidad == 0 ? 'No en stock': 'En stock'}}</span>
+                    </p>
+                    <div id="ooHook"></div>
+                    <div id="short_description_block">
+                      <div>
+                        <h5 class="description_style">
+                          Descripción del Producto
+                        </h5>
+                        <ul>
+                          <p>{{products.descripcion}}</p>
+                        </ul>
+                      </div>
+                    </div>
+                    <form id="buy_block" action="carrito" method="post">
+                      <p class="hidden">
+                        <input
+                          type="hidden"
+                          name="token"
+                          value="982246206bf12692979bbcb0689536b8"
+                        />
+                        <input
+                          type="hidden"
+                          name="id_product"
+                          value="2197"
+                          id="product_page_product_id"
+                        />
+                        <input type="hidden" name="add" value="1" />
+                        <input
+                          type="hidden"
+                          name="id_product_attribute"
+                          id="idCombination"
+                          value
+                        />
+                      </p>
+                    </form>
+                  </div>
+          </div>
+            
+          </div>
+        </div>
+    </section>
+  </body>

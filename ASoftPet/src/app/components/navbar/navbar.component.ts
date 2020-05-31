@@ -11,6 +11,7 @@ import { ProductService} from '../../shared/service/product.service';
 export class NavbarComponent implements OnInit {
   products: Object;
   user: Object;
+  role;
   constructor(
     private auth: AuthService,
     private prod:ProductService,
