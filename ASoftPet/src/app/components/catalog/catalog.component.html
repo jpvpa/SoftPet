@@ -157,6 +157,7 @@
                 <p class="font-weight-bold card-title m-1 p-0">{{product.nombre}}</p>
                 <p class="card-text m-1 p-0">{{product.precio | currency}}</p>
                 <p class="card-text p-0">{{product.descripcion}}</p>
+                <button (click)="addToCart(product)" class='btn btn-primary'>Add to cart</button>
               </div>
               <div class="row">
                 <a style="font-size: .8rem;" href="#"

@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Utils = require('../Utils/utils')
 const Product = require('../model/Product');
+const Cart = require ('../model/Cart');
 
 router.get('/search', async (req, res) => {
     var params = req.query;
@@ -195,5 +196,21 @@ router.delete('/:id', async (req, res) =>{
     }
 });
 
+router.get('/add-to-cart/:id', (req, res, next) =>{
+    var productId = req.params.id;
+    var cart = new Cart(req.session.cart ? req.session.cart : {} );
+
+    Product.find({id: productId}, (err, product) =>{
+        if(err){
+            return res.redirect('/');
+        }
+        cart.add(product, product.id);
+        req.session.cart = cart;
+        console.log(req.session.cart);
+        console.log(req.session.cart.items);
+        res.redirect('/');
+    });
+
+})
 
 module.exports = router;

@@ -4,12 +4,16 @@ const mongoose = require('mongoose');
 const path = require('path');
 const passport = require('passport');
 const multer  = require('multer')
+const session = require('express-session');
+const cookieParser = require ('cookie-parser');
+const MongoStore = require('connect-mongo')(session);
+
 
 const app = express(); //initilize variable with express
 const cors = require('cors');
 app.use(BodyParser.urlencoded({extended:true}));
 app.use(BodyParser.json());
-
+app.use(cookieParser());
 app.use(cors({
     origin:'*'
 }))
@@ -41,6 +45,18 @@ require('./config/passport')(passport);
 //Multer Middleware
 app.use(express.static(path.join(__dirname,'/public')));//Directorio para archivos staticos
 app.use('/uploads',express.static(path.join(__dirname,'/uploads')));//Directorio de imagenes
+
+//Sessions
+app.use(session({
+    secret: 'mysupersecret',
+    resave: false,
+    saveUninitialized: false,
+    store: new MongoStore({
+        mongooseConnection: mongoose.connection,
+    }),
+    cookie: { maxAge: 180 * 60 * 1000 }
+}))
+
 
 //Endpoint
 var endpointUser = require('./routers/usuarios')

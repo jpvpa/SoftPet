@@ -137,4 +137,20 @@ export class CatalogComponent implements OnInit {
     })
   }
 
+  addToCart(product){
+    var self = this
+    $.ajax({
+      method: 'get',
+      url: 'http://localhost:2020/product/add-to-cart/'+product.id,
+      success: function(){
+        console.log("Entra");
+      },
+      error: function() {
+        console.log("No entra o se sale");
+      }
+    })
+  }
+
+
+
 }
