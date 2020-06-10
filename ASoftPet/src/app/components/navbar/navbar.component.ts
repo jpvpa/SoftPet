@@ -3,6 +3,7 @@ import { AuthService } from '../../shared/service/auth.service'
 import { Router } from '@angular/router'
 import { NgFlashMessageService } from 'ng-flash-messages';
 import { ProductService} from '../../shared/service/product.service';
+declare var $: any;
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -28,6 +29,14 @@ export class NavbarComponent implements OnInit {
       console.log(err);
       return false;
     });
+    $.ajax({
+      method: 'get',
+      url: 'http://localhost:2020/cart/generate',
+      success: function(output, status, xhr) {
+        alert(xhr.getResponseHeader("Set-Cookie"));
+    },
+    cache: false
+    })
   }
   onLogoutClick(){
     this.auth.logout();

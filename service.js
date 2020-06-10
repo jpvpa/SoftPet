@@ -4,12 +4,13 @@ const mongoose = require('mongoose');
 const path = require('path');
 const passport = require('passport');
 const multer  = require('multer')
+const cookieParser = require ('cookie-parser');
 
 const app = express(); //initilize variable with express
 const cors = require('cors');
 app.use(BodyParser.urlencoded({extended:true}));
 app.use(BodyParser.json());
-
+app.use(cookieParser());
 app.use(cors({
     origin:'*'
 }))
@@ -42,10 +43,13 @@ require('./config/passport')(passport);
 app.use(express.static(path.join(__dirname,'/public')));//Directorio para archivos staticos
 app.use('/uploads',express.static(path.join(__dirname,'/uploads')));//Directorio de imagenes
 
+
 //Endpoint
 var endpointUser = require('./routers/usuarios')
 var endpointProduct = require('./routers/productos')
-app.use( endpointUser)
-app.use('/product', endpointProduct)
+var endpointCart = require('./routers/carrito')
+app.use( endpointUser);
+app.use('/product', endpointProduct);
+app.use('/cart', endpointCart);
 
 app.listen(2020);

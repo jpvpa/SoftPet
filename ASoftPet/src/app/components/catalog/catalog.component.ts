@@ -127,6 +127,9 @@ export class CatalogComponent implements OnInit {
     $.ajax({
       method: 'get',
       url: 'http://localhost:2020/product/list',
+      xhrFields: {
+        withCredentials: true,
+      },
       success: function (result){
        self.products=result;
        console.log(result);
@@ -136,5 +139,20 @@ export class CatalogComponent implements OnInit {
       } 
     })
   }
+
+  addToCart(product){
+    $.ajax({
+      method: 'get',
+      url: 'http://localhost:2020/cart/add/'+product.id,
+      success: function(){
+        console.log("Entra");
+      },
+      error: function() {
+        console.log("No entra o se sale");
+      }
+    })
+  }
+
+
 
 }
