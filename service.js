@@ -4,10 +4,7 @@ const mongoose = require('mongoose');
 const path = require('path');
 const passport = require('passport');
 const multer  = require('multer')
-const session = require('express-session');
 const cookieParser = require ('cookie-parser');
-const MongoStore = require('connect-mongo')(session);
-
 
 const app = express(); //initilize variable with express
 const cors = require('cors');
@@ -46,22 +43,13 @@ require('./config/passport')(passport);
 app.use(express.static(path.join(__dirname,'/public')));//Directorio para archivos staticos
 app.use('/uploads',express.static(path.join(__dirname,'/uploads')));//Directorio de imagenes
 
-//Sessions
-app.use(session({
-    secret: 'mysupersecret',
-    resave: false,
-    saveUninitialized: false,
-    store: new MongoStore({
-        mongooseConnection: mongoose.connection,
-    }),
-    cookie: { maxAge: 180 * 60 * 1000 }
-}))
-
 
 //Endpoint
 var endpointUser = require('./routers/usuarios')
 var endpointProduct = require('./routers/productos')
-app.use( endpointUser)
-app.use('/product', endpointProduct)
+var endpointCart = require('./routers/carrito')
+app.use( endpointUser);
+app.use('/product', endpointProduct);
+app.use('/cart', endpointCart);
 
 app.listen(2020);
