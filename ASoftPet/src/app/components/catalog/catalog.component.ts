@@ -141,16 +141,16 @@ export class CatalogComponent implements OnInit {
   }
 
   addToCart(product){
-    $.ajax({
-      method: 'get',
-      url: 'http://localhost:2020/cart/add/'+product.id,
-      success: function(){
-        console.log("Entra");
-      },
-      error: function() {
-        console.log("No entra o se sale");
-      }
-    })
+    // $.ajax({
+    //   method: 'get',
+    //   url: 'http://localhost:2020/cart/add/'+product.id,
+    //   success: function(){
+    //     console.log("Entra");
+    //   },
+    //   error: function() {
+    //     console.log("No entra o se sale");
+    //   }
+    // })
   }
 
 
