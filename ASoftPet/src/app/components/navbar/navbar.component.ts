@@ -29,14 +29,6 @@ export class NavbarComponent implements OnInit {
       console.log(err);
       return false;
     });
-    $.ajax({
-      method: 'get',
-      url: 'http://localhost:2020/cart/generate',
-      success: function(output, status, xhr) {
-        alert(xhr.getResponseHeader("Set-Cookie"));
-    },
-    cache: false
-    })
   }
   onLogoutClick(){
     this.auth.logout();
