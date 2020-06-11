@@ -137,7 +137,7 @@
         </div>
       </div>
       <div class="col-md-9 container-sm">
-        <div class="col-12 card border-0 shadow-sm mb-3  ">
+        <div class="col-12 card border-0 shadow-sm mb-3">
 
           <a class="text-dark  w-25 btn-sm btn-light dropdown-toggle bg-white text-right align-self-end text-decoration-none"
             href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
@@ -149,32 +149,88 @@
             <a (click)="orden = 'des'; goProducts()" class="dropdown-item">Z-A</a>
           </div>
         </div>
-        <div class="row" >
-          <div *ngFor="let product of products;" class="col-sm-12 col-md-4 col-lg-3 product p-2">
-            <div class="card shadow-sm border-0 h-100 text-center wrapper position-relative p-1">
-              <img src="{{product.imagen}}" class="card-img-top img-thumbnail img-fluid img" alt="...">
-              <div class="card-body p-1">
-                <p class="font-weight-bold card-title m-1 p-0">{{product.nombre}}</p>
-                <p class="card-text m-1 p-0">{{product.precio | currency}}</p>
-                <p class="card-text p-0">{{product.descripcion}}</p>
-                <button (click)="addToCart(product)" class='btn btn-primary'>Add to cart</button>
-              </div>
-              <div class="row">
-                <a style="font-size: .8rem;" href="#"
-                  class="w-25 col-6 btn text-white bg-mango button position-absolute">
-                  <img class="imgi" src="../../../assets/images/cart.png">
-                </a>
-                <a style="font-size: .8rem;" [routerLink]="['/detail-product']" [queryParams]="{ id: product.id}" routerLinkActive="router-link-active" 
-                  class="w-25 col-6 btn text-white bg-red button2 position-absolute "><img class="imgi"
-                    src="../../../assets/images/eye.png"></a>
+        <ng-template #showBlock>
+          <div class="row " >
+            <div *ngFor="let product of products;" class="col-sm-12 col-md-4 col-lg-3 product p-2">
+              <div class="card shadow-sm border-0 h-100 text-center wrapper position-relative p-1">
+                <img src="{{product.imagen}}" class="card-img-top img-thumbnail img-fluid img" alt="...">
+                <div class="card-body p-1">
+                  <p class="font-weight-bold card-title m-1 p-0">{{product.nombre}}</p>
+                  <p class="card-text m-1 p-0">{{product.precio | currency}}</p>
+                  <p class="card-text p-0">{{product.descripcion}}</p>
+                  <!-- <button (click)="addToCart(product)" class='btn btn-primary'>Add to cart</button> -->
+                </div>
+                <div class="row">
+                  <a style="font-size: .8rem;"
+                    class="w-25 col-6 btn text-white bg-mango button position-absolute" (click)="addToCart(product);">
+                    <img class="imgi" src="../../../assets/images/cart.png">
+                  </a>
+                  <a style="font-size: .8rem;" [routerLink]="['/detail-product']" [queryParams]="{ id: product.id}" routerLinkActive="router-link-active" 
+                    class="w-25 col-6 btn text-white bg-red button2 position-absolute"><img class="imgi"
+                      src="../../../assets/images/eye.png"></a>
+                </div>
               </div>
             </div>
           </div>
+        </ng-template>
+        <ng-template *ngIf="condicion;then showBlock; else notShowBlock">
+        </ng-template>
+        <ng-template #notshowBlock>
+          <div class="row" >
+            <div *ngFor="let product of products;" class="col-sm-12 col-md-4 col-lg-3 product p-2">
+              <div class="card shadow-sm border-0 h-100 text-center wrapper position-relative p-1">
+                <img src="{{product.imagen}}" class="card-img-top img-thumbnail img-fluid img" alt="...">
+                <div class="card-body p-1">
+                  <p class="font-weight-bold card-title m-1 p-0">{{product.nombre}}</p>
+                  <p class="card-text m-1 p-0">{{product.precio | currency}}</p>
+                  <p class="card-text p-0">{{product.descripcion}}</p>
+                  <button (click)="addToCart(product)" class='btn btn-primary'>Add to cart</button>
+                </div>
+                <div class="row">
+                  <a style="font-size: .8rem;"
+                    class="w-25 col-6 btn text-white bg-mango button position-absolute">
+                    <img class="imgi" src="../../../assets/images/cart.png" (click)="addToCart(product);">
+                  </a>
+                  <a style="font-size: .8rem;" [routerLink]="['/detail-product']" [queryParams]="{ id: product.id}" routerLinkActive="router-link-active" 
+                    class="w-25 col-6 btn text-white bg-red button2 position-absolute "><img class="imgi"
+                      src="../../../assets/images/eye.png"></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+        <div >
+          <div class="col-12 card border-0 shadow-sm mt-3">
+
+              <ul class="pagination pt-3 mx-auto justify-content-center">
+                <li class="page-item"><a class="page-link" (click)="Previous()">Previous</a></li>
+                <li *ngFor="let item of arreglo_seccionado;" class="page-item">
+                  <a [ngClass]="(item==0) ? 'page-link activado' : 'page-link'" id="a{{item+1}}"
+                    (click)="numero_de_seccion=item; filtros(); Seccion($event.target);">{{item+1}}</a>
+                </li>
+                <li class="page-item"><a class="page-link" (click)="Next()">Next</a></li>
+                <li class="d-flex justify-content-end ml-3">
+                 <!--  <label for="cantidadArticulos" style=" width: 5rem;">Mostrar</label> -->
+                  <select (change)="filtros()" [(ngModel)]="n_articulos_seccion" class="form-control "
+                    id="cantidadArticulos" style="width: 5rem;">
+                    <option value="2" selected>2</option>
+                    <option value="4">4</option>
+                    <option value="6">6</option>
+                    <option value="8">8</option>
+                  </select>
+                </li>
+              </ul>
+
+              
+            </div>
+          
         </div>
       </div>
     </div>
   </div>
 </section>
+
+
 <ng-template #notFound>
   <div class="row">
     <div class="my-auto text-center col-sm-12 product p-2">

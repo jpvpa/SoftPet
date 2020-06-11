@@ -12,7 +12,8 @@ app.use(BodyParser.urlencoded({extended:true}));
 app.use(BodyParser.json());
 app.use(cookieParser());
 app.use(cors({
-    origin:'*'
+    credentials: true, 
+    origin: 'http://localhost:4200'
 }))
 mongoose.connect('mongodb://localhost:27017/SoftPet', {
     useNewUrlParser: true, 

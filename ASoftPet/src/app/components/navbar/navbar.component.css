@@ -18,6 +18,41 @@
 .dropdown:hover .dropdown-menu{
     display: block;
 }
+.text-mango{
+    color: rgb(255, 224, 130);
+}
+.buttons a#button_goto_cart {
+    background: #f5d36f;
+    border-color: #f5d36f;
+}
+.cart-prices {
+    padding: 15px 0 0;
+    margin: 0;
+  }
+  
+.price-total {
+    padding: 0 0 25px;
+    overflow: hidden;
+}
+  
+.price-total span {
+    font-size: 14px;
+    display: inline-block;
+    color: #222;
+    float: none;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+  
+.price-total span.price {
+    font-size: 22px;
+    float: right;
+    font-weight: 600;
+}
+  
+.price-total span.price {
+    color: #f5d36f;
+}
 @media (max-width: 768px){
     .dpc .dropdown-menu{
         background-color: #ffecb3 !important ;
@@ -30,3 +65,33 @@
         color:white;
     }
 }
+
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    right: 0;
+    background-color: #ffff;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+  }
+
+  .sidebar .closebtn {
+    position: absolute;
+    background-color: white;
+    top: 0;
+    left: -25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+  
+  .openbtn {
+    cursor: pointer;
+  }
+
+  #main {
+    transition: margin-left .5s;
+  }

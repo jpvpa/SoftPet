@@ -49,8 +49,8 @@
             <p class="card-text p-0">{{product.descripcion}}</p>
           </div>
           <div class="row">
-            <a style="font-size: .8rem;" href="#"
-              class="w-25 col-6 btn text-white bg-mango button position-absolute">
+            <a style="font-size: .8rem;"
+              class="w-25 col-6 btn text-white bg-mango button position-absolute"  (click)="addToCart(product);">
               <img class="imgi" src="../../../assets/images/cart.png">
             </a>
             <a style="font-size: .8rem;" [routerLink]="['/detail-product']" [queryParams]="{ id: product.id}" routerLinkActive="router-link-active" 

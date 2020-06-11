@@ -33,6 +33,7 @@ import { AuthService } from './shared/service/auth.service';
 import { AuthGuard } from './shared/guard/auth.guard'
 import { ValidateService } from './shared/service/validate.service';
 import { ProductService } from './shared/service/product.service';
+import { CartComponent } from './components/cart/cart.component';
 
 
 
@@ -63,7 +64,8 @@ import { ProductService } from './shared/service/product.service';
     FaqsComponent,
     DevolucionComponent,
     GetProductComponent,
-    EditProductComponent
+    EditProductComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
