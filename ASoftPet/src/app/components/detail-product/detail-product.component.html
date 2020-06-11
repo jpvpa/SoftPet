@@ -74,31 +74,10 @@
                       <div class="product_attributes clearfix">
                         <div id="quantity_wanted_p">
                           <div class="row">
-                            <div class="qty col-6">
-                              <a
-                                href="#"
-                                data-field-qty="qty"
-                                class="button-minus product_quantity_down"
-                              >
-                                <span><i class="fas fa-minus"></i></span>
-                              </a>
-                              <div class="qty_buttons">
-                                <input
-                                  type="text"
-                                  name="qty"
-                                  id="quantity_wanted"
-                                  class="text"
-                                  value="1"
-                                  style="border: 1px solid rgb(189, 194, 201);"/>
-                              </div>
-                              <a href="#" data-field-qty="qty" class="button-plus product_quantity_up">
-                                <span><i class="fa fa-plus"></i></span>
-                              </a>
-                            </div>
                             <div class="box-cart-bottom col-6">
                               <div>
                                 <div class=" d-flex flex-row-reverse">
-                                    <button type="submit" class="btn btn-sm">Añadir al Carrito</button>
+                                    <button type="submit" class="btn btn-sm" (click)="addToCart(products);">Añadir al Carrito</button>
                                 </div>
                               </div>
                               <div id="minimal_quantity_wanted_p"style="display: none; color: rgb (55, 72, 83);">

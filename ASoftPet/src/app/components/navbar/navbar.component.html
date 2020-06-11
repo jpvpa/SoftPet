@@ -1,5 +1,6 @@
-<body>
+<body id="main">
   <header>
+    
       <nav class="navbar navbar-expand-lg navbar-light bgs1 py-1">
           <div class="container">
             <div class="row m-0 w-100">
@@ -65,16 +66,22 @@
                   </div>
                 </span>
               </div>
+              <!-- Carrito -->
               <div class="col-2 order-9 col-md-1 order-md-10  order-lg-12 col-lg-1 p-lg-0 w-100 d-lg-inline-block text-center  p-0 align-self-center">
-                <div class="nav-item active">
-                  <a class="nav-link py-2 px-0" href="#"> 
-                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABmJLR0QA/wD/AP+gvaeTAAABk0lEQVRIie3VPUscURTG8f8Z0U8gWCgIQVDR2kokaxALv8dWgohTWNhbuGIgjVYBsRBMGRFdlNVdVKxsfG1UFLRRIUFWEnceCw15cbK7w9zdIvGpZs4c+N1z7zAD/1sMwE+0Z0Hdz7UzZKOpzMF8JWEvpNaMaW74bUdLJeEX8ROts36iTSO9rWOVdF5MHMAnAE82UFVY93dpIC/oGnrX2VA1eGrrIg+sA15dUOivFGxhRb+3bRDxwbkmZVOZox4If6vhQYvOUQCzNz8uQ+HUxtEJsO/alZEuCj/FnE9tKgM2nG+3TDVrJeHT+sMccOOMNXYnMntXJeGFBQpC6b89jx6t/HpX5IwB85xtd6Ca34YoCge13iJQcODmdf9ls2x4annvBrHjAF5//iKWBwPI+BxXFbbyZ60kXHiwj8DXGO5tnafZyPD77MElHv0G28D3COA3sJygb3z18DrKSv/NhP4Ww+In2gdAM4BkQXJy7XgpTl/JM/4ZTQONQJPJZuL2RYDdpmxYFiSBC9C5iWTcvtdULY81vpNJmfqLlwAAAABJRU5ErkJggg==">
-                  </a>
+                <div class="nav-item active" >
+                    <a class="nav-link py-2 px-0 toggle-btn openbtn" (click)="openNav()">
+                      
+                      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABmJLR0QA/wD/AP+gvaeTAAABk0lEQVRIie3VPUscURTG8f8Z0U8gWCgIQVDR2kokaxALv8dWgohTWNhbuGIgjVYBsRBMGRFdlNVdVKxsfG1UFLRRIUFWEnceCw15cbK7w9zdIvGpZs4c+N1z7zAD/1sMwE+0Z0Hdz7UzZKOpzMF8JWEvpNaMaW74bUdLJeEX8ROts36iTSO9rWOVdF5MHMAnAE82UFVY93dpIC/oGnrX2VA1eGrrIg+sA15dUOivFGxhRb+3bRDxwbkmZVOZox4If6vhQYvOUQCzNz8uQ+HUxtEJsO/alZEuCj/FnE9tKgM2nG+3TDVrJeHT+sMccOOMNXYnMntXJeGFBQpC6b89jx6t/HpX5IwB85xtd6Ca34YoCge13iJQcODmdf9ls2x4annvBrHjAF5//iKWBwPI+BxXFbbyZ60kXHiwj8DXGO5tnafZyPD77MElHv0G28D3COA3sJygb3z18DrKSv/NhP4Ww+In2gdAM4BkQXJy7XgpTl/JM/4ZTQONQJPJZuL2RYDdpmxYFiSBC9C5iWTcvtdULY81vpNJmfqLlwAAAABJRU5ErkJggg==">
+                      <div class="badge badge-pill badge-danger align-self-start">
+                        {{Cart.carrito?.length}}
+                      </div> 
+                    </a>
                 </div>
               </div>
             </div>
           </div>
         </nav>
+        
         
         <nav class="navbar navbar-expand-lg navbar-light bgs2 px-1 py-0 border-0">
           <div class="container">
@@ -153,6 +160,38 @@
                 </ul>
               </div>
             </span>
+          </div>
+          <div id="mySidebar" class="sidebar">
+            <a href="javascript:void(0)" class="closebtn text-decoration-none text-dark" (click)="closeNav()">×</a>
+            <div class="top-content p-2">
+              <h6 >Hay {{Cart.carrito?.length}} item(s) " en el carrito de compras"</h6>
+              <hr>
+            </div>
+            <div class="row p-3 overflow-auto cont" *ngFor="let product of Cart.carrito; trackBy: trackByProdName">
+              <div class="col-5 my-2 my-auto">
+                <img src="{{product.imagen}}" class="w-100 card-img-top img-thumbnail img-fluid img my-auto font-weight-bold" alt="product">
+              </div>
+              <div class="col-6 my-2">
+                <p class="p-0 m-0">{{product.nombre}}</p>
+                <p class="p-0 m-0 text-mango font-weight-bold">{{product.precio | currency}}</p>
+              </div>
+              <div class="col-1 p-0">
+                <a class="ajax_cart_block_remove_link p-0"  rel="nofollow" (click)="removeFromCart(product)" title="Eliminar">
+                  <i class="fa fa-trash"></i>
+                </a>
+              </div>
+            </div>
+            <div class="w-100 m-2 col-12 position-sticky pb-3 sticky-bottom">
+              <hr>
+              <div class="price-total">
+                <span class="price_text">Total: </span>
+                <span class="price cart_block_total ajax_block_products_total pr-3">{{Cart.total | currency }}</span>
+                <div class="buttons">
+                  <a id="button_goto_cart" class="btn btn-lg btn-block text-white" href="carrito.html" title="Ver carrito de compras"
+                    rel="nofollow" style="float: right;"> Comprar </a>
+                </div>
+              </div>
+            </div>
           </div>
         </nav>
   </header>

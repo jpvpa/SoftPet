@@ -7,9 +7,11 @@ declare var $ : any;
 })
 export class HomeComponent implements OnInit {
   products=[]
+  Cart={}
   constructor() { }
 
   ngOnInit() {
+    this.addToCart
     var self = this
     $.ajax({
       method: 'get',
@@ -24,52 +26,6 @@ export class HomeComponent implements OnInit {
     })
   }
   
-  
-
-  productos = [
-    {
-      name: 'Producto 1',
-      img: '../../../assets/images/producto1.jpg',
-      description: 'Esta es una descripcion 1'
-    },
-    {
-      name: 'Producto 2',
-      img: '../../../assets/images/producto1.jpg',
-      description: 'Esta es una descripcion 2'
-    },
-    {
-      name: 'Producto 3',
-      img: '../../../assets/images/producto1.jpg',
-      description: 'Esta es una descripcion 3'
-    },
-    {
-      name: 'Producto 4',
-      img: '../../../assets/images/producto1.jpg',
-      description: 'Esta es una descripcion 4'
-    }
-    ,
-    {
-      name: 'Producto 5',
-      img: '../../../assets/images/producto1.jpg',
-      description: 'Esta es una descripcion 5'
-    },
-    {
-      name: 'Producto 6',
-      img: '../../../assets/images/producto1.jpg',
-      description: 'Esta es una descripcion 6'
-    },
-    {
-      name: 'Producto 7',
-      img: '../../../assets/images/producto1.jpg',
-      description: 'Esta es una descripcion 7'
-    },
-    {
-      name: 'Producto 8',
-      img: '../../../assets/images/producto1.jpg',
-      description: 'Esta es una descripcion 8'
-    }
-  ]
- 
   valores = [
     {
       titulo: 'Misión',
@@ -93,5 +49,37 @@ export class HomeComponent implements OnInit {
       img: '../../../assets/images/diamante.png'
     },
   ]
+
+  GetCookies = function()
+  {
+    var cookies = document.cookie.split(';');
+    var array = {};
+    for( var i = 0; i < cookies.length; i++ )
+    {
+      var cookie = cookies[i].split('=');
+      array[cookie[0]] = cookie[1];
+    }
+    return array;
+  }
+  addToCart(product){
+    var cookies = this.GetCookies();
+    var self = this
+    console.log(product.id)
+    $.ajax({
+      method: 'get',
+      url: 'http://localhost:2020/cart/add/'+product.id,
+      xhrFields: {
+        withCredentials: true
+      },
+      success: function(res){
+        self.Cart = res;
+        console.log(res);
+        console.log("Entra");
+      },
+      error: function() {
+        console.log("No entra o se sale");
+      }
+    })
+  }
 
 }

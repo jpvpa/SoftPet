@@ -53,8 +53,8 @@ router.get('/add/:id', (req, res) =>{
     cart.findOne({id: cartID}, (err, newCart) =>{
         if(err)
             console.log(err);
-
-        newCart.carrito.push({id: nuevoProducto.id});
+        
+        newCart.carrito.push({id: nuevoProducto.id, precio: nuevoProducto.precio, nombre: nuevoProducto.nombre, imagen: nuevoProducto.imagen});
         newCart.total += nuevoProducto.precio;
         newCart.cantidadTotal++;
         newCart.save();                
