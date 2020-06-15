@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from './shared/service/auth.service';
+import { CartService } from './shared/service/cart.service';
 declare var $: any;
 @Component({
   selector: 'app-root',
@@ -16,7 +17,8 @@ export class AppComponent {
     user: 'skdfjsd'
   };
   constructor(
-    private auth: AuthService
+    private auth: AuthService,
+    public cart: CartService
   ) { }
   
   GetCookies = function()
@@ -43,7 +45,7 @@ export class AppComponent {
         self.Cart = res;
         console.log(res);
       } 
-    });
+    }); 
     this.auth.getProfile().subscribe((profile:any) =>{
       this.user = profile.user;
       

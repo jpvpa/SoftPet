@@ -1,31 +1,37 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../shared/service/auth.service'
 import { Router } from '@angular/router'
 import { NgFlashMessageService } from 'ng-flash-messages';
-import { ProductService} from '../../shared/service/product.service';
+import { CartService} from '../../shared/service/cart.service';
+import { Subscription } from 'rxjs';
 declare var $: any;
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
-  changeDetection: ChangeDetectionStrategy.Default
 })
 export class NavbarComponent implements OnInit {
   products: Object;
   user: Object;
   role;
   Cart = {};
+  //carty: any[] = [];
+  subscription: Subscription;
   cartOpen = false;
   session = {
     valid: false,
     user: 'skdfjsd'
   };
+  clickEventsubscription:Subscription;
   constructor(
     private auth: AuthService,
-    private prod:ProductService,
+    private cart: CartService,
     private ngFlashMessageService: NgFlashMessageService,
     private router :Router
   ) { 
+    this.clickEventsubscription= this.cart.getClickEvent().subscribe((product)=>{
+      this.addToCart(product);
+      })
   }
   search = {
     nombre: ''
@@ -43,14 +49,13 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.removeFromCart
     this.auth.getProfile().subscribe((profile:any) =>{
       this.user = profile.user;
     },err =>{
       console.log(err);
       return false;
     });
-<<<<<<< Updated upstream
-=======
     var cookies = this.GetCookies();
     var self = this;
     $.get({
@@ -84,8 +89,8 @@ export class NavbarComponent implements OnInit {
         console.log("No entra o se sale");
       }
     })
->>>>>>> Stashed changes
   }
+
   onLogoutClick(){
     this.auth.logout();
     this.ngFlashMessageService.showFlashMessage({
@@ -97,6 +102,27 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['/log-in']);
   }
 
+  addToCart(product){
+    var cookies = this.GetCookies();
+    var self = this
+    console.log(product.id)   
+    $.ajax({
+      method: 'get',
+      url: 'http://localhost:2020/cart/add/'+product.id,
+      xhrFields: {
+        withCredentials: true
+      },
+      success: function(res){
+        self.Cart = res;
+        console.log(res);
+        console.log("Entra");
+      },
+      error: function() {
+        console.log("No entra o se sale");
+      }
+    })
+  }
+
   openNav() {
     $('#mySidebar').css("width","350px")
     $('#mySidebar').css("marginLeft","350px")
@@ -106,8 +132,6 @@ export class NavbarComponent implements OnInit {
     $('#mySidebar').css("width","0")
     $('#mySidebar').css("marginLeft","0")
   }
-  trackByProdName(index: number, product: any): string {
-    return product.id;
-  }
+
 
 }

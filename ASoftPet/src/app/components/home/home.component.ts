@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CartService } from '../../shared/service/cart.service';
+
 declare var $ : any;
 @Component({
   selector: 'app-home',
@@ -8,7 +10,7 @@ declare var $ : any;
 export class HomeComponent implements OnInit {
   products=[]
   Cart={}
-  constructor() { }
+  constructor(public cart: CartService) { }
 
   ngOnInit() {
     this.addToCart
@@ -61,25 +63,9 @@ export class HomeComponent implements OnInit {
     }
     return array;
   }
+  
   addToCart(product){
-    var cookies = this.GetCookies();
-    var self = this
-    console.log(product.id)
-    $.ajax({
-      method: 'get',
-      url: 'http://localhost:2020/cart/add/'+product.id,
-      xhrFields: {
-        withCredentials: true
-      },
-      success: function(res){
-        self.Cart = res;
-        console.log(res);
-        console.log("Entra");
-      },
-      error: function() {
-        console.log("No entra o se sale");
-      }
-    })
+    this.cart.sendClickEvent(product)
   }
 
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import {Location} from '@angular/common';
+import { CartService } from '../../shared/service/cart.service';
 declare var $ : any;
 @Component({
   selector: 'app-detail-product',
@@ -14,7 +15,8 @@ export class DetailProductComponent implements OnInit {
   Cart={}
   constructor(private route: ActivatedRoute, 
     private router: Router,
-    private _location: Location) { }
+    private _location: Location,
+    public cart: CartService) { }
 
   ngOnInit() {
     this.addToCart
@@ -55,24 +57,7 @@ export class DetailProductComponent implements OnInit {
     return array;
   }
   addToCart(products){
-    var cookies = this.GetCookies();
-    var self = this
-    console.log(products.id)
-    $.ajax({
-      method: 'get',
-      url: 'http://localhost:2020/cart/add/'+products.id,
-      xhrFields: {
-        withCredentials: true
-      },
-      success: function(res){
-        self.Cart = res;
-        console.log(res);
-        console.log("Entra");
-      },
-      error: function() {
-        console.log("No entra o se sale");
-      }
-    })
+    this.cart.sendClickEvent(products)
   }
 
 }
