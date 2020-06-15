@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { filter } from "rxjs/operators";
+import { CartService } from '../../shared/service/cart.service'
 declare var $ : any;
 @Component({
   selector: 'app-catalog',
@@ -36,7 +37,7 @@ export class CatalogComponent implements OnInit {
 
   contador: number = 0;
  
-  constructor(private route: ActivatedRoute, private router: Router) {
+  constructor(private route: ActivatedRoute, private router: Router, private cart: CartService) {
     router.events.subscribe((filter) => {
       this.nombre = this.route.snapshot.queryParams["nombre"];
       this.departamento = this.route.snapshot.queryParams["departamento"];
@@ -152,6 +153,7 @@ export class CatalogComponent implements OnInit {
         console.log("-------------------------");
       }
     } else {
+
       ///secciones no exactas
       residuo = numero_resultados % n_articulos_seccion;
       if (num_secciones == 0) {
@@ -347,49 +349,8 @@ export class CatalogComponent implements OnInit {
       } 
     })
   }
-  GetCookies = function()
-  {
-    var cookies = document.cookie.split(';');
-    var array = {};
-    for( var i = 0; i < cookies.length; i++ )
-    {
-      var cookie = cookies[i].split('=');
-      array[cookie[0]] = cookie[1];
-    }
-    return array;
-  }
   addToCart(product){
-<<<<<<< Updated upstream
-    // $.ajax({
-    //   method: 'get',
-    //   url: 'http://localhost:2020/cart/add/'+product.id,
-    //   success: function(){
-    //     console.log("Entra");
-    //   },
-    //   error: function() {
-    //     console.log("No entra o se sale");
-    //   }
-    // })
-=======
-    var cookies = this.GetCookies();
-    var self = this
-    console.log(product.id)
-    $.ajax({
-      method: 'get',
-      url: 'http://localhost:2020/cart/add/'+product.id,
-      xhrFields: {
-        withCredentials: true
-      },
-      success: function(res){
-        self.Cart = res;
-        console.log(res);
-        console.log("Entra");
-      },
-      error: function() {
-        console.log("No entra o se sale");
-      }
-    })
->>>>>>> Stashed changes
+    this.cart.sendClickEvent(product)
   }
 
 }

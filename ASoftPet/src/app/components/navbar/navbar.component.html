@@ -167,7 +167,7 @@
               <h6 >Hay {{Cart.carrito?.length}} item(s) " en el carrito de compras"</h6>
               <hr>
             </div>
-            <div class="row p-3 overflow-auto cont" *ngFor="let product of Cart.carrito; trackBy: trackByProdName">
+            <div class="row p-3 overflow-auto cont" *ngFor="let product of Cart.carrito;" >
               <div class="col-5 my-2 my-auto">
                 <img src="{{product.imagen}}" class="w-100 card-img-top img-thumbnail img-fluid img my-auto font-weight-bold" alt="product">
               </div>
