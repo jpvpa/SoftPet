@@ -19,7 +19,9 @@ import { FaqsComponent } from './components/footer-info/faqs/faqs.component';
 import { DevolucionComponent } from './components/footer-info/devolucion/devolucion.component';
 import { GetProductComponent } from './components/admin/get-product/get-product.component';
 import { EditProductComponent } from './components/admin/edit-product/edit-product.component';
-
+import { CheckOutComponent } from './components/check-out/check-out.component';
+import { ShopHistoryComponent } from './components/shop-history/shop-history.component';
+import { CompletedComponent } from './components/completed/completed.component';
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -39,6 +41,9 @@ const routes: Routes = [
   { path: 'devolucion', component: DevolucionComponent},
   { path: 'edit-product', component: EditProductComponent},
   { path: 'get-product', component: GetProductComponent},
+  { path: 'check-out', component: CheckOutComponent},
+  { path: 'shop-history', component: ShopHistoryComponent},
+  { path: 'completed', component: CompletedComponent},
 ];
 
 @NgModule({

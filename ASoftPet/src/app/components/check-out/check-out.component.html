@@ -1,0 +1,394 @@
+<body>
+    <div class="container">
+      <div class="process-status pt-4 mx-auto text-center">
+        <span class="px-3 activey" >Cesta</span>
+        <span class="px-3 active"  [ngClass]="{'active' : showDiv.current }">Realizar Pedido</span>
+        <span class="px-3 active"  [ngClass]="{'active' : showDiv.next }">Pagar</span>
+        <span class="px-3 active"  [ngClass]="{'active' : showDiv.nextn }">Pedido completo</span>
+      </div>
+      <div class="row p-5">
+
+        <div class="col-sm-8 c-check c-check-left c-placeorder" *ngIf="showDiv.current">
+            <div *ngIf="auth.loggedIn(); else noUser">
+                <div class="card-content">
+                    <p class="address-title"><b>Datos Personales</b></p>
+                    <div class="row">
+                        <div class="col-sm-6 col-lg-6 bottomMargin">
+                           <div class="align-middle inp">
+                            Nombre:&nbsp;&nbsp;  {{Order.user && Order.user[0]?.nombre}}
+                           </div>
+                        </div>
+                        <div class="col-sm-6 col-lg-6 bottomMargin">
+                            <div class="align-middle inp">
+                            Apellido Paterno:&nbsp;&nbsp;  {{Order.user && Order.user[0]?.apellidoPaterno}}
+                            </div>
+                         </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 col-lg-6 bottomMargin">
+                            <div class="align-middle inp">
+                             Apellido Materno:&nbsp;&nbsp;  {{Order.user && Order.user[0]?.apellidoMaterno}}
+                            </div>
+                         </div>
+                         <div class="col-sm-6 col-lg-6 bottomMargin">
+                             <div class="align-middle inp">
+                             Correo:&nbsp;&nbsp;  {{Order.user && Order.user[0]?.correo}}
+                             </div>
+                          </div>
+                    </div>
+                    <p class="address-title"><b>Dirección de envio</b></p>
+
+                    <div class="row">
+                        <div class="col-sm-6 col-lg-6 bottomMargin">
+                            <div class="align-middle inp">
+                                Dirección:&nbsp;&nbsp;  {{Order.address && Order.address[0]?.direccion}}
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-lg-6 bottomMargin">
+                            <div class="align-middle inp">
+                                Colonia:&nbsp;&nbsp;  {{Order.address && Order.address[0]?.colonia}}
+                            </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-sm-4 col-lg-4 bottomMargin">
+                            <div class="align-middle inp">
+                                País:&nbsp;&nbsp;  {{Order.address && Order.address[0]?.pais}}
+                            </div>
+                        </div>
+                        <div class="col-sm-4 col-lg-4 bottomMargin">
+                            <div class="align-middle inp">
+                                Estado:&nbsp;&nbsp;  {{Order.address && Order.address[0]?.estado}}
+                            </div>
+                        </div>
+                        <div class="col-sm-4 col-lg-4 bottomMargin">
+                            <div class="align-middle inp">
+                                Ciudad:&nbsp;&nbsp;  {{Order.address && Order.address[0]?.ciudad}}
+                            </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-sm-8 col-lg-8 bottomMargin">
+                            <div class="align-middle inp">
+                                Teléfono:&nbsp;&nbsp;  {{Order.address && Order.address[0]?.telefono}}
+                            </div>
+                          </div>
+                          <div class="col-sm-4 col-lg-4 bottomMargin">
+                            <div class="align-middle inp">
+                                Código Postal:&nbsp;&nbsp;  {{Order.address && Order.address[0]?.cp}}
+                            </div>
+                          </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-12 d-flex flex-row-reverse">
+                          <button type="submit" class="btn btn-lg btn-color" (click)="showDiv.next = !showDiv.next;showDiv.nextn = false;showDiv.current = false">Siguiente</button>
+                        </div>
+                      </div>
+                </div>  
+            </div>
+          <ng-template #noUser>
+              <!--1-->
+          <div class="check-item">
+            <!--2-->
+            <div class="address">
+              <p class="address-title"><b>Datos Personales</b></p>
+              <div class="card-content">
+                <div class="row">
+                  <div class="col-sm-6 col-lg-6 bottomMargin">
+                    <input type="name" class="form-control" placeholder="Nombre" name="nombre" [(ngModel)]="nombre">
+                  </div>
+                  <div class="col-sm-6 col-lg-6 bottomMargin">
+                    <input type="text" class="form-control" placeholder="Apellido Paterno" name="apellidoPaterno" [(ngModel)]="apellidoPaterno">
+                  </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6 col-lg-6 bottomMargin">
+                      <input type="name" class="form-control" placeholder="Apellido Materno" name="apellidoMaterno" [(ngModel)]="apellidoMaterno">
+                    </div>
+                    <div class="col-sm-6 col-lg-6 bottomMargin">
+                      <input type="text" class="form-control" placeholder="Correo" name="correo" [(ngModel)]="correo">
+                    </div>
+                  </div>
+                  <p class="address-title"><b>Dirección de envio</b></p>
+                <div class="row">
+                  <div class="col-sm-6 col-lg-6 bottomMargin">
+                    <input type="text" class="form-control" placeholder="Dirección" name="direccion" [(ngModel)]="direccion">
+                  </div>
+                  <div class="col-sm-6 col-lg-6 bottomMargin">
+                    <input type="text" class="form-control" placeholder="Colonia" name="colonia" [(ngModel)]="colonia">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-4 col-lg-4 bottomMargin">
+                    <input type="text" class="form-control" placeholder="País" name="pais" [(ngModel)]="pais">
+                  </div>
+                  <div class="col-sm-4 col-lg-4 bottomMargin">
+                    <select id="estado" name="estado" class="form-control" placeholder="Estado" name="estado" [(ngModel)]="estado">
+                      <option selected>Choose...</option>
+                      <option value="Aguascalientes">Aguascalientes</option>
+                      <option value="Baja California">Baja California</option>
+                      <option value="Baja California Sur">Baja California Sur</option>
+                      <option value="Campeche">Campeche</option>
+                      <option value="Chiapas">Chiapas</option>
+                      <option value="Chihuahua">Chihuahua</option>
+                      <option value="CDMX">Ciudad de México</option>
+                      <option value="Coahuila">Coahuila</option>
+                      <option value="Colima">Colima</option>
+                      <option value="Durango">Durango</option>
+                      <option value="Estado de México">Estado de México</option>
+                      <option value="Guanajuato">Guanajuato</option>
+                      <option value="Guerrero">Guerrero</option>
+                      <option value="Hidalgo">Hidalgo</option>
+                      <option value="Jalisco">Jalisco</option>
+                      <option value="Michoacán">Michoacán</option>
+                      <option value="Morelos">Morelos</option>
+                      <option value="Nayarit">Nayarit</option>
+                      <option value="Nuevo León">Nuevo León</option>
+                      <option value="Oaxaca">Oaxaca</option>
+                      <option value="Puebla">Puebla</option>
+                      <option value="Querétaro">Querétaro</option>
+                      <option value="Quintana Roo">Quintana Roo</option>
+                      <option value="San Luis Potosí">San Luis Potosí</option>
+                      <option value="Sinaloa">Sinaloa</option>
+                      <option value="Sonora">Sonora</option>
+                      <option value="Tabasco">Tabasco</option>
+                      <option value="Tamaulipas">Tamaulipas</option>
+                      <option value="Tlaxcala">Tlaxcala</option>
+                      <option value="Veracruz">Veracruz</option>
+                      <option value="Yucatán">Yucatán</option>
+                      <option value="Zacatecas">Zacatecas</option>
+                    </select>
+                  </div>
+                  <div class="col-sm-4 col-lg-4 bottomMargin">
+                    <input type="name" class="form-control" placeholder="Ciudad" name="ciudad" [(ngModel)]="ciudad">
+                  </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-8 col-lg-8 bottomMargin">
+                        <input type="text" class="form-control" placeholder="Número de teléfono" name="telefono" [(ngModel)]="telefono">
+                    </div>
+                    <div class="col-sm-4 col-lg-4 bottomMargin">
+                        <input type="text" class="form-control" placeholder="Codigo Postal" name="cp" [(ngModel)]="cp">
+                    </div>
+                  
+                </div>
+                <div class="row">
+                  <div class="col-12 d-flex flex-row-reverse">
+                    <button type="submit" class="btn btn-lg btn-color" (click)="showDiv.next = !showDiv.next;showDiv.previous = false;showDiv.current = false;">Siguiente</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          </ng-template>
+        </div>
+        <!-- Forma de pago -->
+        <div class="col-sm-8 c-check c-check-left c-placeorder" *ngIf="showDiv.next">
+            <div class="panel panel-default credit-card-box">
+                <div class="panel-heading display-table">
+                  <div class="row display-tr">
+                    <h3 class="panel-title display-td">Forma de pago</h3>
+                    <div class="display-td">
+                      <img
+                        class="img-responsive pull-right"
+                        src="http://i76.imgup.net/accepted_c22e0.png"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="panel-body py-4">
+                  <form role="form" id="payment-form">
+                    <div class="row">
+                        <div class="col-sm-12">
+                          <div class="form-group">
+                            <label for="cardExpiry">
+                              Nombre del propetario
+                            </label>
+                            <input
+                              type="text"
+                              class="form-control"
+                              [(ngModel)]="cNombre"
+                              name="cNombre"
+                              placeholder="Nombre"
+                              required
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <div class="form-group">
+                          <label for="cardExpiry">
+                            Numero de tarjeta
+                          </label>
+                          <input
+                            type="tel"
+                            class="form-control"
+                            name="cNumber"
+                            [(ngModel)]="cNumber"
+                            placeholder="Numero de Tarjeta"
+                            autocomplete="cc-number" 
+                            ccNumber
+                            required
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-8 col-md-8">
+                        <div class="form-group">
+                          <label for="cardExpiry">
+                            Fecha de expiración
+                          </label>
+                          <input
+                            type="tel"
+                            class="form-control"
+                            name="cExp"
+                            [(ngModel)]="cExp"
+                            placeholder="MM / YY"
+                            autocomplete="cc-exp"
+                            ccExp
+                            required
+                            />
+                        </div>
+                      </div>
+                      <div class="col-sm-4 col-md-4 pull-right">
+                        <div class="form-group">
+                          <label for="cardCVC">CV</label>
+                          <input
+                            type="tel"
+                            class="form-control"
+                            name="cCVC"
+                            [(ngModel)]="cCVC"
+                            placeholder="XXX"
+                            autocomplete="off" 
+                            ccCvc
+                            required
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row" *ngIf="auth.loggedIn(); else notLogged">
+                        <div class="col-12 d-flex flex-row-reverse">
+                          <button type="submit" class="btn btn-lg btn-color" (click)="showDiv.nextn = !showDiv.nextn;showDiv.next = false;showDiv.current = false; payment()">Siguiente</button>
+                        </div>
+                      </div>
+                      <ng-template #notLogged>
+                        <div class="row">
+                          <div class="col-12 d-flex flex-row-reverse">
+                            <button type="button" class="btn btn-lg btn-color" (click)="showDiv.nextn = !showDiv.nextn;showDiv.next = false;showDiv.current = false; userData()">Siguiente</button>
+                          </div>
+                        </div>
+                      </ng-template>
+
+                    <div class="row" style="display: none;">
+                      <div class="col-sm-12">
+                        <p class="payment-errors"></p>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            
+        </div>
+        <div class="col-sm-12 c-check c-check-left c-placeorder" *ngIf="showDiv.nextn">
+            <h3 class="panel-title display-td">Pedido Completo</h3>
+            <div class="row h-50">
+                <div class="col-sm-8">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-6 col-lg-6">
+                                    <h4>Datos Personales</h4>
+                                    {{Order.user && Order.user[0]?.nombre}}&nbsp;{{Order.user && Order.user[0]?.apellidoPaterno}}&nbsp;{{Order.user && Order.user[0]?.apellidoMaterno}}<br>
+                                    {{Order.user && Order.user[0]?.correo}}<br>
+                              </div>
+                              <div class="col-sm-6 col-lg-6">
+                                <h4>Pago</h4>
+                                  Nombre:&nbsp;&nbsp;  {{Order.payment && Order.payment[0]?.cNombre}}<br>
+                                  Numero de Tarjeta:&nbsp;&nbsp;  **********{{Order.payment && Order.payment[0]?.cNumber | slice: -4}}<br>
+                                  Fecha de Exp.:&nbsp;&nbsp;  {{Order.payment && Order.payment[0]?.cExp}}<br>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card col-sm-12 mt-3 ">
+                        <div class="card-body">
+                          <h4>Dirección de Envío</h4>
+                          <div class="row">
+                              <div class="col-sm-12 col-md-6">
+                                Dirección:&nbsp;&nbsp;  {{Order.address && Order.address[0]?.direccion}}<br>
+                                País:&nbsp;&nbsp;  {{Order.address && Order.address[0]?.pais}}<br>
+                                Teléfono: &nbsp;&nbsp;  {{Order.address && Order.address[0]?.telefono}}<br>
+                              </div>
+                              <div class="col-sm-12 col-md-6">
+                                Colonia:&nbsp;&nbsp;  {{Order.address && Order.address[0]?.colonia}}<br>
+                                Ciudad:&nbsp;&nbsp;  {{Order.address && Order.address[0]?.ciudad}}<br>
+                                Estado:&nbsp;&nbsp;  {{Order.address && Order.address[0]?.estado}}<br>
+                                Código Postal:&nbsp;&nbsp;  {{Order.address && Order.address[0]?.cp}}<br>
+                              </div>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card col-sm-4 mt-sm-3 mt-md-0 p-0" style="height: 21rem;">
+                    <h4 class="my-3 mx-2">Productos</h4>
+                    <div class="card-body overflow-auto">
+                        <div *ngFor="let product of Order.cart;">
+                            <div class="row ">
+                            <div class="col-4 py-2 my-2 my-auto">
+                                <img src="{{product.imagen}}" class="w-100 card-img-top img-thumbnail img-fluid img my-auto font-weight-bold" alt="product">
+                              </div>
+                              <div class="col-8 my-2">
+                                <p class="p-0 m-0">{{product.nombre}}</p>
+                                <p class="p-0 m-0 text-mango font-weight-bold">{{product.precio | currency}}</p>
+                              </div>
+                          </div>
+                      </div>
+                    </div>
+                </div>
+                <div class="card col-sm-12 mt-sm-3 p-2">
+                    <div class="row justify-content-between total-item she-clearfix">
+                        <span class="col-4 she-fl ">Cantidad de Productos:&nbsp;<b>{{Order.cantidadTotal}}</b></span>
+                        <span class="col-4 text-right font-color">Subtotal:&nbsp;<b>{{Order.total | currency}}</b></span>
+                      </div>
+                </div>
+                    <div class="col-12 d-flex flex-row-reverse mt-3">
+                      <button type="submit" class="btn btn-lg btn-color" [routerLink]="['/completed']" routerLinkActive="router-link-active" (click)="finalize();">Finalizar Compra</button>
+                    </div>
+            </div>
+
+        </div>
+  
+        <div class="col-sm-4 c-check c-check-right j-check-right pl-3 pr-0" *ngIf="showDiv.next || showDiv.current">
+          <!--order-summary-->
+          <div class="check-title she-clearfix">
+            <h4>Resumen del Pedido</h4>
+          </div>
+          <div class="c-order-summary">
+            <div class="summary-item overflow-auto" style="height: 20rem;" id="content-5">
+                <div class="row p-0 m-0" *ngFor="let product of Order.cart;">
+                    <div class="col-4 py-2 my-2 my-auto">
+                      <img src="{{product.imagen}}" class="w-100 card-img-top img-thumbnail img-fluid img my-auto font-weight-bold" alt="product">
+                    </div>
+                    <div class="col-6 my-2">
+                      <p class="p-0 m-0">{{product.nombre}}</p>
+                      <p class="p-0 m-0 text-mango font-weight-bold">{{product.precio | currency}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-between total-item she-clearfix">
+              <span class="col-4 she-fl font-color"><b>Subtotal:</b></span>
+              <span class="col-4 text-right"><b>{{Order.total | currency}}</b></span>
+            </div>
+            <div class="coupon-point"></div>
+          </div>
+          <!--c-order-summary-->
+        </div>
+        <!--order-summary-->
+      </div>
+    </div>
+    <!-- </div>
+    </div> -->
+    <!--container-->
+  </body>

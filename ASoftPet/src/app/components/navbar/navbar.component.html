@@ -36,25 +36,25 @@
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           MI CUENTA
                         </a>
-                        <div class=" dropdown-menu border-0 " aria-labelledby="navbarDropdown">
+                        <div class=" dropdown-menu border-0 m-0" aria-labelledby="navbarDropdown">
                           <a [routerLink]="['/log-in']" class="dropdown-item" href="#">INICIAR SESIÓN</a>
                           <a [routerLink]="['/sign-up']" class="dropdown-item" href="#">REGISTRARSE</a>
                         </div>
                       </li>
                       <ng-template  #logged>
                         <li class="nav-item dropdown dpc">
-                          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             MI CUENTA
                           </a>
-                          <div *ngIf="user.role !== 'Administrador'; else admin" class=" dropdown-menu border-0 " aria-labelledby="navbarDropdown">
-                            <a [routerLink]="['/profile-info']" class="dropdown-item" href="#">PERFIL</a>
-                            <a class="dropdown-item" href="#">HISTORIAL DE PEDIDOS</a>
+                          <div *ngIf="user?.role !== 'Administrador'; else admin" class=" dropdown-menu border-0 m-0" aria-labelledby="navbarDropdown">
+                            <a [routerLink]="['/profile-info']" class="dropdown-item">PERFIL</a>
+                            <a class="dropdown-item" [routerLink]="['/shop-history']">HISTORIAL DE PEDIDOS</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" (click)="onLogoutClick()" >CERRAR SESION</a>
                           </div>
                           <ng-template #admin>
-                            <div class=" dropdown-menu border-0 " aria-labelledby="navbarDropdown">
-                              <a [routerLink]="['/product-list']" class="dropdown-item" href="#">DASHBOARD</a>
+                            <div class=" dropdown-menu border-0 m-0" aria-labelledby="navbarDropdown">
+                              <a [routerLink]="['/product-list']" class="dropdown-item">DASHBOARD</a>
                               <div class="dropdown-divider"></div>
                               <a class="dropdown-item" (click)="onLogoutClick()" >CERRAR SESION</a>
                             </div>
@@ -73,7 +73,7 @@
                       
                       <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABmJLR0QA/wD/AP+gvaeTAAABk0lEQVRIie3VPUscURTG8f8Z0U8gWCgIQVDR2kokaxALv8dWgohTWNhbuGIgjVYBsRBMGRFdlNVdVKxsfG1UFLRRIUFWEnceCw15cbK7w9zdIvGpZs4c+N1z7zAD/1sMwE+0Z0Hdz7UzZKOpzMF8JWEvpNaMaW74bUdLJeEX8ROts36iTSO9rWOVdF5MHMAnAE82UFVY93dpIC/oGnrX2VA1eGrrIg+sA15dUOivFGxhRb+3bRDxwbkmZVOZox4If6vhQYvOUQCzNz8uQ+HUxtEJsO/alZEuCj/FnE9tKgM2nG+3TDVrJeHT+sMccOOMNXYnMntXJeGFBQpC6b89jx6t/HpX5IwB85xtd6Ca34YoCge13iJQcODmdf9ls2x4annvBrHjAF5//iKWBwPI+BxXFbbyZ60kXHiwj8DXGO5tnafZyPD77MElHv0G28D3COA3sJygb3z18DrKSv/NhP4Ww+In2gdAM4BkQXJy7XgpTl/JM/4ZTQONQJPJZuL2RYDdpmxYFiSBC9C5iWTcvtdULY81vpNJmfqLlwAAAABJRU5ErkJggg==">
                       <div class="badge badge-pill badge-danger align-self-start">
-                        {{Cart.carrito?.length}}
+                        {{(Cart.carrito?.length) ? (Cart.carrito?.length) : '0'}}
                       </div> 
                     </a>
                 </div>
@@ -92,10 +92,10 @@
               <div class="collapse navbar-collapse text-center" id="navbarNav1">
                 <ul class="navbar-nav mr-auto mx-lg-auto text-left m-0">
                   <li class="nav-item dropdown px-1 dp px-lg-2 mx-lg-2">
-                    <a  class="nav-link  w-100 p-2" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Perros' }">
+                    <a  class="nav-link  w-100 p-2"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Perros' }">
                       PERROS
                     </a>
-                    <div class="dropdown-menu border-0" aria-labelledby="navbarDropdown">
+                    <div class="dropdown-menu border-0 m-0" aria-labelledby="navbarDropdown">
                       <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Perros', 'categoria': 'Accesorios' }">ACCESORIOS</a>
                       <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Perros', 'categoria': 'Higiene' }">HIGIENE</a>
                       <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Perros', 'categoria': 'Alimento' }">ALIMENTO</a>
@@ -103,10 +103,10 @@
                     </div>
                   </li>
                   <li  class="nav-item dropdown px-1 dp px-lg-2 mx-lg-2">
-                    <a class="nav-link p-2" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Gatos' }">
+                    <a class="nav-link p-2" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Gatos' }">
                       GATOS
                     </a>
-                    <div class="dropdown-menu border-0" aria-labelledby="navbarDropdown">
+                    <div class="dropdown-menu border-0 m-0" aria-labelledby="navbarDropdown">
                       <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Gatos', 'categoria': 'Accesorios' }">ACCESORIOS</a>
                       <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Gatos', 'categoria': 'Higiene' }">HIGIENE</a>
                       <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Gatos', 'categoria': 'Alimento' }">ALIMENTO</a>
@@ -114,10 +114,10 @@
                     </div>
                   </li>
                   <li class="nav-item dropdown px-1 dp px-lg-2 mx-lg-2">
-                    <a class="nav-link p-2" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Reptiles' }">
+                    <a class="nav-link p-2" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Reptiles' }">
                       REPTILES
                     </a>
-                    <div class="dropdown-menu border-0" aria-labelledby="navbarDropdown">
+                    <div class="dropdown-menu border-0 m-0" aria-labelledby="navbarDropdown">
                       <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Reptiles', 'categoria': 'Accesorios' }">ACCESORIOS</a>
                       <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Reptiles', 'categoria': 'Higiene' }">HIGIENE</a>
                       <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Reptiles', 'categoria': 'Alimento' }">ALIMENTO</a>
@@ -125,10 +125,10 @@
                     </div>
                   </li>
                   <li class="nav-item dropdown px-1 dp px-lg-2 mx-lg-2">
-                    <a class="nav-link p-2" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Roedores' }">
+                    <a class="nav-link p-2"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Roedores' }">
                       ROEDORES
                     </a>
-                    <div class="dropdown-menu border-0" aria-labelledby="navbarDropdown">
+                    <div class="dropdown-menu border-0 m-0" aria-labelledby="navbarDropdown">
                       <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Roedores', 'categoria': 'Accesorios' }">ACCESORIOS</a>
                       <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Roedores', 'categoria': 'Higiene' }">HIGIENE</a>
                       <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Roedores', 'categoria': 'Alimento' }">ALIMENTO</a>
@@ -136,10 +136,10 @@
                     </div>
                   </li>
                   <li class="nav-item dropdown px-1 dp px-lg-2 mx-lg-2">
-                    <a class="nav-link p-2" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Peces' }">
+                    <a class="nav-link p-2" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Peces' }">
                       PECES
                     </a>
-                    <div class="dropdown-menu border-0" aria-labelledby="navbarDropdown">
+                    <div class="dropdown-menu border-0 m-0" aria-labelledby="navbarDropdown">
                       <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Peces', 'categoria': 'Accesorios' }">ACCESORIOS</a>
                       <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Peces', 'categoria': 'Higiene' }">HIGIENE</a>
                       <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Peces', 'categoria': 'Alimento' }">ALIMENTO</a>
@@ -147,10 +147,10 @@
                     </div>
                   </li>
                   <li class="nav-item dropdown px-1 dp px-lg-2 mx-lg-2">
-                    <a class="nav-link p-2" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Aves' }">
+                    <a class="nav-link p-2" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Aves' }">
                       AVES
                     </a>
-                    <div class="dropdown-menu border-0" aria-labelledby="navbarDropdown">
+                    <div class="dropdown-menu border-0 m-0" aria-labelledby="navbarDropdown">
                       <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Aves', 'categoria': 'Accesorios' }">ACCESORIOS</a>
                       <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Aves', 'categoria': 'Higiene' }">HIGIENE</a>
                       <a class="dropdown-item"  [routerLink]="['/catalog']" [queryParams]="{ departamento: 'Aves', 'categoria': 'Alimento' }">ALIMENTO</a>
@@ -163,35 +163,44 @@
           </div>
           <div id="mySidebar" class="sidebar">
             <a href="javascript:void(0)" class="closebtn text-decoration-none text-dark" (click)="closeNav()">×</a>
-            <div class="top-content p-2">
-              <h6 >Hay {{Cart.carrito?.length}} item(s) " en el carrito de compras"</h6>
-              <hr>
-            </div>
-            <div class="row p-3 overflow-auto cont" *ngFor="let product of Cart.carrito;" >
-              <div class="col-5 my-2 my-auto">
-                <img src="{{product.imagen}}" class="w-100 card-img-top img-thumbnail img-fluid img my-auto font-weight-bold" alt="product">
+            
+           <div *ngIf="Cart.carrito?.length !== 0; else NoProducts">
+             <div class="top-content p-2" >
+               <h6 >Hay {{Cart.carrito?.length}} item(s) " en el carrito de compras"</h6>
+               <hr>
+             </div>
+             <div class="row p-3 overflow-auto cont" *ngFor="let product of Cart.carrito;" >
+               <div class="col-5 my-2 my-auto">
+                 <img src="{{product.imagen}}" class="w-100 card-img-top img-thumbnail img-fluid img my-auto font-weight-bold" alt="product">
+               </div>
+               <div class="col-6 my-2">
+                 <p class="p-0 m-0">{{product.nombre}}</p>
+                 <p class="p-0 m-0 text-mango font-weight-bold">{{product.precio | currency}}</p>
+               </div>
+               <div class="col-1 p-0">
+                 <a class="ajax_cart_block_remove_link p-0"  rel="nofollow" (click)="removeFromCart(product)" title="Eliminar">
+                   <i class="fa fa-trash"></i>
+                 </a>
+               </div>
+             </div>
+             <div class="w-100 m-2 col-12 position-sticky pb-3 sticky-bottom">
+               <hr>
+               <div class="price-total">
+                 <span class="price_text">Total: </span>
+                 <span class="price cart_block_total ajax_block_products_total pr-3">{{Cart.total | currency }}</span>
+                 <div class="buttons">
+                   <a id="button_goto_cart" class="btn btn-lg btn-block text-white" [routerLink]="['/check-out']" (click)="closeNav();" routerLinkActive="router-link-active"  title="Ver carrito de compras"
+                     rel="nofollow" style="float: right;"> Comprar </a>
+                 </div>
+               </div>
+             </div>
+           </div>
+            <ng-template #NoProducts>
+              <div >
+                <h4 class="text-center p-1">El carrito esta vacio</h4>
+                <p class="text-center p-1">Compra en softpet</p>
               </div>
-              <div class="col-6 my-2">
-                <p class="p-0 m-0">{{product.nombre}}</p>
-                <p class="p-0 m-0 text-mango font-weight-bold">{{product.precio | currency}}</p>
-              </div>
-              <div class="col-1 p-0">
-                <a class="ajax_cart_block_remove_link p-0"  rel="nofollow" (click)="removeFromCart(product)" title="Eliminar">
-                  <i class="fa fa-trash"></i>
-                </a>
-              </div>
-            </div>
-            <div class="w-100 m-2 col-12 position-sticky pb-3 sticky-bottom">
-              <hr>
-              <div class="price-total">
-                <span class="price_text">Total: </span>
-                <span class="price cart_block_total ajax_block_products_total pr-3">{{Cart.total | currency }}</span>
-                <div class="buttons">
-                  <a id="button_goto_cart" class="btn btn-lg btn-block text-white" href="carrito.html" title="Ver carrito de compras"
-                    rel="nofollow" style="float: right;"> Comprar </a>
-                </div>
-              </div>
-            </div>
+            </ng-template>
           </div>
         </nav>
   </header>

@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import {Location} from '@angular/common';
 import { CartService } from '../../shared/service/cart.service';
+import { NgFlashMessageService } from 'ng-flash-messages';
 declare var $ : any;
 @Component({
   selector: 'app-detail-product',
@@ -16,7 +17,8 @@ export class DetailProductComponent implements OnInit {
   constructor(private route: ActivatedRoute, 
     private router: Router,
     private _location: Location,
-    public cart: CartService) { }
+    public cart: CartService,
+    private ngFlashMessageService: NgFlashMessageService) { }
 
   ngOnInit() {
     this.addToCart
@@ -58,6 +60,12 @@ export class DetailProductComponent implements OnInit {
   }
   addToCart(products){
     this.cart.sendClickEvent(products)
+    this.ngFlashMessageService.showFlashMessage({
+      messages: ['Se ha añadido al carrito'],
+      dismissible: true, 
+      timeout: 3000,
+      type: 'success'
+    });
   }
 
 }

@@ -21,7 +21,7 @@ export class AddProductComponent implements OnInit {
   categoria: String;
   cantidad: Number;
   marca: String;
-  imagen: String;
+  imagen: '../../../../assets/images/productoAnon.jpg';
   add = {
     id: ''
   };
@@ -35,9 +35,9 @@ export class AddProductComponent implements OnInit {
   ) {
     router.events.subscribe((filter) => {
       this.id = this.route.snapshot.queryParams["aid"];
-      if(this.id){
+      /* if(this.id){
         this.addProduct();
-      }
+      } */
     });
    }
    goid(){
@@ -51,23 +51,30 @@ export class AddProductComponent implements OnInit {
   addProduct(){
     console.log(this.id);
     var self = this
+    const addProduct = {
+      nombre:this.nombre,
+      precio: this.precio,
+      descripcion: this.descripcion,
+      departamento: this.departamento,
+      categoria: this.categoria,
+      cantidad: this.cantidad,
+      marca: this.marca,
+      imagen:'../../../../assets/images/productoAnon.jpg'
+    }
     $.ajax({
-      method: 'post',
-      data:
-       {
-        nombre:this.nombre,
-        precio: this.precio,
-        descripcion: this.descripcion,
-        departamento: this.departamento,
-        categoria: this.categoria,
-        cantidad: this.cantidad,
-        marca: this.marca
-      },
+      method: 'POST',
       url: 'http://localhost:2020/product/'+this.id,
+      data:addProduct,
       success: function (result){
        self.products=result;
        console.log(result);
        self.router.navigate(['/product-list'])
+       self.ngFlashMessageService.showFlashMessage({
+        messages: ['Se ha añadido un producto nuevo exitosamente'],
+        dismissible: true, 
+        timeout: 3000,
+        type: 'success'
+      });
       },
       error: function(){
       self.products = [];

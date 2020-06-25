@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http'
 import { FormsModule } from '@angular/forms';
 import { NgFlashMessagesModule } from 'ng-flash-messages';
+import { CreditCardDirectivesModule } from 'angular-cc-library';
 
 //Components
 import { AppRoutingModule } from './app-routing.module';
@@ -28,12 +29,15 @@ import { FaqsComponent } from './components/footer-info/faqs/faqs.component';
 import { DevolucionComponent } from './components/footer-info/devolucion/devolucion.component';
 import { GetProductComponent } from './components/admin/get-product/get-product.component';
 import { EditProductComponent } from './components/admin/edit-product/edit-product.component';
+import { CheckOutComponent } from './components/check-out/check-out.component';
+import { ShopHistoryComponent } from './components/shop-history/shop-history.component';
 //Services
 import { AuthService } from './shared/service/auth.service';
 import { AuthGuard } from './shared/guard/auth.guard'
 import { ValidateService } from './shared/service/validate.service';
 import { ProductService } from './shared/service/product.service';
-import { CartComponent } from './components/cart/cart.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
+import { CompletedComponent } from './components/completed/completed.component';
 
 
 
@@ -65,7 +69,10 @@ import { CartComponent } from './components/cart/cart.component';
     DevolucionComponent,
     GetProductComponent,
     EditProductComponent,
-    CartComponent
+    SpinnerComponent,
+    CheckOutComponent,
+    ShopHistoryComponent,
+    CompletedComponent
   ],
   imports: [
     BrowserModule,
@@ -73,6 +80,7 @@ import { CartComponent } from './components/cart/cart.component';
     HttpClientModule,
     NgFlashMessagesModule.forRoot(),
     FormsModule,
+    CreditCardDirectivesModule
   ],
   providers: [AuthService, AuthGuard, ValidateService, ProductService],
   bootstrap: [AppComponent]

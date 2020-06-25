@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Otra Página con Bootstrap</title>
+    <style>
+    html, body{
+    margin: 0rem;
+    padding: 0%;
+    width: 100%;
+    height: 100%;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: black;
+    }
+    </style>
+</head>
+<main>
+    <div style = 'background-color: #ffe082; width: 100%; height: 5rem; padding: 0; margin: 0; text-align: center;'>
+        <img src='https://raw.githubusercontent.com/jpvpa/SoftPet/master/ASoftPet/src/assets/images/logito.png' alt='Softpet-logo' style=' width: 12rem; height: 5rem;'>
+    </div>
+    <div style = 'display: table; text-align: center; width: 100%;'>
+        <div style='display:table-cell; text-align: center; font-size: large;'>
+            <h2><b>Gracias por ordenar con nosotros Angel </h2></b>
+            <article class="container">
+
+                    <div class="card col-lg-6 col-md-6 col-sm-12 float-left" style="height: 12rem; border: none;">
+                        <div class="card-body">
+                          <h3 class="card-title">Datos del Usuario: ${Order.user.nombre}</h3>
+                          <p>Orden ID: </p>
+                          <p>Orden Total: </p>
+                        </div>
+                    </div>
+
+                <div class="card col-lg-6 col-md-6 col-sm-12 float-left" style="height: 12rem; border: none;">
+                    <div class="card-body">
+                        <h3 class="card-title">Dirección: </h3>
+                        <p>Calle </p>
+                        <p>Colonia </p>
+                        <p>Estado, País, CP</p>
+                    </div>
+                </div>
+            </article>
+
+            <section class="container">
+
+                  <div class="card col-lg-4 col-md-4 col-sm-12 float-left" style="height: 12rem; border: none;">
+                    <div class="card-body">
+                      <h3 class="card-title">Productos ordenados:</h3>
+                      <img src="..." class="card-img-top" alt="...">
+                    </div>
+                </div>
+
+                <div class="card col-lg-4 col-md-4 col-sm-12 float-left" style="height: 12rem; border: none;">
+                    <div class="card-body">
+                    <h3 class="card-title">Nombre:</h3>
+                    <p class="card-text">Natural Balance bla bla bla</p>
+                    </div>
+                </div>
+
+                <div class="card col-lg-4 col-md-4 col-sm-12 float-left" style="height: 12rem; border: none;">
+                    <div class="card-body">
+                    <h3 class="card-title">Precio:</h3>
+                    <p class="card-text">$ 20.00 </p>
+                    </div>
+                </div>
+            </section>
+    
+            <section class="container">
+                <div class="col-12" style="display: inline-block; text-align: right;"><h2>Subtotal (5 Productos): $526.00</h2></div>
+                <div class="col-12" style="display: inline-block; text-align: right;"><h2><b>Total: $526.00</h2></b></div>
+            </section>
+            </div>
+        </div>
+</main>
+</html>
