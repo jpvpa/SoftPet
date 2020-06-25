@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { filter } from "rxjs/operators";
 import { CartService } from '../../shared/service/cart.service'
+import { NgFlashMessageService } from 'ng-flash-messages';
 declare var $ : any;
 @Component({
   selector: 'app-catalog',
@@ -9,6 +10,7 @@ declare var $ : any;
   styleUrls: ['./catalog.component.css']
 })
 export class CatalogComponent implements OnInit {
+  isLoadingProducts = true;
   products = [];
   nombre: '';
   departamento: '';
@@ -37,7 +39,7 @@ export class CatalogComponent implements OnInit {
 
   contador: number = 0;
  
-  constructor(private route: ActivatedRoute, private router: Router, private cart: CartService) {
+  constructor(private route: ActivatedRoute, private router: Router, private cart: CartService,private ngFlashMessageService: NgFlashMessageService) {
     router.events.subscribe((filter) => {
       this.nombre = this.route.snapshot.queryParams["nombre"];
       this.departamento = this.route.snapshot.queryParams["departamento"];
@@ -108,6 +110,9 @@ export class CatalogComponent implements OnInit {
     var arreglo_secciones = [];
     // numero_resultados = 8 resultado=verdadero
     var num_secciones = Math.floor(numero_resultados / n_articulos_seccion);
+    if(numero_resultados == 1){
+      var num_secciones = Math.ceil(numero_resultados / n_articulos_seccion);
+    }
     inicio = 0;
     fin = 0;
     console.log("Parametro 1 " + numero_resultados);
@@ -119,16 +124,16 @@ export class CatalogComponent implements OnInit {
         inicio = 0;
         fin = numero_resultados - 1;
         cont_secciones = 0;
-        console.log(inicio);
-        console.log(fin);
+        /* console.log(inicio);
+        console.log(fin); */
         arreglo_secciones[cont_secciones] = {
           datoinicio: inicio,
           datolimite: fin,
         };
-        console.log("Seccion: " + cont_secciones);
+        /* console.log("Seccion: " + cont_secciones);
         console.log("Numero de secciones: " + arreglo_secciones.length);
         console.log("-------------------------");
-        console.log("\n");
+        console.log("\n"); */
       } else {
         cont_secciones = 0;
         //0 7
@@ -139,18 +144,18 @@ export class CatalogComponent implements OnInit {
         ) {
           inicio = i; //0,2
           fin = i + n_articulos_seccion - 1; //1,3
-          console.log(inicio);
-          console.log(fin);
+          /* console.log(inicio);
+          console.log(fin); */
           arreglo_secciones[cont_secciones] = {
             datoinicio: inicio,
             datolimite: fin,
           };
-          console.log("Seccion: " + cont_secciones);
+          // console.log("Seccion: " + cont_secciones);
           cont_secciones = cont_secciones + 1;
-          console.log("\n");
+          /*console.log("\n"); */
         }
-        console.log("Numero de secciones: " + arreglo_secciones.length);
-        console.log("-------------------------");
+        /* console.log("Numero de secciones: " + arreglo_secciones.length);
+        console.log("-------------------------"); */
       }
     } else {
 
@@ -172,10 +177,10 @@ export class CatalogComponent implements OnInit {
           datoinicio: inicio,
           datolimite: fin,
         };
-        console.log("Seccion: " + cont_secciones);
+        /* console.log("Seccion: " + cont_secciones);
         console.log("Numero de secciones: " + arreglo_secciones.length);
         console.log("-------------------------");
-        console.log("\n");
+        console.log("\n"); */
       } else {
         cont_secciones = 0;
         //numero_resultados= 9
@@ -190,18 +195,18 @@ export class CatalogComponent implements OnInit {
             inicio = i; //0, 4
             fin = i + n_articulos_seccion - 1; //3,7
           }
-          console.log(inicio);
-          console.log(fin);
+          /* console.log(inicio);
+          console.log(fin); */
           arreglo_secciones[cont_secciones] = {
             datoinicio: inicio,
             datolimite: fin,
           };
-          console.log("Seccion: " + cont_secciones);
+          /* console.log("Seccion: " + cont_secciones); */
           cont_secciones = cont_secciones + 1;
-          console.log("\n");
+          /* console.log("\n"); */
         }
-        console.log("Numero de secciones: " + arreglo_secciones.length);
-        console.log("-------------------------");
+        /* console.log("Numero de secciones: " + arreglo_secciones.length);
+        console.log("-------------------------"); */
       }
     }
     self.numero_de_secciones = arreglo_secciones.length;
@@ -271,16 +276,17 @@ export class CatalogComponent implements OnInit {
       method: 'get',
       url: 'http://localhost:2020/product/search'+params,
       success: function (result){
+        self.isLoadingProducts = false;
        self.products=result;
        console.log(result);
        //Paginación
        if (self.products.length != 0) {
-        console.log("LLamando a Seccionar");
+        /* console.log("LLamando a Seccionar"); */
         var respuesta = self.Seccionar(
           self.products.length,
           parseInt(self.n_articulos_seccion)
         );
-        console.log(respuesta);
+        /* console.log(respuesta); */
         //Dato Entrada
         self.Paginacion(false);
         //reinicio de seccion actual con el uso de cualquier filtro dentro de un departamento
@@ -299,10 +305,10 @@ export class CatalogComponent implements OnInit {
           //se marca y resalata la primer seccion
           $(".activado").removeClass("activado");
           $("#a1").addClass("activado");
-          console.log(
+          /* console.log(
             "Variable temporal de secciones" + self.temporal_num_secciones
           );
-          console.log("Categoria" + self.temporal_categoria);
+          console.log("Categoria" + self.temporal_categoria); */
         }
         /*****************************************************/
         if (respuesta[self.numero_de_seccion].datolimite != null) {
@@ -318,8 +324,8 @@ export class CatalogComponent implements OnInit {
           self.product =
             self.products[respuesta[self.numero_de_seccion].datoinicio];
         }
-        console.log("Numero de secciones " + self.numero_de_secciones);
-        console.log("Numero de secciones products " + self.products.length);
+        /* console.log("Numero de secciones " + self.numero_de_secciones);
+        console.log("Numero de secciones products " + self.products.length); */
         //   console.log(self.products);
       } else {
         //    console.log(self.products);
@@ -328,12 +334,13 @@ export class CatalogComponent implements OnInit {
        }
       },
       error: function () {
+        self.isLoadingProducts = false;
         self.products = [];
       },
     });
   };
  searchProduct(){
-    var self = this
+    /* var self = this
     $.ajax({
       method: 'get',
       url: 'http://localhost:2020/product/list',
@@ -341,16 +348,26 @@ export class CatalogComponent implements OnInit {
         withCredentials: true,
       },
       success: function (result){
+        //self.isLoadingProducts = false;
        self.products=result;
        console.log(result);
       },
       error: function(){
+        //self.isLoadingProducts = false;
       self.products = [];
       } 
-    })
+    }) */
   }
   addToCart(product){
     this.cart.sendClickEvent(product)
+    this.ngFlashMessageService.showFlashMessage({
+      messages: ['¡Estupendo! El producto se ha añadido al carrito'],
+      dismissible: true, 
+      timeout: 3000,
+      type: 'success'
+    });
   }
+
+
 
 }

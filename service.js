@@ -15,6 +15,7 @@ app.use(cors({
     credentials: true, 
     origin: 'http://localhost:4200'
 }))
+
 mongoose.connect('mongodb://localhost:27017/SoftPet', {
     useNewUrlParser: true, 
     useUnifiedTopology: true
@@ -40,9 +41,7 @@ app.use(express.static(path.join(_dirname,'client')));
 app.use(passport.initialize());
 app.use(passport.session()); 
 require('./config/passport')(passport);
-//Multer Middleware
-app.use(express.static(path.join(__dirname,'/public')));//Directorio para archivos staticos
-app.use('/uploads',express.static(path.join(__dirname,'/uploads')));//Directorio de imagenes
+
 
 
 //Endpoint

@@ -1,0 +1,260 @@
+html, body{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: 'Montserrat', sans-serif;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+.bottomMargin{
+    margin-bottom: 2%;
+} 
+.active{
+    color: #fff;
+    background-color: #6c757d;
+    border-radius: 10rem;
+    display: inline-block;
+    padding: .25em .4em;
+    font-size: 100%;
+    font-weight: 500;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+
+} 
+
+.btn-color {
+    background-color: #f5d36f;
+    color: white;
+    font-size: 18px;
+}
+.font-color{
+    color: #f5d36f;
+    font-size: 18px;
+}
+
+a{
+    color: #f6ab4b;
+    text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    color: #222;
+}
+
+/**/
+.container-fluid-1200 {
+    max-width: 1220px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.process-status {
+    margin: 40px auto;
+    text-align: center;
+}
+
+.process-status>span.actived {
+    color: #666;
+}
+
+.process-status>span {
+    font-size: 16px;
+    color: #ccc;
+    display: inline-block;
+}
+
+.process-status>span.active {
+    color: #222;
+    font-weight: 700;
+}
+
+.process-status>span:before {
+    content: '>';
+    padding: 0 10px;
+}
+
+.row {
+    margin-left: -10px;
+    margin-right: -10px;
+}
+
+.c-check.c-check-left {
+    padding-right: 50px;
+}
+
+.c-check {
+    margin-bottom: 30px;
+}
+
+.c-place-order .check-item {
+    position: relative;
+    margin-bottom: 40px;
+}
+.address {
+    text-align: left;
+}
+
+.address .address-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #000;
+    line-height: 25px;
+    border-bottom: 1px solid #e5e5e5;
+    padding-bottom: 16px;
+    margin-bottom: 20px;
+}
+
+.col-xs-6 {
+    width: 50%;
+}
+
+.address-name-input {
+    position: relative;
+    font-size: 12px;
+    margin-bottom: 15px;
+    cursor: text;
+}
+
+.address-name-input  .address-name-label {
+    position: absolute;
+    top: 5px;
+    left: 15px;
+    color: rgba(0,0,0,.4);
+    z-index: 2;
+    -webkit-transform: translate(0,15px);
+    transform: translate(0,15px);
+    -webkit-transition: all .3s ease;
+    transition: all .3s ease;
+    cursor: text;
+}
+
+/*Realizar el pedido*/
+.c-check.c-check-right {
+    padding-left: 40px;
+    border-left: 1px solid #ccc;
+}
+
+.c-check {
+    margin-bottom: 30px;
+}
+
+@media (min-width: 768px){
+    .col-sm-4 {
+        width: 33.33333333%;
+    }
+}
+.c-check .check-title {
+    position: relative;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e5e5e5;
+    margin-bottom: 20px;
+}
+
+.c-check .check-title>h4 {
+    font-size: 20px;
+    text-transform: capitalize;
+    display: inline-block;
+}
+
+.c-order-summary .summary-item.total-item {
+    line-height: 24px;
+}
+.c-order-summary .summary-item {
+    margin-bottom: 20px;
+}
+
+.c-order-summary .summary-item>span {
+    display: inline-block;
+}
+.she-fl {
+    float: left!important;
+}
+
+.c-order-summary .summary-item>span.total {
+    font-size: 20px;
+    font-weight: 700;
+}
+.she-fr {
+    float: right!important;
+}
+
+
+.c-order-summary .coupon-point {
+    padding-top: 20px;
+   
+}
+
+.c-order-summary .check-btn {
+    margin-top: 20px;
+}
+
+
+.she-clearfix:after, .she-clearfix:before {
+    content: " ";
+    display: table;
+}
+
+.inp{
+    width: 100%;
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #262626;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+}
+
+.credit-card-box .panel-title {
+    display: inline;
+    font-weight: bold;
+}
+.credit-card-box .form-control.error {
+    border-color: red;
+    outline: 0;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.075),0 0 8px rgba(255,0,0,0.6);
+}
+.credit-card-box label.error {
+  font-weight: bold;
+  color: red;
+  padding: 2px 8px;
+  margin-top: 2px;
+}
+.credit-card-box .payment-errors {
+  font-weight: bold;
+  color: red;
+  padding: 2px 8px;
+  margin-top: 2px;
+}
+.credit-card-box label {
+    display: block;
+}
+
+.credit-card-box .display-table {
+    display: table;
+}
+.credit-card-box .display-tr {
+    display: table-row;
+}
+.credit-card-box .display-td {
+    display: table-cell;
+    vertical-align: middle;
+    width: 50%;
+}
+
+.credit-card-box .panel-heading img {
+    min-width: 180px;
+}

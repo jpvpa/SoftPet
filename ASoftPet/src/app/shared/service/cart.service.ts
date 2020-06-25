@@ -16,11 +16,16 @@ export class CartService {
   private subject = new Subject<any>();
   constructor() { 
   }
-
+  sendClickEvento() {
+    this.subject.next();
+  }
   sendClickEvent(product) {
     this.subject.next(product);
   }
   getClickEvent(): Observable<any>{ 
+    return this.subject.asObservable();
+  }
+  getClickEvento(): Observable<any>{ 
     return this.subject.asObservable();
   }
 

@@ -41,6 +41,7 @@ export class AppComponent {
       xhrFields: {
         withCredentials: true
       },
+      headers: {"Authorization": localStorage.getItem('id_token')},
       success: function (res) {
         self.Cart = res;
         console.log(res);

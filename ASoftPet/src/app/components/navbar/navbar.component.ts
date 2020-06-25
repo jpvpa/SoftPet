@@ -15,14 +15,15 @@ export class NavbarComponent implements OnInit {
   user: Object;
   role;
   Cart = {};
-  //carty: any[] = [];
   subscription: Subscription;
   cartOpen = false;
   session = {
     valid: false,
     user: 'skdfjsd'
   };
+  Order = {};
   clickEventsubscription:Subscription;
+  clickEventsubscripcion:Subscription;
   constructor(
     private auth: AuthService,
     private cart: CartService,
@@ -30,7 +31,9 @@ export class NavbarComponent implements OnInit {
     private router :Router
   ) { 
     this.clickEventsubscription= this.cart.getClickEvent().subscribe((product)=>{
-      this.addToCart(product);
+      if(product){
+        this.addToCart(product);
+      }
       })
   }
   search = {
@@ -49,6 +52,8 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.auth.loggedIn()
+    this.auth.loadToken()
     this.removeFromCart
     this.auth.getProfile().subscribe((profile:any) =>{
       this.user = profile.user;
@@ -63,13 +68,13 @@ export class NavbarComponent implements OnInit {
       xhrFields: {
         withCredentials: true
       },
+      headers: {"Authorization": localStorage.getItem('id_token')},
       success: function (res) {
         self.Cart = res;
         console.log(res);
       } 
     });
   }
-
   removeFromCart(product){
     var cookies = this.GetCookies();
     var self = this
@@ -80,6 +85,7 @@ export class NavbarComponent implements OnInit {
       xhrFields: {
         withCredentials: true
       },
+      headers: {"Authorization": localStorage.getItem('id_token')},
       success: function(res){
         self.Cart = res;
         console.log(res);
@@ -90,6 +96,9 @@ export class NavbarComponent implements OnInit {
       }
     })
   }
+  /* getCheckout(){
+    this.cart.sendClickEvento()
+  } */
 
   onLogoutClick(){
     this.auth.logout();
@@ -100,6 +109,24 @@ export class NavbarComponent implements OnInit {
       type: 'success'
     });
     this.router.navigate(['/log-in']);
+    var self = this;
+    $.ajax({
+      method: 'get',
+      url: 'http://localhost:2020/cart/finalize',
+      xhrFields: {
+        withCredentials: true
+      },
+      headers: {"Authorization": localStorage.getItem('id_token')},
+      success: function(res){
+        window.location.reload();
+        self.Order = res;
+        console.log(res);
+        console.log("Entra");
+      },
+      error: function() {
+        console.log("No entra o se sale");
+      }
+    })
   }
 
   addToCart(product){
@@ -112,6 +139,7 @@ export class NavbarComponent implements OnInit {
       xhrFields: {
         withCredentials: true
       },
+      headers: {"Authorization": localStorage.getItem('id_token')},
       success: function(res){
         self.Cart = res;
         console.log(res);
@@ -122,7 +150,6 @@ export class NavbarComponent implements OnInit {
       }
     })
   }
-
   openNav() {
     $('#mySidebar').css("width","350px")
     $('#mySidebar').css("marginLeft","350px")

@@ -138,7 +138,7 @@ router.post('/add', async(req,res)=>{
         else { console.log('Error en guardar el producto: ' + JSON.stringify(err, undefined, 2)); }
     });
 })
-router.post('/:id', async (req, res) =>{
+router.post('/:id', (req, res) =>{
     var required = req.params;
     var filter = {};
     filter.id = parseInt(required.id);
@@ -154,8 +154,11 @@ router.post('/:id', async (req, res) =>{
         res.send({mensaje: 'Debe cumplir con las características minimas del producto'});
         return;
     }
-
-    var insertado = await  Product.create(producto);
+    var insertado =  Product.create(producto)
+    /* var insertado = await  Product.bulkWrite([{
+        insertOne:{document :{id:req.body.id, nombre: req.body.nombre, precio: req.body.precio, descripcion:req.body.descripcion,
+            departamento:req.body.departamento, categoria:req.body.categoria, cantidad: producto.cantidad, marca: producto.marca}}
+    }]); */
     if(insertado){
         res.send({mensaje : 'Se inserto Correctamente'});
     }else{
